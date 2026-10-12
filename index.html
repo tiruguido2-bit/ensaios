@@ -2,318 +2,836 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#101010">
-<title>Math Photo | Ensaios</title>
-<style>
-:root {
-  --bg: #101010;
-  --panel: #191919;
-  --text: #f5f2ed;
-  --muted: #aaa49d;
-  --gold: #d7b77a;
-  --line: #35322e;
-}
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: Arial, Helvetica, sans-serif;
-}
-button, input, select { font: inherit; }
-button { cursor: pointer; }
-header {
-  padding: 23px 6%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--line);
-}
-.logo { letter-spacing: 3px; font-size: 17px; }
-.logo span { color: var(--gold); }
-header a { color: var(--muted); text-decoration: none; font-size: 13px; }
-.hero {
-  padding: 75px 7% 65px;
-  min-height: 340px;
-  background: linear-gradient(90deg,#101010 0%,#101010df 55%,#10101065 100%),
-  url('https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=1600&q=80') center/cover;
-}
-.eyebrow { color: var(--gold); text-transform: uppercase; letter-spacing: 3px; font-size: 11px; }
-h1 { font-size: clamp(38px,7vw,68px); line-height: 1.05; max-width: 650px; margin: 18px 0; }
-.hero p { color: #c5c0ba; line-height: 1.7; max-width: 430px; }
-main { max-width: 1100px; margin: auto; padding: 48px 20px 70px; }
-.section-title { margin-bottom: 25px; }
-.section-title h2 { font-size: 27px; margin-bottom: 8px; }
-.section-title p, .muted { color: var(--muted); line-height: 1.6; font-size: 14px; }
-.packages { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 15px; }
-.card { background: var(--panel); border: 1px solid var(--line); padding: 24px; border-radius: 8px; display: flex; flex-direction: column; }
-.card.featured { border-color: var(--gold); }
-.tag { color: var(--gold); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
-.card h3 { font-size: 20px; margin: 13px 0 8px; }
-.price { font-size: 31px; margin: 13px 0; }
-.price small { font-size: 12px; color: var(--muted); }
-.card ul { padding-left: 18px; color: #c9c4bd; line-height: 2; font-size: 13px; flex: 1; }
-.btn {
-  background: var(--gold); color: #17130d; border: 0; border-radius: 4px;
-  padding: 14px 17px; font-weight: bold; width: 100%;
-}
-.btn.secondary { background: transparent; border: 1px solid var(--line); color: var(--text); }
-.booking { margin-top: 65px; }
-.box { background: var(--panel); border: 1px solid var(--line); padding: 24px; border-radius: 8px; }
-label { display: block; font-size: 13px; margin: 17px 0 8px; color: #ded8d0; }
-input, select {
-  width: 100%; padding: 13px; background: #101010; color: white;
-  border: 1px solid #44403a; border-radius: 4px;
-}
-input:focus, select:focus { outline: 1px solid var(--gold); }
-.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.coupon-row { display: flex; gap: 8px; }
-.coupon-row input { min-width: 0; }
-.coupon-row button { width: auto; white-space: nowrap; }
-.total { border-top: 1px solid var(--line); margin-top: 23px; padding-top: 20px; }
-.total-line { display: flex; justify-content: space-between; margin: 12px 0; }
-.total-line.final { font-size: 22px; font-weight: bold; color: var(--gold); }
-.notice { font-size: 12px; line-height: 1.6; color: var(--muted); margin-top: 14px; }
-#feedback { margin-top: 12px; font-size: 13px; line-height: 1.5; }
-footer { padding: 28px 20px; text-align: center; color: var(--muted); border-top: 1px solid var(--line); font-size: 12px; }
-@media(max-width:760px) {
-  .packages { grid-template-columns: 1fr; }
-  .hero { padding: 55px 22px; }
-  .form-grid { grid-template-columns: 1fr; gap: 0; }
-  main { padding: 38px 16px 55px; }
-  .box { padding: 18px; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f3f0e7">
+  <meta name="description" content="Ensaios fotográficos de cosplay, retratos e projetos criativos em São Paulo e Guarulhos. Conheça os pacotes e solicite seu agendamento.">
+
+  <title>Maths Photo | Ensaios Fotográficos</title>
+
+  <style>
+    :root {
+      --cream: #f3f0e7;
+      --cream-light: #fbfaf6;
+      --aqua: #83b9aa;
+      --aqua-light: #dcebe3;
+      --green: #284b42;
+      --green-dark: #1d3932;
+      --text: #263b35;
+      --muted: #68766f;
+      --line: #d8ded5;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, select, textarea {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .logo span {
+      color: #639d8d;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 23px;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a:hover,
+    footer a:hover {
+      color: #639d8d;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--green);
+      color: var(--white);
+      padding: 13px 21px;
+      border: 0;
+      border-radius: 7px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      text-align: center;
+    }
+
+    .button:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+    }
+
+    .button-light {
+      background: var(--aqua-light);
+      color: var(--green);
+    }
+
+    .button-light:hover {
+      background: #c9e0d5;
+    }
+
+    .hero {
+      padding: 90px 0 82px;
+      background:
+        radial-gradient(ellipse at 90% 10%, #dcebe3 0%, transparent 43%),
+        var(--cream);
+    }
+
+    .hero-content {
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--green);
+      background: var(--aqua-light);
+      border-radius: 30px;
+      padding: 6px 13px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4.8rem);
+      line-height: 1.08;
+      letter-spacing: -2px;
+      max-width: 800px;
+      margin-bottom: 24px;
+    }
+
+    h1 span {
+      color: #619b8a;
+    }
+
+    .hero p {
+      max-width: 590px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin-bottom: 28px;
+    }
+
+    .hero-note {
+      margin-top: 17px;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    section {
+      padding: 76px 0;
+    }
+
+    .section-heading {
+      max-width: 650px;
+      margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      line-height: 1.2;
+      margin-bottom: 13px;
+      letter-spacing: -1px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    .portfolio {
+      background: var(--cream-light);
+    }
+
+    .portfolio-empty {
+      border: 1px dashed #a8c5b8;
+      background: #f1f5ef;
+      border-radius: 14px;
+      padding: 40px 24px;
+      text-align: center;
+    }
+
+    .portfolio-empty .symbol {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .portfolio-empty h3 {
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+    }
+
+    .portfolio-empty p {
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .package {
+      background: var(--cream-light);
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      padding: 27px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .package.featured {
+      background: #e4eee6;
+      border-color: #a6c8b8;
+    }
+
+    .package-tag {
+      display: inline-block;
+      background: var(--aqua-light);
+      color: var(--green);
+      border-radius: 20px;
+      padding: 4px 10px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .package h3 {
+      font-size: 1.35rem;
+      margin-bottom: 5px;
+    }
+
+    .package-description {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 15px;
+    }
+
+    .price {
+      font-size: 2.15rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    .price small {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    .package ul {
+      list-style: none;
+      margin-bottom: 24px;
+      flex: 1;
+      width: 100%;
+    }
+
+    .package li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.93rem;
+    }
+
+    .package li::before {
+      content: "✓";
+      color: #568c7b;
+      font-weight: 800;
+      margin-right: 9px;
+    }
+
+    .package .button {
+      width: 100%;
+      margin-top: auto;
+    }
+
+    .fine-print {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-top: 25px;
+    }
+
+    .booking {
+      background: var(--aqua-light);
+    }
+
+    .booking-layout {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 45px;
+      align-items: start;
+    }
+
+    .booking-copy h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      line-height: 1.2;
+      margin-bottom: 17px;
+    }
+
+    .booking-copy p {
+      color: #52675e;
+      margin-bottom: 17px;
+    }
+
+    .booking-copy .notice {
+      background: rgba(255,255,255,0.55);
+      border-radius: 9px;
+      padding: 15px;
+      font-size: 0.91rem;
+    }
+
+    .booking-form {
+      background: var(--cream-light);
+      border: 1px solid #cbded3;
+      border-radius: 13px;
+      padding: 27px;
+    }
+
+    .field {
+      margin-bottom: 17px;
+    }
+
+    .field label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      border: 1px solid #cbd5cc;
+      background: #fff;
+      color: var(--text);
+      padding: 12px;
+      border-radius: 7px;
+      outline: none;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: #619b8a;
+      box-shadow: 0 0 0 3px rgba(131,185,170,0.2);
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .booking-form .button {
+      width: 100%;
+    }
+
+    .form-note {
+      color: var(--muted);
+      font-size: 0.8rem;
+      margin-top: 12px;
+    }
+
+    .contact {
+      text-align: center;
+      background: var(--cream);
+    }
+
+    .contact h2 {
+      font-size: clamp(2rem, 4vw, 2.7rem);
+      margin-bottom: 12px;
+    }
+
+    .contact p {
+      color: var(--muted);
+      margin-bottom: 23px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer {
+      background: var(--green-dark);
+      color: #e9eee9;
+      padding: 27px 0;
+      font-size: 0.85rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    footer p {
+      color: #c2d1c8;
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .hero {
+        padding: 65px 0;
+      }
+
+      .packages-grid,
+      .booking-layout {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 57px 0;
+      }
+
+      .package,
+      .booking-form {
+        padding: 22px;
+      }
+
+      .booking-layout {
+        gap: 25px;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<header>
-  <div class="logo">MATH <span>PHOTO</span></div>
-  <a href="#pacotes">ESCOLHA SEU ENSAIO ↓</a>
-</header>
 
-<section class="hero">
-  <div class="eyebrow">Retratos · Cosplay · Personagens</div>
-  <h1>Seu personagem.<br>Sua história.</h1>
-  <p>Ensaios fotográficos com personalidade, luz e atmosfera. Escolha seu pacote e vamos criar algo único.</p>
-  <a href="#pacotes"><button class="btn" style="width:auto">ENCONTRAR MEU ENSAIO ↗</button></a>
-</section>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#inicio">MATHS <span>PHOTO</span></a>
 
-<main>
-  <section id="pacotes">
-    <div class="section-title">
-      <div class="eyebrow">Encontre seu estilo</div>
-      <h2>Escolha seu pacote</h2>
-      <p>Selecione a experiência que combina com você.</p>
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#portfolio">Portfólio</a>
+        <a href="#pacotes">Pacotes</a>
+        <a href="#agendamento">Agendamento</a>
+        <a href="#contato">Contato</a>
+      </nav>
     </div>
-    <div class="packages">
-      <article class="card">
-        <div class="tag">Para experimentar</div>
-        <h3>Mini Ensaio</h3>
-        <p class="muted">Uma sessão rápida, sem abrir mão da personalidade.</p>
-        <div class="price">R$ 80</div>
-        <ul><li>30 minutos de sessão</li><li>10 fotos editadas</li><li>Entrega digital</li></ul>
-        <button class="btn secondary" onclick="selectPackage('Mini Ensaio')">ESCOLHER PACOTE</button>
-      </article>
-      <article class="card featured">
-        <div class="tag">Mais escolhido</div>
-        <h3>Ensaio Cosplay</h3>
-        <p class="muted">Tempo para explorar poses, detalhes e personagem.</p>
-        <div class="price">R$ 150</div>
-        <ul><li>1 hora de sessão</li><li>20 fotos editadas</li><li>Até 2 looks</li><li>Entrega digital</li></ul>
-        <button class="btn" onclick="selectPackage('Ensaio Cosplay')">ESCOLHER PACOTE</button>
-      </article>
-      <article class="card">
-        <div class="tag">Experiência completa</div>
-        <h3>Ensaio Premium</h3>
-        <p class="muted">Mais tempo e possibilidades para criar.</p>
-        <div class="price">R$ 250</div>
-        <ul><li>1h30 de sessão</li><li>35 fotos editadas</li><li>Até 3 looks</li><li>Planejamento criativo</li></ul>
-        <button class="btn secondary" onclick="selectPackage('Ensaio Premium')">ESCOLHER PACOTE</button>
-      </article>
-    </div>
-  </section>
+  </header>
 
-  <section class="booking" id="agendar">
-    <div class="section-title">
-      <div class="eyebrow">Sua próxima sessão</div>
-      <h2>Monte sua reserva</h2>
-      <p>Escolha pacote, data e horário. Sua solicitação será enviada pelo WhatsApp.</p>
-    </div>
-    <div class="box">
-      <div class="form-grid">
-        <div>
-          <label for="package">Seu pacote</label>
-          <select id="package" onchange="updateTotal()">
-            <option value="Mini Ensaio">Mini Ensaio — R$ 80</option>
-            <option value="Ensaio Cosplay" selected>Ensaio Cosplay — R$ 150</option>
-            <option value="Ensaio Premium">Ensaio Premium — R$ 250</option>
-          </select>
-        </div>
-        <div>
-          <label for="date">Data desejada</label>
-          <input id="date" type="date" onchange="updateSlots()">
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-content">
+        <span class="eyebrow">Fotografia • Cosplay • Retratos</span>
+
+        <h1>Seu personagem.<br>Sua história. <span>Seu momento.</span></h1>
+
+        <p>
+          Ensaios fotográficos para dar vida às suas ideias, registrar
+          personagens e criar imagens com a sua identidade.
+          Atendimentos em São Paulo e Guarulhos.
+        </p>
+
+        <a class="button" href="#pacotes">Conheça os pacotes</a>
+
+        <div class="hero-note">
+          Todos os pacotes incluem deslocamento.
         </div>
       </div>
-      <label for="time">Horário desejado</label>
-      <select id="time">
-        <option value="">Primeiro, escolha uma data</option>
-      </select>
-      <p class="notice">Os horários abaixo são sugestões e ainda não consultam sua agenda real. A disponibilidade precisa ser confirmada antes da reserva.</p>
+    </section>
 
-      <label for="coupon">Você tem um cupom?</label>
-      <div class="coupon-row">
-        <input id="coupon" placeholder="Digite seu cupom" autocomplete="off">
-        <button class="btn secondary" onclick="applyCoupon()">APLICAR</button>
-      </div>
-      <div id="feedback" aria-live="polite"></div>
+    <section class="portfolio" id="portfolio">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Portfólio</span>
+          <h2>Imagens que contam histórias.</h2>
+          <p>
+            Uma seleção de ensaios, personagens e ideias transformadas
+            em fotografia.
+          </p>
+        </div>
 
-      <div class="total">
-        <div class="total-line"><span>Valor do pacote</span><span id="subtotal">R$ 150,00</span></div>
-        <div class="total-line"><span>Desconto</span><span id="discount">R$ 0,00</span></div>
-        <div class="total-line final"><span>Total</span><span id="total">R$ 150,00</span></div>
-      </div>
+        <!--
+          ESPAÇO DO PORTFÓLIO:
+          Quando tiver suas fotos, substitua este bloco por imagens reais.
+          Não precisa alterar o restante do site.
+        -->
 
-      <div class="form-grid">
-        <div><label for="name">Seu nome</label><input id="name" placeholder="Como podemos te chamar"></div>
-        <div><label for="instagram">Instagram</label><input id="instagram" placeholder="@seuusuario"></div>
+        <div class="portfolio-empty">
+          <div class="symbol" aria-hidden="true">✳</div>
+          <h3>Portfólio em atualização</h3>
+          <p>
+            Em breve, uma seleção de fotografias de cosplay, retratos
+            e ensaios externos estará disponível aqui.
+          </p>
+        </div>
       </div>
-      <label for="whatsapp">Seu WhatsApp</label>
-      <input id="whatsapp" type="tel" placeholder="(11) 99999-9999">
-      <p class="notice">Ao continuar, você vai abrir uma conversa para confirmar disponibilidade e combinar o pagamento via Pix. Nenhum pagamento será realizado automaticamente nesta versão.</p>
-      <button class="btn" style="margin-top:12px" onclick="sendBooking()">SOLICITAR MEU ENSAIO ↗</button>
-      <div id="result" aria-live="polite"></div>
+    </section>
+
+    <section id="pacotes">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Pacotes</span>
+          <h2>Vamos tirar sua ideia do papel?</h2>
+          <p>
+            Escolha a opção que combina com seu ensaio. Se você tem uma
+            ideia diferente, podemos conversar sobre ela.
+          </p>
+        </div>
+
+        <div class="packages-grid">
+
+          <article class="package">
+            <span class="package-tag">Ao ar livre</span>
+            <h3>Ensaio externo</h3>
+            <p class="package-description">
+              Para explorar cenários, arquitetura e ambientes urbanos.
+            </p>
+            <div class="price">R$ 150</div>
+            <ul>
+              <li>São Paulo e Guarulhos</li>
+              <li>Aproximadamente 3 horas</li>
+              <li>15 a 20 fotos editadas</li>
+              <li>Fotos extras em arquivo sem edição, se desejar</li>
+              <li>Deslocamento incluso</li>
+            </ul>
+            <a class="button" href="#agendamento"
+               data-package="Ensaio externo">
+              Escolher pacote
+            </a>
+          </article>
+
+          <article class="package">
+            <span class="package-tag">Estúdio</span>
+            <h3>Ensaio em estúdio</h3>
+            <p class="package-description">
+              Um espaço preparado para criar imagens com mais controle.
+            </p>
+            <div class="price">R$ 480 <small>total</small></div>
+            <ul>
+              <li>Fotógrafo: R$ 150</li>
+              <li>Locação do estúdio no Paraíso: R$ 330</li>
+              <li>15 a 20 fotos editadas</li>
+              <li>Deslocamento incluso</li>
+            </ul>
+            <a class="button" href="#agendamento"
+               data-package="Ensaio em estúdio">
+              Escolher pacote
+            </a>
+          </article>
+
+          <article class="package">
+            <span class="package-tag">No seu espaço</span>
+            <h3>Ensaio em casa</h3>
+            <p class="package-description">
+              Para fotografar no seu próprio ambiente.
+            </p>
+            <div class="price">R$ 200</div>
+            <ul>
+              <li>Ensaio na sua casa</li>
+              <li>15 a 20 fotos editadas</li>
+              <li>Deslocamento incluso</li>
+            </ul>
+            <a class="button" href="#agendamento"
+               data-package="Ensaio em casa">
+              Escolher pacote
+            </a>
+          </article>
+
+          <article class="package featured">
+            <span class="package-tag">Projeto personalizado</span>
+            <h3>Ensaio com cenário próprio</h3>
+            <p class="package-description">
+              Para ideias que precisam de objetos, decoração ou
+              elementos específicos.
+            </p>
+            <div class="price">R$ 880 <small>total estimado</small></div>
+            <ul>
+              <li>Montagem e compra de itens: R$ 400</li>
+              <li>Fotógrafo: R$ 150</li>
+              <li>Locação do estúdio: R$ 330</li>
+              <li>15 a 20 fotos editadas</li>
+              <li>Deslocamento incluso</li>
+              <li>Itens comprados para o projeto podem ficar com você</li>
+            </ul>
+            <p class="package-description">
+              Se já houver itens adequados disponíveis, o valor pode
+              diminuir. Objetos que já pertencem ao fotógrafo não estão
+              incluídos para ficar com o cliente.
+            </p>
+            <a class="button" href="#agendamento"
+               data-package="Ensaio com cenário próprio">
+              Conversar sobre meu projeto
+            </a>
+          </article>
+
+          <article class="package">
+            <span class="package-tag">Eventos geek</span>
+            <h3>Miniensaio em evento</h3>
+            <p class="package-description">
+              Uma sessão rápida durante um evento em que eu estiver presente.
+            </p>
+            <div class="price">R$ 80</div>
+            <ul>
+              <li>10 fotos editadas</li>
+              <li>Atendimento durante o evento</li>
+              <li>Presença do fotógrafo precisa ser confirmada</li>
+            </ul>
+            <a class="button" href="#agendamento"
+               data-package="Miniensaio em evento">
+              Consultar evento
+            </a>
+          </article>
+
+        </div>
+
+        <p class="fine-print">
+          Os valores e detalhes são apresentados antes da confirmação
+          do serviço. No miniensaio, é necessário confirmar se estarei
+          presente no evento escolhido.
+        </p>
+      </div>
+    </section>
+
+    <section class="booking" id="agendamento">
+      <div class="container booking-layout">
+
+        <div class="booking-copy">
+          <span class="eyebrow">Agendamento</span>
+          <h2>Vamos planejar seu ensaio?</h2>
+          <p>
+            Preencha as informações e envie seu pedido pelo WhatsApp.
+            Assim podemos conversar sobre a ideia, a data e os detalhes.
+          </p>
+          <p class="notice">
+            <strong>Importante:</strong> o envio não confirma a reserva.
+            A data e o horário só estarão confirmados depois que eu
+            verificar a disponibilidade e responder.
+          </p>
+        </div>
+
+        <form class="booking-form" id="bookingForm">
+
+          <div class="field">
+            <label for="nome">Seu nome</label>
+            <input type="text" id="nome" name="nome"
+                   placeholder="Como posso te chamar?" required>
+          </div>
+
+          <div class="field">
+            <label for="pacote">Pacote desejado</label>
+            <select id="pacote" name="pacote" required>
+              <option value="">Selecione um pacote</option>
+              <option>Ensaio externo - R$ 150</option>
+              <option>Ensaio em estúdio - R$ 480</option>
+              <option>Ensaio em casa - R$ 200</option>
+              <option>Ensaio com cenário próprio - R$ 880 estimados</option>
+              <option>Miniensaio em evento - R$ 80</option>
+              <option>Quero conversar sobre outra ideia</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="data">Data desejada</label>
+            <input type="date" id="data" name="data" required>
+          </div>
+
+          <div class="field">
+            <label for="horario">Horário de preferência</label>
+            <select id="horario" name="horario" required>
+              <option value="">Selecione uma preferência</option>
+              <option>Manhã</option>
+              <option>Tarde</option>
+              <option>Noite</option>
+              <option>Tenho flexibilidade</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="detalhes">
+              Detalhes do ensaio
+            </label>
+            <textarea id="detalhes" name="detalhes"
+              placeholder="Personagem, local, nome e data do evento ou outras informações..."></textarea>
+          </div>
+
+          <button type="submit" class="button">
+            Enviar pedido pelo WhatsApp
+          </button>
+
+          <p class="form-note">
+            Você será direcionado ao WhatsApp para enviar a mensagem.
+            Nenhum horário é reservado automaticamente.
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <section class="contact" id="contato">
+      <div class="container">
+        <span class="eyebrow">Contato</span>
+        <h2>Tem uma ideia em mente?</h2>
+        <p>
+          Me chama para conversar sobre seu próximo ensaio.
+        </p>
+
+        <div class="social-links">
+          <a class="button" id="whatsappContact"
+             href="https://wa.me/5511946017570"
+             target="_blank" rel="noopener">
+            WhatsApp
+          </a>
+
+          <a class="button button-light"
+             href="https://www.instagram.com/maths.photo/"
+             target="_blank" rel="noopener">
+            Instagram
+          </a>
+
+          <a class="button button-light"
+             href="https://www.behance.net/matheusalmeida84"
+             target="_blank" rel="noopener">
+            Behance
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <a class="logo" href="#inicio">MATHS <span>PHOTO</span></a>
+      <p>Fotografia em São Paulo e Guarulhos.</p>
+      <p>© <span id="year"></span> Maths Photo</p>
     </div>
-  </section>
-</main>
+  </footer>
 
-<footer>© <span id="year"></span> Math Photo · Retratos com personalidade.</footer>
+  <script>
+    // Para trocar o WhatsApp, altere somente o número abaixo.
+    // Use código do país + DDD + número, sem espaços ou símbolos.
+    const WHATSAPP_NUMBER = "5511946017570";
 
-<script>
-const prices = {
-  "Mini Ensaio": 80,
-  "Ensaio Cosplay": 150,
-  "Ensaio Premium": 250
-};
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
 
-/* Cupons de demonstração. A validação real de vendas precisa
-   ser feita também no checkout, não apenas neste arquivo. */
-const coupons = {
-  "COSPLAY10": { type: "percent", value: 10 },
-  "PRIMEIRO20": { type: "fixed", value: 20 }
-};
+    document.getElementById("whatsappContact").href =
+      "https://wa.me/" + WHATSAPP_NUMBER;
 
-let activeCoupon = null;
-let discountValue = 0;
+    // Preenche o pacote quando a pessoa clica em "Escolher pacote".
+    document.querySelectorAll("[data-package]").forEach(function (link) {
+      link.addEventListener("click", function () {
+        const selectedPackage = link.dataset.package;
+        const select = document.getElementById("pacote");
 
-function money(value) {
-  return value.toLocaleString("pt-BR", {
-    style: "currency", currency: "BRL"
-  });
-}
+        const options = Array.from(select.options);
+        const matchingOption = options.find(function (option) {
+          return option.text.toLowerCase().startsWith(
+            selectedPackage.toLowerCase()
+          );
+        });
 
-function selectPackage(name) {
-  document.getElementById("package").value = name;
-  updateTotal();
-  document.getElementById("agendar").scrollIntoView({behavior:"smooth"});
-}
+        if (matchingOption) {
+          select.value = matchingOption.value;
+        }
+      });
+    });
 
-function updateTotal() {
-  const price = prices[document.getElementById("package").value];
-  if (activeCoupon) {
-    discountValue = activeCoupon.type === "percent"
-      ? price * activeCoupon.value / 100
-      : Math.min(activeCoupon.value, price);
-  } else {
-    discountValue = 0;
-  }
-  document.getElementById("subtotal").textContent = money(price);
-  document.getElementById("discount").textContent = money(discountValue);
-  document.getElementById("total").textContent = money(price - discountValue);
-}
+    // O formulário monta uma mensagem para o fotógrafo.
+    // Ele NÃO verifica disponibilidade nem confirma reservas.
+    document.getElementById("bookingForm").addEventListener(
+      "submit",
+      function (event) {
+        event.preventDefault();
 
-function applyCoupon() {
-  const code = document.getElementById("coupon").value.trim().toUpperCase();
-  const feedback = document.getElementById("feedback");
-  if (coupons[code]) {
-    activeCoupon = coupons[code];
-    feedback.textContent = "Cupom aplicado! Desconto calculado para este orçamento.";
-    feedback.style.color = "#d7b77a";
-  } else {
-    activeCoupon = null;
-    feedback.textContent = code ? "Cupom inválido. Confira se digitou corretamente." : "Digite um cupom primeiro.";
-    feedback.style.color = "#e6a09a";
-  }
-  updateTotal();
-}
+        const nome = document.getElementById("nome").value.trim();
+        const pacote = document.getElementById("pacote").value;
+        const data = document.getElementById("data").value;
+        const horario = document.getElementById("horario").value;
+        const detalhes =
+          document.getElementById("detalhes").value.trim();
 
-function updateSlots() {
-  const dateValue = document.getElementById("date").value;
-  const time = document.getElementById("time");
-  time.innerHTML = "";
-  if (!dateValue) {
-    time.add(new Option("Primeiro, escolha uma data", ""));
-    return;
-  }
-  const chosen = new Date(dateValue + "T12:00:00");
-  if (chosen.getDay() === 0) {
-    time.add(new Option("Domingos indisponíveis. Escolha outra data.", ""));
-    return;
-  }
-  ["09:00","10:30","13:00","14:30","16:00"].forEach(hour => {
-    time.add(new Option(hour, hour));
-  });
-}
+        if (!nome || !pacote || !data || !horario) {
+          alert("Preencha seu nome, pacote, data e horário de preferência.");
+          return;
+        }
 
-function sendBooking() {
-  const name = document.getElementById("name").value.trim();
-  const instagram = document.getElementById("instagram").value.trim();
-  const whatsapp = document.getElementById("whatsapp").value.trim();
-  const date = document.getElementById("date").value;
-  const time = document.getElementById("time").value;
-  const pack = document.getElementById("package").value;
-  const feedback = document.getElementById("result");
+        const dataFormatada = data.split("-").reverse().join("/");
 
-  if (!name || !whatsapp || !date || !time) {
-    feedback.textContent = "Preencha nome, WhatsApp, data e horário antes de continuar.";
-    feedback.style.color = "#e6a09a";
-    return;
-  }
+        const mensagem =
+          "Oi! Gostaria de solicitar um agendamento de ensaio.\n\n" +
+          "Nome: " + nome + "\n" +
+          "Pacote: " + pacote + "\n" +
+          "Data desejada: " + dataFormatada + "\n" +
+          "Horário de preferência: " + horario + "\n" +
+          "Detalhes: " + (detalhes || "Ainda não definidos") +
+          "\n\nSei que a data e o horário dependem da confirmação do fotógrafo.";
 
-  /* Troque pelo seu número com código do país e DDD.
-     Exemplo: 5511999999999. Não use espaços nem símbolos. */
-  const seuNumero = "5511999999999";
-  const total = prices[pack] - discountValue;
-  const code = activeCoupon ? document.getElementById("coupon").value.trim().toUpperCase() : "Nenhum";
-  const dateBR = date.split("-").reverse().join("/");
-  const message =
-    "Olá! Quero solicitar um ensaio fotográfico.\n\n" +
-    "Pacote: " + pack + "\n" +
-    "Valor do pacote: " + money(prices[pack]) + "\n" +
-    "Cupom informado: " + code + "\n" +
-    "Total estimado: " + money(total) + "\n" +
-    "Data desejada: " + dateBR + "\n" +
-    "Horário desejado: " + time + "\n" +
-    "Nome: " + name + "\n" +
-    "Instagram: " + (instagram || "Não informado") + "\n" +
-    "WhatsApp: " + whatsapp + "\n\n" +
-    "Se houver disponibilidade, gostaria de receber as instruções para pagamento via Pix.";
+        const url =
+          "https://wa.me/" + WHATSAPP_NUMBER +
+          "?text=" + encodeURIComponent(mensagem);
 
-  if (seuNumero === "5511999999999") {
-    feedback.textContent = "O site está funcionando! Antes de publicar para clientes, troque o número de exemplo pelo seu WhatsApp no código.";
-    feedback.style.color = "#d7b77a";
-    return;
-  }
-  window.open("https://wa.me/" + seuNumero + "?text=" + encodeURIComponent(message), "_blank");
-}
+        window.location.href = url;
+      }
+    );
+  </script>
 
-document.getElementById("date").min =
-  new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
-    .toISOString().slice(0,10);
-document.getElementById("year").textContent = new Date().getFullYear();
-updateTotal();
-</script>
 </body>
-  </html>
-  
+</html>
