@@ -15,44 +15,67 @@
   --linha: #40564A;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 20px; }
 body {
   background-color: var(--fundo);
-  /* Ruído fino e uniforme, sem precisar carregar uma imagem externa */
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 180px 180px;
-  background-attachment: fixed;
   color: var(--texto);
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.65;
+  position: relative;
+}
+/* Granulação fina e discreta sobre o fundo, sem pesar nas fotos ou nos cards */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .075;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
 }
 a { color: inherit; text-decoration: none; }
 .container { width: min(1100px, 90%); margin: auto; }
+
+/* Cabeçalho */
 header {
-  background: rgba(25, 40, 32, .94);
+  background: rgba(25, 40, 32, .96);
   border-bottom: 1px solid var(--linha);
-  padding: 24px 0 18px;
+  padding: 20px 0;
 }
-.cabecalho { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.cabecalho {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
 .logo {
   display: block;
   text-align: center;
-  font-size: clamp(25px, 4vw, 30px);
-  font-weight: bold;
-  letter-spacing: 3px;
+  font-size: clamp(24px, 3.5vw, 28px);
+  font-weight: normal;
+  letter-spacing: 3.5px;
   line-height: 1.2;
 }
-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; font-size: 13px; }
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 13px;
+}
+nav a, .link-contato { transition: color .2s, border-color .2s, background .2s; }
 nav a:hover, .link-contato:hover { color: var(--verde); }
+
+/* Abertura */
 .hero {
-  background: rgba(25, 40, 32, .90);
-  padding: 95px 0 85px;
+  background: rgba(25, 40, 32, .84);
+  padding: 90px 0 82px;
   border-bottom: 1px solid var(--linha);
 }
 .etiqueta {
   color: var(--verde);
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 2.5px;
   text-transform: uppercase;
   margin-bottom: 16px;
@@ -65,7 +88,7 @@ h1 {
   margin-bottom: 22px;
   letter-spacing: -1px;
 }
-.hero p { max-width: 600px; margin-bottom: 28px; color: var(--texto); }
+.hero p { max-width: 600px; margin-bottom: 28px; }
 .botao {
   display: inline-block;
   padding: 12px 20px;
@@ -80,6 +103,7 @@ h1 {
   transition: background .2s, color .2s, border-color .2s;
 }
 .botao:hover { background: transparent; color: var(--texto); }
+
 section { padding: 65px 0; border-top: 1px solid var(--linha); }
 .titulo-secao {
   font-family: Georgia, serif;
@@ -88,93 +112,181 @@ section { padding: 65px 0; border-top: 1px solid var(--linha); }
   margin-bottom: 14px;
 }
 .titulo-secao::after {
-  content: ""; display: block; width: 38px; height: 1px;
-  background: var(--verde); margin-top: 13px;
+  content: "";
+  display: block;
+  width: 38px;
+  height: 1px;
+  background: var(--verde);
+  margin-top: 13px;
 }
 .descricao-secao { max-width: 680px; margin-bottom: 30px; }
+
+/* Portfólio */
 .galeria {
-  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
 }
-.foto { min-width: 0; overflow: hidden; background: var(--card); border: 1px solid var(--linha); }
-.foto img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .35s; }
+.foto {
+  min-width: 0;
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--linha);
+}
+.foto img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .35s;
+}
 .foto:hover img { transform: scale(1.02); }
 .foto-vertical { aspect-ratio: 3 / 4; }
 .foto-horizontal { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
-.sem-foto { display: flex; align-items: center; justify-content: center; min-height: 220px; padding: 20px; font-size: 13px; text-align: center; }
+.sem-foto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  padding: 20px;
+  font-size: 13px;
+  text-align: center;
+}
 .sem-foto img { display: none; }
 .sem-foto::after { content: "Foto não encontrada. Confira o nome do arquivo no GitHub."; }
-.pacotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+
+/* Pacotes */
+.pacotes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
 .pacote {
-  background: rgba(38, 59, 49, .94);
+  background: rgba(38, 59, 49, .90);
   border: 1px solid var(--linha);
   padding: 25px;
-  display: flex; flex-direction: column; align-items: flex-start;
-  transition: border-color .2s;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: border-color .2s, background .2s;
 }
-.pacote:hover { border-color: var(--verde); }
-.pacote h3 { font-family: Georgia, serif; font-size: 22px; font-weight: normal; margin-bottom: 12px; }
+.pacote:hover {
+  border-color: rgba(131, 169, 157, .8);
+  background: rgba(38, 59, 49, .96);
+}
+.pacote h3 {
+  font-family: Georgia, serif;
+  font-size: 22px;
+  font-weight: normal;
+  margin-bottom: 12px;
+}
 .pacote p { font-size: 14px; margin-bottom: 20px; }
-.pacote p:first-of-type { position: relative; padding-top: 13px; }
+.pacote p:first-of-type { position: relative; padding-top: 12px; }
 .pacote p:first-of-type::before {
-  content: ""; display: block; width: 25px; height: 2px;
-  background: var(--verde); margin-bottom: 12px;
+  content: "";
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--verde);
+  margin-bottom: 12px;
 }
-.preco { font-family: Georgia, serif; font-size: 28px; margin-top: auto; margin-bottom: 5px; }
+.preco {
+  font-family: Georgia, serif;
+  font-size: 28px;
+  margin-top: auto;
+  margin-bottom: 5px;
+}
 .detalhe { font-size: 12px; color: var(--verde); margin-bottom: 18px; }
 .pacote .botao { width: 100%; margin-top: 6px; }
-#agendamento { background: rgba(30, 47, 39, .88); }
-.agendamento { display: grid; grid-template-columns: .85fr 1.15fr; gap: 40px; align-items: start; }
+
+/* Agendamento */
+#agendamento { background: rgba(30, 47, 39, .68); }
+.agendamento {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: 40px;
+  align-items: start;
+}
 .texto-agendamento p { margin-top: 17px; }
 form {
-  display: flex; flex-direction: column; gap: 16px;
-  background: rgba(25, 40, 32, .95);
-  border: 1px solid var(--linha); padding: 28px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, .10);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: rgba(25, 40, 32, .96);
+  border: 1px solid var(--linha);
+  padding: 28px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
 }
 .campo { display: flex; flex-direction: column; gap: 7px; }
 label { font-size: 13px; }
 input, select, textarea {
-  width: 100%; padding: 13px; color: var(--texto);
-  background: #223329; border: 1px solid var(--linha);
-  border-radius: 2px; font: inherit; font-size: 14px; outline: none;
+  width: 100%;
+  padding: 13px;
+  color: var(--texto);
+  background: #223329;
+  border: 1px solid var(--linha);
+  border-radius: 2px;
+  font: inherit;
+  font-size: 14px;
+  outline: none;
 }
 input:focus, select:focus, textarea:focus { border-color: var(--verde); }
 select option { background: var(--fundo-escuro); }
 textarea { min-height: 115px; resize: vertical; }
 form .botao { width: 100%; }
 .aviso { font-size: 12px; opacity: .75; }
+
+/* Contato */
 #contato { border-top: 1px solid var(--linha); }
 .bloco-contato {
-  background: rgba(25, 40, 32, .95);
-  border: 1px solid var(--linha); padding: 34px;
+  background: rgba(25, 40, 32, .88);
+  border: 1px solid var(--linha);
+  padding: 34px;
 }
 .bloco-contato .descricao-secao { margin-bottom: 22px; }
 .contato { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
-.link-contato { border: 1px solid var(--linha); padding: 12px 18px; font-size: 13px; transition: border-color .2s, background .2s; }
+.link-contato {
+  border: 1px solid var(--linha);
+  padding: 12px 18px;
+  font-size: 13px;
+}
 .link-contato:hover { border-color: var(--verde); background: #223329; }
 
-/* Rodapé com câmeras menores e padrão mais preenchido, em cinco linhas */
+/* Rodapé compacto com câmeras pequenas e cinco linhas visíveis */
 footer {
-  position: relative; overflow: hidden; isolation: isolate;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   background: var(--fundo-escuro);
   border-top: 1px solid var(--linha);
-  padding: 54px 0;
+  padding: 35px 0;
 }
 footer::before {
-  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  opacity: .85;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='24' viewBox='0 0 30 24'%3E%3Cg fill='none' stroke='%2340564A' stroke-width='.85'%3E%3Crect x='4' y='8' width='15' height='9' rx='1.5'/%3E%3Cpath d='M7 8 L9 5.5 H14 L16 8'/%3E%3Ccircle cx='11.5' cy='12.5' r='2.6'/%3E%3Cpath d='M19 10 L23 8.5 V16.5 L19 15 Z'/%3E%3C/g%3E%3C/svg%3E");
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .46;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='20' viewBox='0 0 24 20'%3E%3Cg fill='none' stroke='%2340564A' stroke-width='.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='7' width='12' height='7' rx='1.2'/%3E%3Cpath d='M5 7 L7 5 H11 L13 7 M15 8.5 L19 7.5 V13.5 L15 12.5 Z'/%3E%3Ccircle cx='9' cy='10.5' r='2.1'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat: repeat;
-  background-size: 30px 24px;
+  background-size: 24px 20px;
 }
 .rodape {
-  display: flex; justify-content: space-between; align-items: center;
-  flex-wrap: wrap; gap: 12px;
-  background: rgba(25, 40, 32, .88);
-  padding: 8px 12px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: rgba(25, 40, 32, .82);
+  padding: 5px 8px;
 }
-.rodape strong { font-size: 16px; font-weight: normal; letter-spacing: 1.5px; }
+.rodape strong { font-size: 15px; font-weight: normal; letter-spacing: 1.5px; }
 .rodape span { font-size: 11px; }
+
+/* Ajustes para celular */
 @media (max-width: 700px) {
   .hero { padding: 70px 0 60px; }
   section { padding: 50px 0; }
@@ -182,7 +294,7 @@ footer::before {
   form { padding: 22px; }
   .bloco-contato { padding: 24px; }
   nav { gap: 13px; }
-  footer { padding: 54px 0; }
+  footer { padding: 35px 0; }
 }
 @media (max-width: 420px) {
   nav { font-size: 12px; gap: 10px; }
@@ -204,6 +316,7 @@ footer::before {
     </nav>
   </div>
 </header>
+
 <main>
 <section class="hero" id="inicio" style="border-top:none">
   <div class="container">
@@ -221,13 +334,16 @@ footer::before {
     <p class="descricao-secao">Uma seleção dos meus trabalhos com cosplay e retratos.</p>
     <div class="galeria">
       <div class="foto foto-vertical">
-        <img src="https://tiruguido2-bit.github.io/ensaios/_MG_9877.jpg" alt="Retrato de cosplay" onerror="this.parentElement.classList.add('sem-foto')">
+        <img src="./ei_1776719156763-removebg%20(1).jpg" alt="Fotografia de cosplay" onerror="this.parentElement.classList.add('sem-foto')">
       </div>
       <div class="foto foto-vertical">
-        <img src="https://tiruguido2-bit.github.io/ensaios/ei_1776719156763-removebg%20(1).jpg" alt="Fotografia de cosplay" onerror="this.parentElement.classList.add('sem-foto')">
+        <img src="./Upfoto_CcA3iWz8dbqAYwoUkv2eC0tAAhEll72d5Xu2pcYwgSWoH.jpg" alt="Retrato de cosplay" onerror="this.parentElement.classList.add('sem-foto')">
       </div>
-      <div class="foto foto-horizontal">
-        <img src="https://tiruguido2-bit.github.io/ensaios/_MG_6532%20(1).jpg" alt="Ensaio fotográfico horizontal" onerror="this.parentElement.classList.add('sem-foto')">
+      <div class="foto foto-vertical">
+        <img src="./IMG_9975.jpg" alt="Retrato fotográfico" onerror="this.parentElement.classList.add('sem-foto')">
+      </div>
+      <div class="foto foto-vertical">
+        <img src="./IMG_7655_1.jpg" alt="Fotografia de cosplay" onerror="this.parentElement.classList.add('sem-foto')">
       </div>
     </div>
   </div>
@@ -296,12 +412,12 @@ footer::before {
         <label for="pacote">Pacote desejado</label>
         <select id="pacote" name="pacote" required>
           <option value="">Selecione um pacote</option>
-          <option>Miniensaio em evento</option>
-          <option>Ensaio externo</option>
-          <option>Ensaio em casa</option>
-          <option>Ensaio em estúdio</option>
-          <option>Ensaio com cenário personalizado</option>
-          <option>Ainda não decidi</option>
+          <option value="Miniensaio em evento">Miniensaio em evento</option>
+          <option value="Ensaio externo">Ensaio externo</option>
+          <option value="Ensaio em casa">Ensaio em casa</option>
+          <option value="Ensaio em estúdio">Ensaio em estúdio</option>
+          <option value="Ensaio com cenário personalizado">Ensaio com cenário personalizado</option>
+          <option value="Ainda não decidi">Ainda não decidi</option>
         </select>
       </div>
       <div class="campo">
@@ -312,10 +428,10 @@ footer::before {
         <label for="horario">Horário ou período de preferência</label>
         <select id="horario" name="horario" required>
           <option value="">Selecione uma opção</option>
-          <option>Manhã</option>
-          <option>Tarde</option>
-          <option>Noite</option>
-          <option>Tenho flexibilidade</option>
+          <option value="Manhã">Manhã</option>
+          <option value="Tarde">Tarde</option>
+          <option value="Noite">Noite</option>
+          <option value="Tenho flexibilidade">Tenho flexibilidade</option>
         </select>
       </div>
       <div class="campo">
@@ -341,39 +457,50 @@ footer::before {
   </div>
 </section>
 </main>
+
 <footer>
   <div class="container rodape">
     <strong>MATHS PHOTO</strong>
     <span>Fotografia por Matheus Almeida</span>
   </div>
 </footer>
+
 <script>
-const formulario = document.getElementById("formulario");
-const campoPacote = document.getElementById("pacote");
+(function () {
+  const formulario = document.getElementById("formulario");
+  const campoPacote = document.getElementById("pacote");
 
-document.querySelectorAll("[data-pacote]").forEach(function(botao) {
-  botao.addEventListener("click", function() {
-    campoPacote.value = botao.dataset.pacote;
+  document.querySelectorAll("[data-pacote]").forEach(function (botao) {
+    botao.addEventListener("click", function () {
+      campoPacote.value = botao.getAttribute("data-pacote");
+    });
   });
-});
 
-formulario.addEventListener("submit", function(evento) {
-  evento.preventDefault();
-  const nome = document.getElementById("nome").value.trim();
-  const pacote = campoPacote.value;
-  const data = document.getElementById("data").value;
-  const horario = document.getElementById("horario").value;
-  const detalhes = document.getElementById("detalhes").value.trim();
-  const dataFormatada = data.split("-").reverse().join("/");
-  const mensagem =
-    "Olá! Gostaria de consultar a disponibilidade para um ensaio fotográfico.\n\n" +
-    "Nome: " + nome + "\n" +
-    "Pacote: " + pacote + "\n" +
-    "Data desejada: " + dataFormatada + "\n" +
-    "Período: " + horario + "\n" +
-    "Detalhes: " + (detalhes || "Não informado");
-  window.location.href = "https://wa.me/5511946017570?text=" + encodeURIComponent(mensagem);
-});
+  formulario.addEventListener("submit", function (evento) {
+    evento.preventDefault();
+    const nome = document.getElementById("nome").value.trim();
+    const pacote = campoPacote.value;
+    const data = document.getElementById("data").value;
+    const horario = document.getElementById("horario").value;
+    const detalhes = document.getElementById("detalhes").value.trim();
+
+    if (!nome || !pacote || !data || !horario) {
+      alert("Preencha seu nome, pacote, data e período desejado.");
+      return;
+    }
+
+    const dataFormatada = data.split("-").reverse().join("/");
+    const mensagem =
+      "Olá! Gostaria de consultar a disponibilidade para um ensaio fotográfico.\n\n" +
+      "Nome: " + nome + "\n" +
+      "Pacote: " + pacote + "\n" +
+      "Data desejada: " + dataFormatada + "\n" +
+      "Período: " + horario + "\n" +
+      "Detalhes: " + (detalhes || "Não informado");
+
+    window.location.href = "https://wa.me/5511946017570?text=" + encodeURIComponent(mensagem);
+  });
+})();
 </script>
 </body>
 </html>
