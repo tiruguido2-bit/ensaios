@@ -243,6 +243,22 @@ section {
   margin-bottom: 20px;
 }
 
+/* DETALHE VERDE NO INÍCIO DA DESCRIÇÃO */
+
+.pacote p:first-of-type {
+  position: relative;
+  padding-top: 13px;
+}
+
+.pacote p:first-of-type::before {
+  content: "";
+  display: block;
+  width: 25px;
+  height: 2px;
+  background: var(--verde);
+  margin-bottom: 12px;
+}
+
 .preco {
   font-family: Georgia, serif;
   font-size: 28px;
@@ -371,7 +387,7 @@ form .botao {
   background: #223329;
 }
 
-/* RODAPÉ COM CÂMERAS ANALÓGICAS */
+/* RODAPÉ COM CÂMERAS ANALÓGICAS MENORES E MAIS PRÓXIMAS */
 
 footer {
   position: relative;
@@ -387,9 +403,9 @@ footer::before {
   inset: 0;
   pointer-events: none;
   opacity: .65;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='48' viewBox='0 0 64 48'%3E%3Cg fill='none' stroke='%2340564A' stroke-width='1.1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 17 H20 L23 13 H33 L36 17 H43 Q46 17 46 20 V32 Q46 35 43 35 H15 Q12 35 12 32 V20 Q12 17 15 17 Z'/%3E%3Ccircle cx='29' cy='26' r='7'/%3E%3Ccircle cx='29' cy='26' r='4.5'/%3E%3Cpath d='M17 21 H21 M39 21 H41 M18 14 L18 11 H22'/%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='48' viewBox='0 0 64 48'%3E%3Cg fill='none' stroke='%2340564A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' transform='translate(0 0) scale(0.65)'%3E%3Cpath d='M15 17 H20 L23 13 H33 L36 17 H43 Q46 17 46 20 V32 Q46 35 43 35 H15 Q12 35 12 32 V20 Q12 17 15 17 Z'/%3E%3Ccircle cx='29' cy='26' r='7'/%3E%3Ccircle cx='29' cy='26' r='4.5'/%3E%3Cpath d='M17 21 H21 M39 21 H41 M18 14 L18 11 H22'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat: repeat;
-  background-size: 64px 48px;
+  background-size: 38px 30px;
 }
 
 .rodape {
@@ -677,19 +693,13 @@ footer::before {
   const formulario = document.getElementById("formulario");
   const campoPacote = document.getElementById("pacote");
 
-  // Seleciona o pacote e leva ao formulário.
   document.querySelectorAll("[data-pacote]").forEach(function (botao) {
     botao.addEventListener("click", function () {
       const pacote = botao.getAttribute("data-pacote");
       campoPacote.value = pacote;
-
-      if (campoPacote.value !== pacote) {
-        campoPacote.selectedIndex = 0;
-      }
     });
   });
 
-  // Envia os dados preenchidos para o WhatsApp.
   formulario.addEventListener("submit", function (evento) {
     evento.preventDefault();
 
@@ -721,4 +731,5 @@ footer::before {
 </script>
 
 </body>
-</html>
+  </html>
+  
