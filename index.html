@@ -44,9 +44,8 @@ a {
   margin: auto;
 }
 
-/* CABEÇALHO */
-
 header {
+  background: var(--fundo-escuro);
   border-bottom: 1px solid var(--linha);
   padding: 22px 0;
 }
@@ -77,10 +76,12 @@ nav a:hover,
   color: var(--verde);
 }
 
-/* ABERTURA */
+/* TÍTULO PRINCIPAL */
 
 .hero {
+  background: var(--fundo-escuro);
   padding: 95px 0 85px;
+  border-bottom: 1px solid var(--linha);
 }
 
 .etiqueta {
@@ -97,11 +98,13 @@ h1 {
   font-weight: normal;
   line-height: 1.08;
   margin-bottom: 22px;
+  letter-spacing: -1px;
 }
 
 .hero p {
   max-width: 600px;
   margin-bottom: 28px;
+  color: var(--texto);
 }
 
 .botao {
@@ -193,7 +196,6 @@ section {
   padding: 20px;
   font-size: 13px;
   text-align: center;
-  color: var(--texto);
 }
 
 .sem-foto img {
@@ -201,7 +203,7 @@ section {
 }
 
 .sem-foto::after {
-  content: "Foto não encontrada. Confira se o nome e a extensão do arquivo estão corretos no GitHub.";
+  content: "Foto não encontrada. Confira o nome do arquivo no GitHub.";
 }
 
 /* PACOTES */
@@ -209,166 +211,58 @@ section {
 .pacotes {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-  align-items: stretch;
+  gap: 16px;
 }
 
 .pacote {
-  position: relative;
-  min-width: 0;
   background: var(--card);
   border: 1px solid var(--linha);
-  padding: 28px;
+  padding: 25px;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  transition: border-color .2s, background .2s;
+  align-items: flex-start;
+  transition: border-color .2s;
 }
 
 .pacote:hover {
   border-color: var(--verde);
-  background: #293F34;
-}
-
-.pacote-cabecalho {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding-bottom: 17px;
-  margin-bottom: 20px;
-  border-bottom: 1px solid var(--linha);
-}
-
-.pacote-numero {
-  color: var(--verde);
-  font-size: 11px;
-  letter-spacing: 2px;
-}
-
-.pacote-tipo {
-  color: var(--texto);
-  opacity: .65;
-  font-size: 10px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  text-align: right;
 }
 
 .pacote h3 {
   font-family: Georgia, serif;
-  font-size: clamp(23px, 3vw, 29px);
-  line-height: 1.2;
+  font-size: 22px;
   font-weight: normal;
-  margin-bottom: 17px;
+  margin-bottom: 12px;
 }
 
-.preco-bloco {
-  margin-bottom: 19px;
+.pacote p {
+  font-size: 14px;
+  margin-bottom: 20px;
 }
 
 .preco {
   font-family: Georgia, serif;
-  font-size: clamp(34px, 4vw, 43px);
-  line-height: 1.15;
-  letter-spacing: -1px;
-  color: var(--texto);
-}
-
-.preco-legenda {
-  color: var(--verde);
-  font-size: 12px;
-  margin-top: 6px;
-}
-
-.pacote-descricao {
-  font-size: 14px;
-  line-height: 1.8;
-  margin-bottom: 23px;
-}
-
-.pacote-inclusoes {
-  border-top: 1px solid var(--linha);
-  padding-top: 17px;
+  font-size: 28px;
   margin-top: auto;
-  margin-bottom: 22px;
-}
-
-.inclusao-titulo {
-  color: var(--verde);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  margin-bottom: 10px;
-}
-
-.pacote-inclusoes ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-}
-
-.pacote-inclusoes li {
-  position: relative;
-  padding-left: 16px;
-  font-size: 12px;
-  line-height: 1.6;
-  opacity: .92;
-}
-
-.pacote-inclusoes li::before {
-  content: "";
-  position: absolute;
-  top: 9px;
-  left: 0;
-  width: 5px;
-  height: 5px;
-  background: var(--verde);
-  border-radius: 50%;
-}
-
-.pacote-custos {
-  background: var(--fundo-escuro);
-  border-left: 2px solid var(--verde);
-  padding: 13px 15px;
-  margin-bottom: 22px;
-}
-
-.pacote-custos strong {
-  display: block;
-  font-size: 11px;
-  font-weight: normal;
-  color: var(--verde);
-  letter-spacing: .6px;
   margin-bottom: 5px;
 }
 
-.pacote-custos p {
+.detalhe {
   font-size: 12px;
-  line-height: 1.7;
-  opacity: .85;
-}
-
-.pacote-observacao {
-  font-size: 12px;
-  line-height: 1.75;
-  opacity: .85;
-  margin-top: -8px;
-  margin-bottom: 22px;
+  color: var(--verde);
+  margin-bottom: 18px;
 }
 
 .pacote .botao {
-  display: block;
   width: 100%;
-  margin-top: auto;
-}
-
-.pacote-destaque {
-  border-color: #607B6D;
+  margin-top: 6px;
 }
 
 /* AGENDAMENTO */
+
+#agendamento {
+  background: var(--fundo);
+}
 
 .agendamento {
   display: grid;
@@ -385,6 +279,10 @@ form {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  background: var(--fundo-escuro);
+  border: 1px solid var(--linha);
+  padding: 28px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .10);
 }
 
 .campo {
@@ -403,7 +301,7 @@ textarea {
   width: 100%;
   padding: 13px;
   color: var(--texto);
-  background: var(--fundo-escuro);
+  background: #223329;
   border: 1px solid var(--linha);
   border-radius: 2px;
   font: inherit;
@@ -437,6 +335,20 @@ form .botao {
 
 /* CONTATO */
 
+#contato {
+  border-top: 1px solid var(--linha);
+}
+
+.bloco-contato {
+  background: var(--fundo-escuro);
+  border: 1px solid var(--linha);
+  padding: 34px;
+}
+
+.bloco-contato .descricao-secao {
+  margin-bottom: 22px;
+}
+
 .contato {
   display: flex;
   flex-wrap: wrap;
@@ -448,21 +360,22 @@ form .botao {
   border: 1px solid var(--linha);
   padding: 12px 18px;
   font-size: 13px;
-  transition: border-color .2s;
+  transition: border-color .2s, background .2s;
 }
 
 .link-contato:hover {
   border-color: var(--verde);
+  background: #223329;
 }
 
-/* RODAPÉ */
+/* TEXTURA DE CÂMERAS NO RODAPÉ */
 
 footer {
   position: relative;
   overflow: hidden;
-  background: var(--fundo);
+  background: var(--fundo-escuro);
   border-top: 1px solid var(--linha);
-  padding: 28px 0;
+  padding: 32px 0;
 }
 
 footer::before {
@@ -470,8 +383,8 @@ footer::before {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: .75;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='30' viewBox='0 0 38 30'%3E%3Cg fill='none' stroke='%23192921' stroke-width='1'%3E%3Crect x='7' y='10' width='19' height='12' rx='2'/%3E%3Cpath d='M11 10 L13 7 H19 L21 10'/%3E%3Ccircle cx='16.5' cy='16' r='3.5'/%3E%3Cpath d='M27 13 L31 11 V21 L27 19 Z'/%3E%3C/g%3E%3C/svg%3E");
+  opacity: .85;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='30' viewBox='0 0 38 30'%3E%3Cg fill='none' stroke='%2340564A' stroke-width='1'%3E%3Crect x='7' y='10' width='19' height='12' rx='2'/%3E%3Cpath d='M11 10 L13 7 H19 L21 10'/%3E%3Ccircle cx='16.5' cy='16' r='3.5'/%3E%3Cpath d='M27 13 L31 11 V21 L27 19 Z'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 38px 30px;
 }
@@ -484,6 +397,7 @@ footer::before {
   align-items: center;
   flex-wrap: wrap;
   gap: 12px;
+  background: rgba(25, 40, 32, .72);
 }
 
 .rodape strong {
@@ -521,16 +435,12 @@ footer::before {
     grid-template-columns: 1fr;
   }
 
-  .pacote {
+  form {
+    padding: 22px;
+  }
+
+  .bloco-contato {
     padding: 24px;
-  }
-
-  .pacote h3 {
-    font-size: 27px;
-  }
-
-  .preco {
-    font-size: 39px;
   }
 }
 
@@ -570,6 +480,7 @@ footer::before {
 </header>
 
 <main>
+
 <section class="hero" id="inicio" style="border-top:none">
   <div class="container">
     <div class="etiqueta">Fotografia de cosplay e retratos</div>
@@ -587,18 +498,21 @@ footer::before {
 
     <div class="galeria">
       <div class="foto foto-vertical">
-        <img src="./foto1.jpg" alt="Retrato de cosplay"
-          onerror="this.parentElement.classList.add('sem-foto')">
+        <img src="./_MG_9877.jpg"
+             alt="Retrato de cosplay"
+             onerror="this.parentElement.classList.add('sem-foto')">
       </div>
 
       <div class="foto foto-vertical">
-        <img src="./foto2.jpg" alt="Fotografia de cosplay"
-          onerror="this.parentElement.classList.add('sem-foto')">
+        <img src="./ei_1776719156763-removebg%20(1).jpg"
+             alt="Fotografia de cosplay"
+             onerror="this.parentElement.classList.add('sem-foto')">
       </div>
 
       <div class="foto foto-horizontal">
-        <img src="./foto3.jpg" alt="Ensaio fotográfico horizontal"
-          onerror="this.parentElement.classList.add('sem-foto')">
+        <img src="./_MG_6532%20(1).jpg"
+             alt="Ensaio fotográfico horizontal"
+             onerror="this.parentElement.classList.add('sem-foto')">
       </div>
     </div>
   </div>
@@ -616,174 +530,43 @@ footer::before {
     <div class="pacotes">
 
       <article class="pacote">
-        <div class="pacote-cabecalho">
-          <span class="pacote-numero">01 / EXTERNO</span>
-          <span class="pacote-tipo">Ao ar livre</span>
-        </div>
-
         <h3>Ensaio externo</h3>
-
-        <div class="preco-bloco">
-          <div class="preco">R$ 150</div>
-          <div class="preco-legenda">Valor do ensaio</div>
-        </div>
-
-        <p class="pacote-descricao">
-          Uma sessão em São Paulo ou Guarulhos, explorando cenários urbanos,
-          arquitetura, parques e outros ambientes que combinem com o personagem.
-          O ensaio é planejado de acordo com a proposta e o local escolhido.
-        </p>
-
-        <div class="pacote-inclusoes">
-          <div class="inclusao-titulo">Detalhes do pacote</div>
-          <ul>
-            <li>Aproximadamente 3 horas de sessão</li>
-            <li>15 a 20 fotos editadas</li>
-            <li>Possibilidade de fotos extras em RAW</li>
-          </ul>
-        </div>
-
+        <p>Uma sessão em São Paulo ou Guarulhos, explorando cenários urbanos, arquitetura, parques e outros ambientes que combinem com o personagem. O ensaio é planejado de acordo com a proposta e o local escolhido.</p>
+        <div class="preco">R$ 150</div>
+        <div class="detalhe">Aproximadamente 3 horas · 15 a 20 fotos editadas</div>
         <a class="botao" href="#agendamento" data-pacote="Ensaio externo">Escolher pacote</a>
       </article>
 
       <article class="pacote">
-        <div class="pacote-cabecalho">
-          <span class="pacote-numero">02 / ESTÚDIO</span>
-          <span class="pacote-tipo">Luz controlada</span>
-        </div>
-
         <h3>Ensaio em estúdio</h3>
-
-        <div class="preco-bloco">
-          <div class="preco">R$ 480</div>
-          <div class="preco-legenda">Fotografia + locação</div>
-        </div>
-
-        <p class="pacote-descricao">
-          Uma sessão em estúdio no Paraíso, com ambiente controlado para
-          trabalhar iluminação, poses e composição. Ideal para explorar
-          diferentes propostas visuais com mais liberdade.
-        </p>
-
-        <div class="pacote-inclusoes">
-          <div class="inclusao-titulo">Detalhes do pacote</div>
-          <ul>
-            <li>Aluguel do estúdio por 3 horas</li>
-            <li>15 a 20 fotos editadas</li>
-          </ul>
-        </div>
-
-        <div class="pacote-custos">
-          <strong>Composição do valor</strong>
-          <p>R$ 150 pelo trabalho fotográfico</p>
-          <p>R$ 330 pelo aluguel do estúdio por 3 horas</p>
-        </div>
-
+        <p>Uma sessão em estúdio no Paraíso, com ambiente controlado para trabalhar iluminação, poses e composição. O valor inclui o trabalho fotográfico e o aluguel do estúdio por 3 horas.</p>
+        <div class="preco">R$ 480</div>
+        <div class="detalhe">R$ 150 fotografia + R$ 330 aluguel por 3 horas · 15 a 20 fotos editadas</div>
         <a class="botao" href="#agendamento" data-pacote="Ensaio em estúdio">Escolher pacote</a>
       </article>
 
       <article class="pacote">
-        <div class="pacote-cabecalho">
-          <span class="pacote-numero">03 / DOMICÍLIO</span>
-          <span class="pacote-tipo">No seu espaço</span>
-        </div>
-
         <h3>Ensaio em casa</h3>
-
-        <div class="preco-bloco">
-          <div class="preco">R$ 200</div>
-          <div class="preco-legenda">Valor do ensaio</div>
-        </div>
-
-        <p class="pacote-descricao">
-          Um ensaio no seu próprio ambiente, aproveitando o espaço, a luz
-          e os elementos disponíveis para criar imagens que combinem com
-          sua ideia e com o personagem.
-        </p>
-
-        <div class="pacote-inclusoes">
-          <div class="inclusao-titulo">Detalhes do pacote</div>
-          <ul>
-            <li>15 a 20 fotos editadas</li>
-            <li>Proposta adaptada ao ambiente disponível</li>
-          </ul>
-        </div>
-
+        <p>Um ensaio no seu próprio ambiente, aproveitando o espaço, a luz e os elementos disponíveis para criar imagens que combinem com a sua ideia e o personagem.</p>
+        <div class="preco">R$ 200</div>
+        <div class="detalhe">15 a 20 fotos editadas</div>
         <a class="botao" href="#agendamento" data-pacote="Ensaio em casa">Escolher pacote</a>
       </article>
 
-      <article class="pacote pacote-destaque">
-        <div class="pacote-cabecalho">
-          <span class="pacote-numero">04 / PERSONALIZADO</span>
-          <span class="pacote-tipo">Projeto especial</span>
-        </div>
-
+      <article class="pacote">
         <h3>Ensaio com cenário personalizado</h3>
-
-        <div class="preco-bloco">
-          <div class="preco">R$ 880</div>
-          <div class="preco-legenda">Valor-base do projeto</div>
-        </div>
-
-        <p class="pacote-descricao">
-          Um projeto feito de acordo com o personagem e a ideia do ensaio,
-          com planejamento e montagem de cenário e props específicos para
-          construir a atmosfera desejada.
-        </p>
-
-        <div class="pacote-inclusoes">
-          <div class="inclusao-titulo">Detalhes do pacote</div>
-          <ul>
-            <li>15 a 20 fotos editadas</li>
-            <li>Planejamento e montagem do cenário</li>
-            <li>Aluguel do estúdio por 3 horas</li>
-          </ul>
-        </div>
-
-        <div class="pacote-custos">
-          <strong>Composição do valor-base</strong>
-          <p>R$ 400 para materiais e props</p>
-          <p>R$ 150 pelo trabalho fotográfico</p>
-          <p>R$ 330 pelo aluguel do estúdio por 3 horas</p>
-        </div>
-
-        <p class="pacote-observacao">
-          Os props comprados especificamente para o projeto podem ficar
-          com você depois do ensaio, se quiser. Os objetos que já fazem
-          parte do meu acervo continuam sendo meus. Se já houver objetos
-          adequados para a proposta, o valor pode diminuir.
-        </p>
-
+        <p>Um projeto feito de acordo com o personagem e a ideia do ensaio, com planejamento e montagem de cenário e props específicos. O orçamento-base considera R$ 400 para materiais e objetos, R$ 150 pelo trabalho fotográfico e R$ 330 pelo aluguel do estúdio por 3 horas.</p>
+        <p>Os props comprados especificamente para o projeto podem ficar com você depois do ensaio, se quiser. Os objetos que já fazem parte do meu acervo continuam sendo meus. Se já houver objetos adequados para a proposta, o valor pode diminuir.</p>
+        <div class="preco">A partir de R$ 880</div>
+        <div class="detalhe">R$ 400 materiais e props + R$ 150 fotografia + R$ 330 estúdio · 15 a 20 fotos editadas</div>
         <a class="botao" href="#agendamento" data-pacote="Ensaio com cenário personalizado">Conversar sobre o projeto</a>
       </article>
 
       <article class="pacote">
-        <div class="pacote-cabecalho">
-          <span class="pacote-numero">05 / EVENTO</span>
-          <span class="pacote-tipo">Sessão rápida</span>
-        </div>
-
         <h3>Miniensaio em evento</h3>
-
-        <div class="preco-bloco">
-          <div class="preco">R$ 80</div>
-          <div class="preco-legenda">Valor do miniensaio</div>
-        </div>
-
-        <p class="pacote-descricao">
-          Uma sessão rápida durante um evento em que eu estiver presente,
-          ideal para registrar seu cosplay sem precisar organizar um
-          ensaio completo.
-        </p>
-
-        <div class="pacote-inclusoes">
-          <div class="inclusao-titulo">Detalhes do pacote</div>
-          <ul>
-            <li>10 fotos editadas</li>
-            <li>Realizado durante eventos em que eu estiver presente</li>
-          </ul>
-        </div>
-
+        <p>Uma sessão rápida durante um evento em que eu estiver presente, ideal para registrar seu cosplay sem precisar organizar um ensaio completo.</p>
+        <div class="preco">R$ 80</div>
+        <div class="detalhe">10 fotos editadas</div>
         <a class="botao" href="#agendamento" data-pacote="Miniensaio em evento">Escolher pacote</a>
       </article>
 
@@ -847,7 +630,7 @@ footer::before {
 </section>
 
 <section id="contato">
-  <div class="container">
+  <div class="container bloco-contato">
     <div class="etiqueta">Vamos conversar</div>
     <h2 class="titulo-secao">Contato</h2>
     <p class="descricao-secao">Tem uma ideia em mente ou quer tirar alguma dúvida? Entre em contato.</p>
@@ -859,6 +642,7 @@ footer::before {
     </div>
   </div>
 </section>
+
 </main>
 
 <footer>
@@ -882,4 +666,25 @@ formulario.addEventListener("submit", function(evento) {
   evento.preventDefault();
 
   const nome = document.getElementById("nome").value.trim();
-  const pacote = 
+  const pacote = campoPacote.value;
+  const data = document.getElementById("data").value;
+  const horario = document.getElementById("horario").value;
+  const detalhes = document.getElementById("detalhes").value.trim();
+  const dataFormatada = data.split("-").reverse().join("/");
+
+  const mensagem =
+    "Olá! Gostaria de consultar a disponibilidade para um ensaio fotográfico.\n\n" +
+    "Nome: " + nome + "\n" +
+    "Pacote: " + pacote + "\n" +
+    "Data desejada: " + dataFormatada + "\n" +
+    "Período: " + horario + "\n" +
+    "Detalhes: " + (detalhes || "Não informado");
+
+  window.location.href =
+    "https://wa.me/5511946017570?text=" + encodeURIComponent(mensagem);
+});
+</script>
+
+</body>
+        </html>
+  
