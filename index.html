@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -6,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Maths Photo | Ensaios Fotográficos</title>
 <meta name="description" content="Ensaios fotográficos de cosplay e retratos em São Paulo e Guarulhos.">
-
 <style>
 :root {
   --fundo: #1E2F27;
@@ -16,77 +14,42 @@
   --verde: #83A99D;
   --linha: #40564A;
 }
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 20px;
-}
-
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 body {
-  background: var(--fundo);
+  background-color: var(--fundo);
+  /* Ruído fino e uniforme, sem precisar carregar uma imagem externa */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+  background-attachment: fixed;
   color: var(--texto);
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.65;
 }
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.container {
-  width: min(1100px, 90%);
-  margin: auto;
-}
-
-/* CABEÇALHO */
-
+a { color: inherit; text-decoration: none; }
+.container { width: min(1100px, 90%); margin: auto; }
 header {
-  background: var(--fundo-escuro);
+  background: rgba(25, 40, 32, .94);
   border-bottom: 1px solid var(--linha);
-  padding: 22px 0;
+  padding: 24px 0 18px;
 }
-
-.cabecalho {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
+.cabecalho { display: flex; flex-direction: column; align-items: center; gap: 16px; }
 .logo {
-  font-size: 21px;
+  display: block;
+  text-align: center;
+  font-size: clamp(25px, 4vw, 30px);
   font-weight: bold;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
+  line-height: 1.2;
 }
-
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  font-size: 13px;
-}
-
-nav a:hover,
-.link-contato:hover {
-  color: var(--verde);
-}
-
-/* TÍTULO PRINCIPAL */
-
+nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; font-size: 13px; }
+nav a:hover, .link-contato:hover { color: var(--verde); }
 .hero {
-  background: var(--fundo-escuro);
+  background: rgba(25, 40, 32, .90);
   padding: 95px 0 85px;
   border-bottom: 1px solid var(--linha);
 }
-
 .etiqueta {
   color: var(--verde);
   font-size: 12px;
@@ -94,7 +57,6 @@ nav a:hover,
   text-transform: uppercase;
   margin-bottom: 16px;
 }
-
 h1 {
   font-family: Georgia, serif;
   font-size: clamp(42px, 7vw, 76px);
@@ -103,12 +65,7 @@ h1 {
   margin-bottom: 22px;
   letter-spacing: -1px;
 }
-
-.hero p {
-  max-width: 600px;
-  margin-bottom: 28px;
-}
-
+.hero p { max-width: 600px; margin-bottom: 28px; color: var(--texto); }
 .botao {
   display: inline-block;
   padding: 12px 20px;
@@ -117,379 +74,127 @@ h1 {
   border: 1px solid var(--verde);
   border-radius: 2px;
   text-align: center;
-  font-family: inherit;
   font-size: 13px;
   font-weight: bold;
   cursor: pointer;
   transition: background .2s, color .2s, border-color .2s;
 }
-
-.botao:hover {
-  background: transparent;
-  color: var(--texto);
-}
-
-section {
-  padding: 65px 0;
-  border-top: 1px solid var(--linha);
-}
-
+.botao:hover { background: transparent; color: var(--texto); }
+section { padding: 65px 0; border-top: 1px solid var(--linha); }
 .titulo-secao {
   font-family: Georgia, serif;
   font-size: clamp(30px, 4vw, 40px);
   font-weight: normal;
   margin-bottom: 14px;
 }
-
 .titulo-secao::after {
-  content: "";
-  display: block;
-  width: 38px;
-  height: 1px;
-  background: var(--verde);
-  margin-top: 13px;
+  content: ""; display: block; width: 38px; height: 1px;
+  background: var(--verde); margin-top: 13px;
 }
-
-.descricao-secao {
-  max-width: 680px;
-  margin-bottom: 30px;
-}
-
-/* PORTFÓLIO */
-
+.descricao-secao { max-width: 680px; margin-bottom: 30px; }
 .galeria {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;
 }
-
-.foto {
-  min-width: 0;
-  overflow: hidden;
-  background: var(--card);
-  border: 1px solid var(--linha);
-}
-
-.foto img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform .35s;
-}
-
-.foto:hover img {
-  transform: scale(1.02);
-}
-
-.foto-vertical {
-  aspect-ratio: 3 / 4;
-}
-
-.foto-horizontal {
-  grid-column: 1 / -1;
-  aspect-ratio: 16 / 9;
-}
-
-.sem-foto {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 220px;
-  padding: 20px;
-  font-size: 13px;
-  text-align: center;
-}
-
-.sem-foto img {
-  display: none;
-}
-
-.sem-foto::after {
-  content: "Foto não encontrada. Confira o nome do arquivo no GitHub.";
-}
-
-/* PACOTES */
-
-.pacotes {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-}
-
+.foto { min-width: 0; overflow: hidden; background: var(--card); border: 1px solid var(--linha); }
+.foto img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .35s; }
+.foto:hover img { transform: scale(1.02); }
+.foto-vertical { aspect-ratio: 3 / 4; }
+.foto-horizontal { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+.sem-foto { display: flex; align-items: center; justify-content: center; min-height: 220px; padding: 20px; font-size: 13px; text-align: center; }
+.sem-foto img { display: none; }
+.sem-foto::after { content: "Foto não encontrada. Confira o nome do arquivo no GitHub."; }
+.pacotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .pacote {
-  background: var(--card);
+  background: rgba(38, 59, 49, .94);
   border: 1px solid var(--linha);
   padding: 25px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: flex; flex-direction: column; align-items: flex-start;
   transition: border-color .2s;
 }
-
-.pacote:hover {
-  border-color: var(--verde);
-}
-
-.pacote h3 {
-  font-family: Georgia, serif;
-  font-size: 22px;
-  font-weight: normal;
-  margin-bottom: 12px;
-}
-
-.pacote p {
-  font-size: 14px;
-  margin-bottom: 20px;
-}
-
-/* DETALHE VERDE NO INÍCIO DA DESCRIÇÃO */
-
-.pacote p:first-of-type {
-  position: relative;
-  padding-top: 13px;
-}
-
+.pacote:hover { border-color: var(--verde); }
+.pacote h3 { font-family: Georgia, serif; font-size: 22px; font-weight: normal; margin-bottom: 12px; }
+.pacote p { font-size: 14px; margin-bottom: 20px; }
+.pacote p:first-of-type { position: relative; padding-top: 13px; }
 .pacote p:first-of-type::before {
-  content: "";
-  display: block;
-  width: 25px;
-  height: 2px;
-  background: var(--verde);
-  margin-bottom: 12px;
+  content: ""; display: block; width: 25px; height: 2px;
+  background: var(--verde); margin-bottom: 12px;
 }
-
-.preco {
-  font-family: Georgia, serif;
-  font-size: 28px;
-  margin-top: auto;
-  margin-bottom: 5px;
-}
-
-.detalhe {
-  font-size: 12px;
-  color: var(--verde);
-  margin-bottom: 18px;
-}
-
-.pacote .botao {
-  width: 100%;
-  margin-top: 6px;
-}
-
-/* AGENDAMENTO */
-
-#agendamento {
-  background: var(--fundo);
-}
-
-.agendamento {
-  display: grid;
-  grid-template-columns: .85fr 1.15fr;
-  gap: 40px;
-  align-items: start;
-}
-
-.texto-agendamento p {
-  margin-top: 17px;
-}
-
+.preco { font-family: Georgia, serif; font-size: 28px; margin-top: auto; margin-bottom: 5px; }
+.detalhe { font-size: 12px; color: var(--verde); margin-bottom: 18px; }
+.pacote .botao { width: 100%; margin-top: 6px; }
+#agendamento { background: rgba(30, 47, 39, .88); }
+.agendamento { display: grid; grid-template-columns: .85fr 1.15fr; gap: 40px; align-items: start; }
+.texto-agendamento p { margin-top: 17px; }
 form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  background: var(--fundo-escuro);
-  border: 1px solid var(--linha);
-  padding: 28px;
+  display: flex; flex-direction: column; gap: 16px;
+  background: rgba(25, 40, 32, .95);
+  border: 1px solid var(--linha); padding: 28px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, .10);
 }
-
-.campo {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
+.campo { display: flex; flex-direction: column; gap: 7px; }
+label { font-size: 13px; }
+input, select, textarea {
+  width: 100%; padding: 13px; color: var(--texto);
+  background: #223329; border: 1px solid var(--linha);
+  border-radius: 2px; font: inherit; font-size: 14px; outline: none;
 }
-
-label {
-  font-size: 13px;
-}
-
-input,
-select,
-textarea {
-  width: 100%;
-  padding: 13px;
-  color: var(--texto);
-  background: #223329;
-  border: 1px solid var(--linha);
-  border-radius: 2px;
-  font: inherit;
-  font-size: 14px;
-  outline: none;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-  border-color: var(--verde);
-}
-
-select option {
-  background: var(--fundo-escuro);
-}
-
-textarea {
-  min-height: 115px;
-  resize: vertical;
-}
-
-form .botao {
-  width: 100%;
-}
-
-.aviso {
-  font-size: 12px;
-  opacity: .75;
-}
-
-/* CONTATO */
-
-#contato {
-  border-top: 1px solid var(--linha);
-}
-
+input:focus, select:focus, textarea:focus { border-color: var(--verde); }
+select option { background: var(--fundo-escuro); }
+textarea { min-height: 115px; resize: vertical; }
+form .botao { width: 100%; }
+.aviso { font-size: 12px; opacity: .75; }
+#contato { border-top: 1px solid var(--linha); }
 .bloco-contato {
-  background: var(--fundo-escuro);
-  border: 1px solid var(--linha);
-  padding: 34px;
+  background: rgba(25, 40, 32, .95);
+  border: 1px solid var(--linha); padding: 34px;
 }
+.bloco-contato .descricao-secao { margin-bottom: 22px; }
+.contato { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.link-contato { border: 1px solid var(--linha); padding: 12px 18px; font-size: 13px; transition: border-color .2s, background .2s; }
+.link-contato:hover { border-color: var(--verde); background: #223329; }
 
-.bloco-contato .descricao-secao {
-  margin-bottom: 22px;
-}
-
-.contato {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 24px;
-}
-
-.link-contato {
-  border: 1px solid var(--linha);
-  padding: 12px 18px;
-  font-size: 13px;
-  transition: border-color .2s, background .2s;
-}
-
-.link-contato:hover {
-  border-color: var(--verde);
-  background: #223329;
-}
-
-/* RODAPÉ COM CÂMERAS ANALÓGICAS MENORES E MAIS PRÓXIMAS */
-
+/* Rodapé com câmeras menores e padrão mais preenchido, em cinco linhas */
 footer {
-  position: relative;
-  overflow: hidden;
+  position: relative; overflow: hidden; isolation: isolate;
   background: var(--fundo-escuro);
   border-top: 1px solid var(--linha);
-  padding: 32px 0;
+  padding: 54px 0;
 }
-
 footer::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: .65;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='48' viewBox='0 0 64 48'%3E%3Cg fill='none' stroke='%2340564A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' transform='translate(0 0) scale(0.65)'%3E%3Cpath d='M15 17 H20 L23 13 H33 L36 17 H43 Q46 17 46 20 V32 Q46 35 43 35 H15 Q12 35 12 32 V20 Q12 17 15 17 Z'/%3E%3Ccircle cx='29' cy='26' r='7'/%3E%3Ccircle cx='29' cy='26' r='4.5'/%3E%3Cpath d='M17 21 H21 M39 21 H41 M18 14 L18 11 H22'/%3E%3C/g%3E%3C/svg%3E");
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  opacity: .85;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='24' viewBox='0 0 30 24'%3E%3Cg fill='none' stroke='%2340564A' stroke-width='.85'%3E%3Crect x='4' y='8' width='15' height='9' rx='1.5'/%3E%3Cpath d='M7 8 L9 5.5 H14 L16 8'/%3E%3Ccircle cx='11.5' cy='12.5' r='2.6'/%3E%3Cpath d='M19 10 L23 8.5 V16.5 L19 15 Z'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat: repeat;
-  background-size: 38px 30px;
+  background-size: 30px 24px;
 }
-
 .rodape {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  background: rgba(25, 40, 32, .78);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+  background: rgba(25, 40, 32, .88);
+  padding: 8px 12px;
 }
-
-.rodape strong {
-  font-size: 16px;
-  font-weight: normal;
-  letter-spacing: 1.5px;
-}
-
-.rodape span {
-  font-size: 11px;
-}
-
-/* CELULAR */
-
+.rodape strong { font-size: 16px; font-weight: normal; letter-spacing: 1.5px; }
+.rodape span { font-size: 11px; }
 @media (max-width: 700px) {
-  .cabecalho {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  nav {
-    gap: 13px;
-  }
-
-  .hero {
-    padding: 70px 0 60px;
-  }
-
-  section {
-    padding: 50px 0;
-  }
-
-  .agendamento,
-  .pacotes {
-    grid-template-columns: 1fr;
-  }
-
-  form {
-    padding: 22px;
-  }
-
-  .bloco-contato {
-    padding: 24px;
-  }
+  .hero { padding: 70px 0 60px; }
+  section { padding: 50px 0; }
+  .agendamento, .pacotes { grid-template-columns: 1fr; }
+  form { padding: 22px; }
+  .bloco-contato { padding: 24px; }
+  nav { gap: 13px; }
+  footer { padding: 54px 0; }
 }
-
 @media (max-width: 420px) {
-  .logo {
-    font-size: 18px;
-  }
-
-  nav {
-    font-size: 12px;
-    gap: 10px;
-  }
-
-  .galeria {
-    grid-template-columns: 1fr;
-  }
-
-  .foto-horizontal {
-    grid-column: auto;
-  }
+  nav { font-size: 12px; gap: 10px; }
+  .galeria { grid-template-columns: 1fr; }
+  .foto-horizontal { grid-column: auto; }
 }
 </style>
 </head>
-
 <body>
-
 <header>
   <div class="container cabecalho">
     <a class="logo" href="#inicio">MATHS PHOTO</a>
-
     <nav>
       <a href="#inicio">Início</a>
       <a href="#portfolio">Portfólio</a>
@@ -499,9 +204,7 @@ footer::before {
     </nav>
   </div>
 </header>
-
 <main>
-
 <section class="hero" id="inicio" style="border-top:none">
   <div class="container">
     <div class="etiqueta">Fotografia de cosplay e retratos</div>
@@ -516,37 +219,16 @@ footer::before {
     <div class="etiqueta">Trabalhos selecionados</div>
     <h2 class="titulo-secao">Portfólio</h2>
     <p class="descricao-secao">Uma seleção dos meus trabalhos com cosplay e retratos.</p>
-
     <div class="galeria">
-
       <div class="foto foto-vertical">
-        <img
-          src="./ei_1776719156763-removebg%20(1).jpg"
-          alt="Fotografia de cosplay"
-          onerror="this.parentElement.classList.add('sem-foto')">
+        <img src="https://tiruguido2-bit.github.io/ensaios/_MG_9877.jpg" alt="Retrato de cosplay" onerror="this.parentElement.classList.add('sem-foto')">
       </div>
-
       <div class="foto foto-vertical">
-        <img
-          src="./Upfoto_CcA3iWz8dbqAYwoUkv2eC0tAAhEll72d5Xu2pcYwgSWoH.jpg"
-          alt="Retrato de cosplay"
-          onerror="this.parentElement.classList.add('sem-foto')">
+        <img src="https://tiruguido2-bit.github.io/ensaios/ei_1776719156763-removebg%20(1).jpg" alt="Fotografia de cosplay" onerror="this.parentElement.classList.add('sem-foto')">
       </div>
-
-      <div class="foto foto-vertical">
-        <img
-          src="./IMG_9975.jpg"
-          alt="Retrato fotográfico"
-          onerror="this.parentElement.classList.add('sem-foto')">
+      <div class="foto foto-horizontal">
+        <img src="https://tiruguido2-bit.github.io/ensaios/_MG_6532%20(1).jpg" alt="Ensaio fotográfico horizontal" onerror="this.parentElement.classList.add('sem-foto')">
       </div>
-
-      <div class="foto foto-vertical">
-        <img
-          src="./IMG_7655_1.jpg"
-          alt="Fotografia de cosplay"
-          onerror="this.parentElement.classList.add('sem-foto')">
-      </div>
-
     </div>
   </div>
 </section>
@@ -555,13 +237,15 @@ footer::before {
   <div class="container">
     <div class="etiqueta">Escolha seu ensaio</div>
     <h2 class="titulo-secao">Pacotes</h2>
-    <p class="descricao-secao">
-      Cada ensaio é planejado de acordo com a ideia, o personagem e o resultado que você procura.
-      Os detalhes são combinados de acordo com a proposta.
-    </p>
-
+    <p class="descricao-secao">Cada ensaio é planejado de acordo com a ideia, o personagem e o resultado que você procura. Os detalhes são combinados de acordo com a proposta.</p>
     <div class="pacotes">
-
+      <article class="pacote">
+        <h3>Miniensaio em evento</h3>
+        <p>Uma sessão rápida durante um evento em que eu estiver presente, ideal para registrar seu cosplay sem precisar organizar um ensaio completo.</p>
+        <div class="preco">R$ 80</div>
+        <div class="detalhe">10 fotos editadas</div>
+        <a class="botao" href="#agendamento" data-pacote="Miniensaio em evento">Escolher pacote</a>
+      </article>
       <article class="pacote">
         <h3>Ensaio externo</h3>
         <p>Uma sessão em São Paulo ou Guarulhos, explorando cenários urbanos, arquitetura, parques e outros ambientes que combinem com o personagem. O ensaio é planejado de acordo com a proposta e o local escolhido.</p>
@@ -569,15 +253,6 @@ footer::before {
         <div class="detalhe">Aproximadamente 3 horas · 15 a 20 fotos editadas</div>
         <a class="botao" href="#agendamento" data-pacote="Ensaio externo">Escolher pacote</a>
       </article>
-
-      <article class="pacote">
-        <h3>Ensaio em estúdio</h3>
-        <p>Uma sessão em estúdio no Paraíso, com ambiente controlado para trabalhar iluminação, poses e composição. O valor inclui o trabalho fotográfico e o aluguel do estúdio por 3 horas.</p>
-        <div class="preco">R$ 480</div>
-        <div class="detalhe">R$ 150 fotografia + R$ 330 aluguel por 3 horas · 15 a 20 fotos editadas</div>
-        <a class="botao" href="#agendamento" data-pacote="Ensaio em estúdio">Escolher pacote</a>
-      </article>
-
       <article class="pacote">
         <h3>Ensaio em casa</h3>
         <p>Um ensaio no seu próprio ambiente, aproveitando o espaço, a luz e os elementos disponíveis para criar imagens que combinem com a sua ideia e o personagem.</p>
@@ -585,7 +260,13 @@ footer::before {
         <div class="detalhe">15 a 20 fotos editadas</div>
         <a class="botao" href="#agendamento" data-pacote="Ensaio em casa">Escolher pacote</a>
       </article>
-
+      <article class="pacote">
+        <h3>Ensaio em estúdio</h3>
+        <p>Uma sessão em estúdio no Paraíso, com ambiente controlado para trabalhar iluminação, poses e composição. O valor inclui o trabalho fotográfico e o aluguel do estúdio por 3 horas.</p>
+        <div class="preco">R$ 480</div>
+        <div class="detalhe">R$ 150 fotografia + R$ 330 aluguel por 3 horas · 15 a 20 fotos editadas</div>
+        <a class="botao" href="#agendamento" data-pacote="Ensaio em estúdio">Escolher pacote</a>
+      </article>
       <article class="pacote">
         <h3>Ensaio com cenário personalizado</h3>
         <p>Um projeto feito de acordo com o personagem e a ideia do ensaio, com planejamento e montagem de cenário e props específicos. O orçamento-base considera R$ 400 para materiais e objetos, R$ 150 pelo trabalho fotográfico e R$ 330 pelo aluguel do estúdio por 3 horas.</p>
@@ -594,73 +275,55 @@ footer::before {
         <div class="detalhe">R$ 400 materiais e props + R$ 150 fotografia + R$ 330 estúdio · 15 a 20 fotos editadas</div>
         <a class="botao" href="#agendamento" data-pacote="Ensaio com cenário personalizado">Conversar sobre o projeto</a>
       </article>
-
-      <article class="pacote">
-        <h3>Miniensaio em evento</h3>
-        <p>Uma sessão rápida durante um evento em que eu estiver presente, ideal para registrar seu cosplay sem precisar organizar um ensaio completo.</p>
-        <div class="preco">R$ 80</div>
-        <div class="detalhe">10 fotos editadas</div>
-        <a class="botao" href="#agendamento" data-pacote="Miniensaio em evento">Escolher pacote</a>
-      </article>
-
     </div>
   </div>
 </section>
 
 <section id="agendamento">
   <div class="container agendamento">
-
     <div class="texto-agendamento">
       <div class="etiqueta">Vamos planejar?</div>
       <h2 class="titulo-secao">Agende seu ensaio</h2>
       <p>Conte um pouco sobre a sua ideia para que possamos conversar sobre a proposta, o local e os detalhes.</p>
       <p>O envio do pedido não confirma a reserva. A data e o horário serão confirmados por mensagem.</p>
     </div>
-
     <form id="formulario">
-
       <div class="campo">
         <label for="nome">Seu nome</label>
         <input id="nome" name="nome" type="text" placeholder="Como você se chama?" required>
       </div>
-
       <div class="campo">
         <label for="pacote">Pacote desejado</label>
         <select id="pacote" name="pacote" required>
           <option value="">Selecione um pacote</option>
-          <option value="Ensaio externo">Ensaio externo</option>
-          <option value="Ensaio em estúdio">Ensaio em estúdio</option>
-          <option value="Ensaio em casa">Ensaio em casa</option>
-          <option value="Ensaio com cenário personalizado">Ensaio com cenário personalizado</option>
-          <option value="Miniensaio em evento">Miniensaio em evento</option>
-          <option value="Ainda não decidi">Ainda não decidi</option>
+          <option>Miniensaio em evento</option>
+          <option>Ensaio externo</option>
+          <option>Ensaio em casa</option>
+          <option>Ensaio em estúdio</option>
+          <option>Ensaio com cenário personalizado</option>
+          <option>Ainda não decidi</option>
         </select>
       </div>
-
       <div class="campo">
         <label for="data">Data desejada</label>
         <input id="data" name="data" type="date" required>
       </div>
-
       <div class="campo">
         <label for="horario">Horário ou período de preferência</label>
         <select id="horario" name="horario" required>
           <option value="">Selecione uma opção</option>
-          <option value="Manhã">Manhã</option>
-          <option value="Tarde">Tarde</option>
-          <option value="Noite">Noite</option>
-          <option value="Tenho flexibilidade">Tenho flexibilidade</option>
+          <option>Manhã</option>
+          <option>Tarde</option>
+          <option>Noite</option>
+          <option>Tenho flexibilidade</option>
         </select>
       </div>
-
       <div class="campo">
         <label for="detalhes">Conte um pouco sobre o ensaio</label>
         <textarea id="detalhes" name="detalhes" placeholder="Personagem, local, ideia para as fotos, cenário ou props..."></textarea>
       </div>
-
       <button class="botao" type="submit">Enviar pedido pelo WhatsApp</button>
       <p class="aviso">O pedido será enviado pelo WhatsApp. A disponibilidade será confirmada por mensagem.</p>
-
     </form>
   </div>
 </section>
@@ -670,7 +333,6 @@ footer::before {
     <div class="etiqueta">Vamos conversar</div>
     <h2 class="titulo-secao">Contato</h2>
     <p class="descricao-secao">Tem uma ideia em mente ou quer tirar alguma dúvida? Entre em contato.</p>
-
     <div class="contato">
       <a class="link-contato" href="https://www.instagram.com/maths.photo/" target="_blank" rel="noopener noreferrer">Instagram</a>
       <a class="link-contato" href="https://www.behance.net/matheusalmeida84" target="_blank" rel="noopener noreferrer">Behance</a>
@@ -678,58 +340,40 @@ footer::before {
     </div>
   </div>
 </section>
-
 </main>
-
 <footer>
   <div class="container rodape">
     <strong>MATHS PHOTO</strong>
     <span>Fotografia por Matheus Almeida</span>
   </div>
 </footer>
-
 <script>
-(function () {
-  const formulario = document.getElementById("formulario");
-  const campoPacote = document.getElementById("pacote");
+const formulario = document.getElementById("formulario");
+const campoPacote = document.getElementById("pacote");
 
-  document.querySelectorAll("[data-pacote]").forEach(function (botao) {
-    botao.addEventListener("click", function () {
-      const pacote = botao.getAttribute("data-pacote");
-      campoPacote.value = pacote;
-    });
+document.querySelectorAll("[data-pacote]").forEach(function(botao) {
+  botao.addEventListener("click", function() {
+    campoPacote.value = botao.dataset.pacote;
   });
+});
 
-  formulario.addEventListener("submit", function (evento) {
-    evento.preventDefault();
-
-    const nome = document.getElementById("nome").value.trim();
-    const pacote = campoPacote.value;
-    const data = document.getElementById("data").value;
-    const horario = document.getElementById("horario").value;
-    const detalhes = document.getElementById("detalhes").value.trim();
-
-    if (!nome || !pacote || !data || !horario) {
-      alert("Preencha seu nome, pacote, data e período desejado.");
-      return;
-    }
-
-    const dataFormatada = data.split("-").reverse().join("/");
-
-    const mensagem =
-      "Olá! Gostaria de consultar a disponibilidade para um ensaio fotográfico.\n\n" +
-      "Nome: " + nome + "\n" +
-      "Pacote: " + pacote + "\n" +
-      "Data desejada: " + dataFormatada + "\n" +
-      "Período: " + horario + "\n" +
-      "Detalhes: " + (detalhes || "Não informado");
-
-    const url = "https://wa.me/5511946017570?text=" + encodeURIComponent(mensagem);
-    window.location.href = url;
-  });
-})();
+formulario.addEventListener("submit", function(evento) {
+  evento.preventDefault();
+  const nome = document.getElementById("nome").value.trim();
+  const pacote = campoPacote.value;
+  const data = document.getElementById("data").value;
+  const horario = document.getElementById("horario").value;
+  const detalhes = document.getElementById("detalhes").value.trim();
+  const dataFormatada = data.split("-").reverse().join("/");
+  const mensagem =
+    "Olá! Gostaria de consultar a disponibilidade para um ensaio fotográfico.\n\n" +
+    "Nome: " + nome + "\n" +
+    "Pacote: " + pacote + "\n" +
+    "Data desejada: " + dataFormatada + "\n" +
+    "Período: " + horario + "\n" +
+    "Detalhes: " + (detalhes || "Não informado");
+  window.location.href = "https://wa.me/5511946017570?text=" + encodeURIComponent(mensagem);
+});
 </script>
-
 </body>
-  </html>
-  
+</html>
