@@ -1,747 +1,632 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Maths Photo | Ensaios Fotográficos</title>
-
-  <meta name="description" content="Ensaios fotográficos de cosplay, retratos e projetos criativos em São Paulo e Guarulhos.">
-
-  <style>
-    :root {
-      --fundo: #1E2F27;
-      --fundo-card: #263B31;
-      --texto: #DCDCD2;
-      --verde: #83A99D;
-      --linha: #40564A;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--fundo);
-      color: var(--texto);
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button,
-    input,
-    select,
-    textarea {
-      font: inherit;
-    }
-
-    .container {
-      width: min(1100px, 90%);
-      margin: 0 auto;
-    }
-
-    header {
-      border-bottom: 1px solid var(--linha);
-      padding: 22px 0;
-    }
-
-    .cabecalho {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .logo {
-      font-size: 21px;
-      font-weight: bold;
-      letter-spacing: 2px;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 22px;
-      font-size: 14px;
-    }
-
-    nav a:hover {
-      color: var(--verde);
-    }
-
-    .hero {
-      padding: 100px 0 85px;
-    }
-
-    .etiqueta {
-      color: var(--verde);
-      font-size: 12px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: clamp(42px, 7vw, 76px);
-      line-height: 1.05;
-      font-weight: 500;
-      max-width: 750px;
-      margin-bottom: 25px;
-    }
-
-    .hero p {
-      max-width: 600px;
-      font-size: 17px;
-      color: var(--texto);
-      opacity: 0.85;
-      margin-bottom: 30px;
-    }
-
-    .botao {
-      display: inline-block;
-      background: var(--verde);
-      color: var(--fundo);
-      padding: 13px 22px;
-      border-radius: 3px;
-      font-weight: bold;
-      font-size: 14px;
-      transition: opacity 0.2s;
-    }
-
-    .botao:hover {
-      opacity: 0.8;
-    }
-
-    section {
-      padding: 75px 0;
-      border-top: 1px solid var(--linha);
-    }
-
-    .titulo-secao {
-      font-size: clamp(28px, 4vw, 40px);
-      font-weight: 500;
-      margin-bottom: 12px;
-    }
-
-    .descricao-secao {
-      max-width: 650px;
-      opacity: 0.8;
-      margin-bottom: 35px;
-    }
-
-    /* PORTFÓLIO */
-
-    .galeria {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .foto {
-      min-width: 0;
-      background: var(--fundo-card);
-      overflow: hidden;
-      border-radius: 3px;
-    }
-
-    .foto img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s;
-    }
-
-    .foto:hover img {
-      transform: scale(1.025);
-    }
-
-    .foto-vertical {
-      aspect-ratio: 3 / 4;
-    }
-
-    .foto-horizontal {
-      grid-column: 1 / -1;
-      aspect-ratio: 16 / 9;
-    }
-
-    .sem-foto {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 250px;
-      padding: 20px;
-      color: var(--texto);
-      opacity: 0.8;
-      text-align: center;
-    }
-
-    .sem-foto img {
-      display: none;
-    }
-
-    .sem-foto::after {
-      content: "Não foi possível carregar esta foto. Confira o nome do arquivo.";
-      font-size: 14px;
-    }
-
-    /* PACOTES */
-
-    .pacotes {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .pacote {
-      background: var(--fundo-card);
-      border: 1px solid var(--linha);
-      padding: 27px;
-      border-radius: 3px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .pacote h3 {
-      font-size: 21px;
-      font-weight: 500;
-      margin-bottom: 10px;
-    }
-
-    .pacote p {
-      font-size: 14px;
-      opacity: 0.85;
-      margin-bottom: 18px;
-    }
-
-    .preco {
-      font-size: 29px;
-      font-weight: bold;
-      margin-top: auto;
-      margin-bottom: 4px;
-    }
-
-    .detalhe {
-      font-size: 13px;
-      opacity: 0.75;
-      margin-bottom: 20px;
-    }
-
-    .pacote .botao {
-      margin-top: 8px;
-    }
-
-    /* AGENDAMENTO */
-
-    .agendamento {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 45px;
-      align-items: start;
-    }
-
-    .texto-agendamento p {
-      opacity: 0.85;
-      margin-top: 15px;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 17px;
-    }
-
-    .campo {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
-
-    label {
-      font-size: 14px;
-    }
-
-    input,
-    select,
-    textarea {
-      width: 100%;
-      padding: 13px;
-      color: var(--texto);
-      background: var(--fundo-card);
-      border: 1px solid var(--linha);
-      border-radius: 3px;
-      outline: none;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-      border-color: var(--verde);
-    }
-
-    select option {
-      background: var(--fundo-card);
-      color: var(--texto);
-    }
-
-    textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    form .botao {
-      border: none;
-      cursor: pointer;
-      text-align: center;
-      width: 100%;
-    }
-
-    .aviso {
-      font-size: 12px;
-      opacity: 0.7;
-    }
-
-    /* CONTATO */
-
-    .contato {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 25px;
-    }
-
-    .link-contato {
-      border: 1px solid var(--linha);
-      padding: 11px 16px;
-      border-radius: 3px;
-      font-size: 14px;
-    }
-
-    .link-contato:hover {
-      border-color: var(--verde);
-      color: var(--verde);
-    }
-
-    footer {
-      border-top: 1px solid var(--linha);
-      padding: 25px 0;
-      font-size: 12px;
-      opacity: 0.7;
-    }
-
-    .rodape {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    @media (max-width: 700px) {
-      .cabecalho {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav {
-        gap: 15px;
-      }
-
-      .hero {
-        padding: 75px 0 65px;
-      }
-
-      section {
-        padding: 55px 0;
-      }
-
-      .galeria {
-        gap: 10px;
-      }
-
-      .pacotes {
-        grid-template-columns: 1fr;
-      }
-
-      .pacote {
-        padding: 22px;
-      }
-
-      .agendamento {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-    }
-
-    @media (max-width: 420px) {
-      .logo {
-        font-size: 18px;
-      }
-
-      nav {
-        gap: 12px;
-        font-size: 12px;
-      }
-
-      .galeria {
-        grid-template-columns: 1fr;
-      }
-
-      .foto-horizontal {
-        grid-column: auto;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maths Photo | Ensaios Fotográficos</title>
+<meta name="description" content="Ensaios fotográficos de cosplay, retratos e projetos criativos em São Paulo e Guarulhos.">
+
+<style>
+:root {
+  --fundo: #1E2F27;
+  --fundo-escuro: #192820;
+  --card: #263B31;
+  --texto: #DCDCD2;
+  --verde: #83A99D;
+  --linha: #40564A;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.65;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.container {
+  width: min(1100px, 90%);
+  margin: 0 auto;
+}
+
+header {
+  border-bottom: 1px solid var(--linha);
+  padding: 22px 0;
+}
+
+.cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.logo {
+  font-size: 21px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  font-size: 13px;
+}
+
+nav a, .link-contato {
+  transition: color .2s, border-color .2s;
+}
+
+nav a:hover, .link-contato:hover { color: var(--verde); }
+
+.hero {
+  padding: 100px 0 90px;
+  position: relative;
+  overflow: hidden;
+}
+
+.etiqueta {
+  color: var(--verde);
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(44px, 7vw, 76px);
+  font-weight: normal;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  margin-bottom: 24px;
+}
+
+.hero p {
+  max-width: 570px;
+  font-size: 16px;
+  color: var(--texto);
+  margin-bottom: 28px;
+}
+
+.botao {
+  display: inline-block;
+  background: var(--verde);
+  color: var(--fundo-escuro);
+  padding: 12px 20px;
+  border: 1px solid var(--verde);
+  border-radius: 2px;
+  font-size: 13px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: background .2s, color .2s;
+}
+
+.botao:hover {
+  background: transparent;
+  color: var(--texto);
+}
+
+section {
+  padding: 68px 0;
+  border-top: 1px solid var(--linha);
+}
+
+.titulo-secao {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(30px, 4vw, 40px);
+  line-height: 1.2;
+  font-weight: normal;
+  margin-bottom: 14px;
+}
+
+.titulo-secao::after {
+  content: "";
+  display: block;
+  width: 38px;
+  height: 1px;
+  background: var(--verde);
+  margin-top: 15px;
+}
+
+.descricao-secao {
+  max-width: 650px;
+  color: var(--texto);
+  margin-bottom: 32px;
+}
+
+/* GALERIA */
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.foto {
+  min-width: 0;
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--linha);
+}
+
+.foto img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s;
+}
+
+.foto:hover img { transform: scale(1.025); }
+
+.foto-vertical { aspect-ratio: 3 / 4; }
+
+.foto-horizontal {
+  grid-column: 1 / -1;
+  aspect-ratio: 16 / 9;
+}
+
+.sem-foto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  padding: 20px;
+  text-align: center;
+  color: var(--texto);
+  font-size: 13px;
+}
+
+.sem-foto img { display: none; }
+
+.sem-foto::after {
+  content: "Confira o nome e a localização deste arquivo no GitHub.";
+}
+
+/* PACOTES */
+
+.pacotes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.pacote {
+  background: var(--card);
+  border: 1px solid var(--linha);
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: border-color .2s;
+}
+
+.pacote:hover { border-color: var(--verde); }
+
+.pacote h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  font-weight: normal;
+  margin-bottom: 12px;
+  color: var(--texto);
+}
+
+.pacote p {
+  font-size: 14px;
+  color: var(--texto);
+  opacity: .92;
+  margin-bottom: 22px;
+}
+
+.preco {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  margin-top: auto;
+  margin-bottom: 4px;
+  color: var(--texto);
+}
+
+.detalhe {
+  font-size: 12px;
+  color: var(--verde);
+  margin-bottom: 20px;
+}
+
+.pacote .botao {
+  width: 100%;
+  padding: 10px;
+  font-size: 12px;
+}
+
+/* AGENDAMENTO */
+
+.agendamento {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: 45px;
+  align-items: start;
+}
+
+.texto-agendamento p {
+  margin-top: 18px;
+  color: var(--texto);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+label {
+  font-size: 13px;
+  color: var(--texto);
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 13px;
+  color: var(--texto);
+  background: var(--fundo-escuro);
+  border: 1px solid var(--linha);
+  border-radius: 2px;
+  font: inherit;
+  font-size: 14px;
+  outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--verde);
+}
+
+select option {
+  background: var(--fundo-escuro);
+}
+
+textarea {
+  min-height: 115px;
+  resize: vertical;
+}
+
+form .botao { width: 100%; }
+
+.aviso {
+  font-size: 12px;
+  opacity: .75;
+}
+
+/* CONTATO */
+
+.contato {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.link-contato {
+  display: inline-block;
+  border: 1px solid var(--linha);
+  padding: 12px 18px;
+  font-size: 13px;
+}
+
+.link-contato:hover { border-color: var(--verde); }
+
+/* RODAPÉ COM CÂMERAS MINIMALISTAS */
+
+footer {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--linha);
+  background-color: var(--fundo);
+  padding: 27px 0;
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .48;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='30' viewBox='0 0 38 30'%3E%3Cg fill='none' stroke='%23192921' stroke-width='1'%3E%3Crect x='7' y='10' width='19' height='12' rx='2'/%3E%3Cpath d='M11 10 L13 7 H19 L21 10'/%3E%3Ccircle cx='16.5' cy='16' r='3.5'/%3E%3Cpath d='M27 13 L31 11 V21 L27 19 Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 38px 30px;
+}
+
+.rodape {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.rodape strong {
+  font-size: 16px;
+  font-weight: normal;
+  letter-spacing: 1.5px;
+}
+
+.rodape span {
+  font-size: 11px;
+  color: var(--texto);
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 700px) {
+  .cabecalho {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav { gap: 14px; }
+
+  .hero { padding: 72px 0 65px; }
+
+  section { padding: 52px 0; }
+
+  .agendamento {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .pacotes { grid-template-columns: 1fr; }
+
+  .pacote { padding: 22px; }
+}
+
+@media (max-width: 420px) {
+  .logo { font-size: 18px; }
+
+  nav { font-size: 12px; gap: 11px; }
+
+  .galeria { grid-template-columns: 1fr; }
+
+  .foto-horizontal { grid-column: auto; }
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="container cabecalho">
-      <a class="logo" href="#inicio">MATHS PHOTO</a>
+<header>
+  <div class="container cabecalho">
+    <a class="logo" href="#inicio">MATHS PHOTO</a>
+    <nav>
+      <a href="#inicio">Início</a>
+      <a href="#portfolio">Portfólio</a>
+      <a href="#pacotes">Pacotes</a>
+      <a href="#agendamento">Agendamento</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</header>
 
-      <nav>
-        <a href="#portfolio">Portfólio</a>
-        <a href="#pacotes">Pacotes</a>
-        <a href="#agendamento">Agendamento</a>
-        <a href="#contato">Contato</a>
-      </nav>
+<main>
+
+<section class="hero" id="inicio" style="border-top:none">
+  <div class="container">
+    <div class="etiqueta">Fotografia de cosplay e retratos</div>
+    <h1>Seu personagem.<br>Seu momento.</h1>
+    <p>Ensaios fotográficos de cosplay, retratos e projetos criativos em São Paulo e Guarulhos.</p>
+    <a class="botao" href="#portfolio">Ver portfólio</a>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="container">
+    <div class="etiqueta">Trabalhos selecionados</div>
+    <h2 class="titulo-secao">Portfólio</h2>
+    <p class="descricao-secao">Uma seleção dos meus trabalhos com cosplay e retratos.</p>
+
+    <div class="galeria">
+      <div class="foto foto-vertical">
+        <img src="./_MG_9877.jpg" alt="Retrato de cosplay"
+          onerror="this.parentElement.classList.add('sem-foto')">
+      </div>
+
+      <div class="foto foto-vertical">
+        <img src="./ei_1776719156763-removebg%20(1).jpg" alt="Fotografia de cosplay"
+          onerror="this.parentElement.classList.add('sem-foto')">
+      </div>
+
+      <div class="foto foto-horizontal">
+        <img src="./_MG_6532%20(1).jpg" alt="Ensaio fotográfico horizontal"
+          onerror="this.parentElement.classList.add('sem-foto')">
+      </div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <main>
+<section id="pacotes">
+  <div class="container">
+    <div class="etiqueta">Escolha seu ensaio</div>
+    <h2 class="titulo-secao">Pacotes</h2>
+    <p class="descricao-secao">
+      Cada ensaio é planejado de acordo com a ideia, o personagem e o resultado que você procura.
+      Podemos conversar sobre a proposta para definir os detalhes.
+    </p>
 
-    <section class="hero" id="inicio" style="border-top: none;">
-      <div class="container">
-        <div class="etiqueta">Fotografia de cosplay e retratos</div>
+    <div class="pacotes">
+      <article class="pacote">
+        <h3>Ensaio externo</h3>
+        <p>Para explorar cenários urbanos, arquitetura, parques e outros ambientes. A sessão é pensada para combinar o personagem com o local escolhido.</p>
+        <div class="preco">R$ 150</div>
+        <div class="detalhe">Aproximadamente 3 horas · 15 a 20 fotos editadas</div>
+        <a class="botao" href="#agendamento" data-pacote="Ensaio externo">Escolher pacote</a>
+      </article>
 
-        <h1>Seu personagem.<br>Seu momento.</h1>
+      <article class="pacote">
+        <h3>Ensaio em estúdio</h3>
+        <p>Uma sessão em ambiente controlado, com iluminação planejada para valorizar o personagem, o figurino e a atmosfera das imagens.</p>
+        <div class="preco">R$ 480</div>
+        <div class="detalhe">15 a 20 fotos editadas</div>
+        <a class="botao" href="#agendamento" data-pacote="Ensaio em estúdio">Escolher pacote</a>
+      </article>
 
-        <p>
-          Ensaios fotográficos de cosplay, retratos e projetos criativos
-          em São Paulo e Guarulhos.
-        </p>
+      <article class="pacote">
+        <h3>Ensaio em casa</h3>
+        <p>Fotografias no seu próprio ambiente, aproveitando o espaço e os elementos disponíveis para criar retratos com a sua identidade.</p>
+        <div class="preco">R$ 200</div>
+        <div class="detalhe">15 a 20 fotos editadas</div>
+        <a class="botao" href="#agendamento" data-pacote="Ensaio em casa">Escolher pacote</a>
+      </article>
 
-        <a class="botao" href="#portfolio">Ver portfólio</a>
-      </div>
-    </section>
+      <article class="pacote">
+        <h3>Ensaio com cenário próprio</h3>
+        <p>Uma proposta personalizada para projetos que precisam de objetos, decoração ou elementos específicos. O planejamento é feito de acordo com a ideia.</p>
+        <div class="preco">A partir de R$ 880</div>
+        <div class="detalhe">15 a 20 fotos editadas · Valor sujeito ao projeto</div>
+        <a class="botao" href="#agendamento" data-pacote="Ensaio com cenário próprio">Conversar sobre o projeto</a>
+      </article>
 
-    <section id="portfolio">
-      <div class="container">
-        <div class="etiqueta">Trabalhos selecionados</div>
-        <h2 class="titulo-secao">Portfólio</h2>
-
-        <p class="descricao-secao">
-          Algumas imagens dos meus trabalhos com cosplay e retratos.
-        </p>
-
-        <div class="galeria">
-
-          <div class="foto foto-vertical">
-            <img
-              src="./_MG_9877.jpg"
-              alt="Retrato de cosplay"
-              onerror="this.parentElement.classList.add('sem-foto')"
-            >
-          </div>
-
-          <div class="foto foto-vertical">
-            <img
-              src="./ei_1776719156763-removebg%20(1).jpg"
-              alt="Fotografia de cosplay"
-              onerror="this.parentElement.classList.add('sem-foto')"
-            >
-          </div>
-
-          <div class="foto foto-horizontal">
-            <img
-              src="./_MG_6532%20(1).jpg"
-              alt="Ensaio fotográfico de cosplay em formato horizontal"
-              onerror="this.parentElement.classList.add('sem-foto')"
-            >
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <section id="pacotes">
-      <div class="container">
-        <div class="etiqueta">Escolha seu ensaio</div>
-        <h2 class="titulo-secao">Pacotes</h2>
-
-        <p class="descricao-secao">
-          Cada ensaio é planejado de acordo com a ideia, o personagem
-          e o resultado que você procura.
-        </p>
-
-        <div class="pacotes">
-
-          <article class="pacote">
-            <h3>Ensaio externo</h3>
-            <p>
-              Para explorar cenários, arquitetura e ambientes urbanos.
-            </p>
-            <div class="preco">R$ 150</div>
-            <div class="detalhe">
-              Aproximadamente 3 horas · 15 a 20 fotos editadas
-            </div>
-            <a class="botao" href="#agendamento"
-               data-pacote="Ensaio externo">
-              Escolher pacote
-            </a>
-          </article>
-
-          <article class="pacote">
-            <h3>Ensaio em estúdio</h3>
-            <p>
-              Um espaço preparado para criar imagens com mais controle.
-            </p>
-            <div class="preco">R$ 480</div>
-            <div class="detalhe">
-              15 a 20 fotos editadas
-            </div>
-            <a class="botao" href="#agendamento"
-               data-pacote="Ensaio em estúdio">
-              Escolher pacote
-            </a>
-          </article>
-
-          <article class="pacote">
-            <h3>Ensaio em casa</h3>
-            <p>
-              Para fotografar no seu próprio ambiente.
-            </p>
-            <div class="preco">R$ 200</div>
-            <div class="detalhe">
-              15 a 20 fotos editadas
-            </div>
-            <a class="botao" href="#agendamento"
-               data-pacote="Ensaio em casa">
-              Escolher pacote
-            </a>
-          </article>
-
-          <article class="pacote">
-            <h3>Ensaio com cenário próprio</h3>
-            <p>
-              Para ideias que precisam de objetos, decoração
-              ou elementos específicos.
-            </p>
-            <div class="preco">A partir de R$ 880</div>
-            <div class="detalhe">
-              15 a 20 fotos editadas · Valor sujeito ao projeto
-            </div>
-            <a class="botao" href="#agendamento"
-               data-pacote="Ensaio com cenário próprio">
-              Conversar sobre o projeto
-            </a>
-          </article>
-
-          <article class="pacote">
-            <h3>Miniensaio em evento</h3>
-            <p>
-              Uma sessão rápida durante um evento em que eu estiver presente.
-            </p>
-            <div class="preco">R$ 80</div>
-            <div class="detalhe">
-              10 fotos editadas
-            </div>
-            <a class="botao" href="#agendamento"
-               data-pacote="Miniensaio em evento">
-              Escolher pacote
-            </a>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <section id="agendamento">
-      <div class="container agendamento">
-
-        <div class="texto-agendamento">
-          <div class="etiqueta">Vamos planejar?</div>
-          <h2 class="titulo-secao">Agende seu ensaio</h2>
-
-          <p>
-            Preencha as informações e envie seu pedido pelo WhatsApp.
-            Assim podemos conversar sobre a ideia, a data e os detalhes.
-          </p>
-
-          <p>
-            O envio do pedido não confirma a reserva.
-            A data e o horário serão confirmados por mensagem.
-          </p>
-        </div>
-
-        <form id="formulario">
-
-          <div class="campo">
-            <label for="nome">Seu nome</label>
-            <input
-              type="text"
-              id="nome"
-              name="nome"
-              placeholder="Como você se chama?"
-              required
-            >
-          </div>
-
-          <div class="campo">
-            <label for="pacote">Pacote desejado</label>
-            <select id="pacote" name="pacote" required>
-              <option value="">Selecione um pacote</option>
-              <option>Ensaio externo</option>
-              <option>Ensaio em estúdio</option>
-              <option>Ensaio em casa</option>
-              <option>Ensaio com cenário próprio</option>
-              <option>Miniensaio em evento</option>
-              <option>Ainda não decidi</option>
-            </select>
-          </div>
-
-          <div class="campo">
-            <label for="data">Data desejada</label>
-            <input
-              type="date"
-              id="data"
-              name="data"
-              required
-            >
-          </div>
-
-          <div class="campo">
-            <label for="horario">Horário ou período de preferência</label>
-            <select id="horario" name="horario" required>
-              <option value="">Selecione uma opção</option>
-              <option>Manhã</option>
-              <option>Tarde</option>
-              <option>Noite</option>
-              <option>Tenho flexibilidade</option>
-            </select>
-          </div>
-
-          <div class="campo">
-            <label for="detalhes">Conte um pouco sobre o ensaio</label>
-            <textarea
-              id="detalhes"
-              name="detalhes"
-              placeholder="Personagem, local ou ideia para as fotos..."
-            ></textarea>
-          </div>
-
-          <button class="botao" type="submit">
-            Enviar pedido pelo WhatsApp
-          </button>
-
-          <p class="aviso">
-            Seu pedido será enviado para conversar sobre a disponibilidade.
-          </p>
-
-        </form>
-      </div>
-    </section>
-
-    <section id="contato">
-      <div class="container">
-        <div class="etiqueta">Vamos conversar</div>
-        <h2 class="titulo-secao">Contato</h2>
-
-        <p class="descricao-secao">
-          Tem uma ideia em mente ou quer tirar alguma dúvida?
-          Entre em contato.
-        </p>
-
-        <div class="contato">
-          <a
-            class="link-contato"
-            href="https://www.instagram.com/maths.photo/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Instagram
-          </a>
-
-          <a
-            class="link-contato"
-            href="https://www.behance.net/matheusalmeida84"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Behance
-          </a>
-
-          <a
-            class="link-contato"
-            href="https://wa.me/5511946017570"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            WhatsApp
-          </a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="container rodape">
-      <span>MATHS PHOTO</span>
-      <span>Fotografia por Matheus Almeida</span>
+      <article class="pacote">
+        <h3>Miniensaio em evento</h3>
+        <p>Uma sessão rápida durante um evento em que eu estiver presente, ideal para registrar seu cosplay sem precisar organizar um ensaio completo.</p>
+        <div class="preco">R$ 80</div>
+        <div class="detalhe">10 fotos editadas</div>
+        <a class="botao" href="#agendamento" data-pacote="Miniensaio em evento">Escolher pacote</a>
+      </article>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script>
-    const formulario = document.getElementById("formulario");
-    const campoPacote = document.getElementById("pacote");
+<section id="agendamento">
+  <div class="container agendamento">
+    <div class="texto-agendamento">
+      <div class="etiqueta">Vamos planejar?</div>
+      <h2 class="titulo-secao">Agende seu ensaio</h2>
+      <p>Preencha as informações para me contar um pouco sobre o que você imaginou.</p>
+      <p>Podemos conversar sobre o personagem, o local, a proposta das fotos e a data desejada.</p>
+      <p>O envio do pedido não confirma a reserva. A data e o horário serão confirmados por mensagem.</p>
+    </div>
 
-    document.querySelectorAll("[data-pacote]").forEach(function (botao) {
-      botao.addEventListener("click", function () {
-        campoPacote.value = botao.dataset.pacote;
-      });
-    });
+    <form id="formulario">
+      <div class="campo">
+        <label for="nome">Seu nome</label>
+        <input id="nome" name="nome" type="text" placeholder="Como você se chama?" required>
+      </div>
 
-    formulario.addEventListener("submit", function (evento) {
-      evento.preventDefault();
+      <div class="campo">
+        <label for="pacote">Pacote desejado</label>
+        <select id="pacote" name="pacote" required>
+          <option value="">Selecione um pacote</option>
+          <option>Ensaio externo</option>
+          <option>Ensaio em estúdio</option>
+          <option>Ensaio em casa</option>
+          <option>Ensaio com cenário próprio</option>
+          <option>Miniensaio em evento</option>
+          <option>Ainda não decidi</option>
+        </select>
+      </div>
 
-      const nome = document.getElementById("nome").value.trim();
-      const pacote = campoPacote.value;
-      const data = document.getElementById("data").value;
-      const horario = document.getElementById("horario").value;
-      const detalhes = document.getElementById("detalhes").value.trim();
+      <div class="campo">
+        <label for="data">Data desejada</label>
+        <input id="data" name="data" type="date" required>
+      </div>
 
-      const dataFormatada = data
-        ? data.split("-").reverse().join("/")
-        : "Não informada";
+      <div class="campo">
+        <label for="horario">Horário ou período de preferência</label>
+        <select id="horario" name="horario" required>
+          <option value="">Selecione uma opção</option>
+          <option>Manhã</option>
+          <option>Tarde</option>
+          <option>Noite</option>
+          <option>Tenho flexibilidade</option>
+        </select>
+      </div>
 
-      const mensagem =
-        "Olá! Gostaria de consultar a disponibilidade para um ensaio fotográfico.\n\n" +
-        "Nome: " + nome + "\n" +
-        "Pacote: " + pacote + "\n" +
-        "Data desejada: " + dataFormatada + "\n" +
-        "Período: " + horario + "\n" +
-        "Detalhes: " + (detalhes || "Não informado");
+      <div class="campo">
+        <label for="detalhes">Conte um pouco sobre o ensaio</label>
+        <textarea id="detalhes" name="detalhes" placeholder="Personagem, local, ideia para as fotos..."></textarea>
+      </div>
 
-      const link =
-        "https://wa.me/5511946017570?text=" +
-        encodeURIComponent(mensagem);
+      <button class="botao" type="submit">Enviar pedido pelo WhatsApp</button>
+      <p class="aviso">O pedido será enviado pelo WhatsApp para conversarmos sobre a disponibilidade.</p>
+    </form>
+  </div>
+</section>
 
-      window.location.href = link;
-    });
-  </script>
+<section id="contato">
+  <div class="container">
+    <div class="etiqueta">Vamos conversar</div>
+    <h2 class="titulo-secao">Contato</h2>
+    <p class="descricao-secao">Tem uma ideia em mente ou quer tirar alguma dúvida? Entre em contato.</p>
+
+    <div class="contato">
+      <a class="link-contato" href="https://www.instagram.com/maths.photo/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a class="link-contato" href="https://www.behance.net/matheusalmeida84" target="_blank" rel="noopener noreferrer">Behance</a>
+      <a class="link-contato" href="https://wa.me/5511946017570" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container rodape">
+    <strong>MATHS PHOTO</strong>
+    <span>Fotografia por Matheus Almeida</span>
+  </div>
+</footer>
+
+<script>
+const formulario = document.getElementById("formulario");
+const campoPacote = document.getElementById("pacote");
+
+document.querySelectorAll("[data-pacote]").forEach(function(botao) {
+  botao.addEventListener("click", function() {
+    campoPacote.value = botao.dataset.pacote;
+  });
+});
+
+formulario.addEventListener("submit", function(evento) {
+  evento.preventDefault();
+
+  const nome = document.getElementById("nome").value.trim();
+  const pacote = campoPacote.value;
+  const data = document.getElementById("data").value;
+  const horario = document.getElementById("horario").value;
+  const detalhes = document.getElementById("detalhes").value.trim();
+
+  const dataFormatada = data.split("-").reverse().join("/");
+
+  const mensagem =
+    "Olá! Gostaria de consultar a disponibilidade para um ensaio fotográfico.\n\n" +
+    "Nome: " + nome + "\n" +
+    "Pacote: " + pacote + "\n" +
+    "Data desejada: " + dataFormatada + "\n" +
+    "Período: " + horario + "\n" +
+    "Detalhes: " + (detalhes || "Não informado");
+
+  window.location.href =
+    "https://wa.me/5511946017570?text=" + encodeURIComponent(mensagem);
+});
+</script>
 
 </body>
 </html>
