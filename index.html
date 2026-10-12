@@ -44,6 +44,8 @@ a {
   margin: auto;
 }
 
+/* CABEÇALHO */
+
 header {
   background: var(--fundo-escuro);
   border-bottom: 1px solid var(--linha);
@@ -76,11 +78,11 @@ nav a:hover,
   color: var(--verde);
 }
 
-/* TÍTULO PRINCIPAL */
+/* ABERTURA */
 
 .hero {
-  background: var(--fundo-escuro);
   padding: 95px 0 85px;
+  background: var(--fundo-escuro);
   border-bottom: 1px solid var(--linha);
 }
 
@@ -98,13 +100,13 @@ h1 {
   font-weight: normal;
   line-height: 1.08;
   margin-bottom: 22px;
-  letter-spacing: -1px;
+  color: var(--texto);
 }
 
 .hero p {
   max-width: 600px;
   margin-bottom: 28px;
-  color: var(--texto);
+  font-size: 16px;
 }
 
 .botao {
@@ -118,7 +120,7 @@ h1 {
   font-size: 13px;
   font-weight: bold;
   cursor: pointer;
-  transition: background .2s, color .2s, border-color .2s;
+  transition: .2s;
 }
 
 .botao:hover {
@@ -136,6 +138,7 @@ section {
   font-size: clamp(30px, 4vw, 40px);
   font-weight: normal;
   margin-bottom: 14px;
+  color: var(--texto);
 }
 
 .titulo-secao::after {
@@ -221,36 +224,44 @@ section {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  transition: border-color .2s;
+  transition: border-color .2s, background .2s;
 }
 
 .pacote:hover {
   border-color: var(--verde);
+  background: #293F34;
 }
 
 .pacote h3 {
   font-family: Georgia, serif;
   font-size: 22px;
   font-weight: normal;
-  margin-bottom: 12px;
+  line-height: 1.3;
+  margin-bottom: 16px;
+  color: var(--texto);
 }
 
 .pacote p {
   font-size: 14px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .preco {
   font-family: Georgia, serif;
-  font-size: 28px;
+  font-size: 32px;
+  line-height: 1.2;
   margin-top: auto;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  color: var(--texto);
 }
 
 .detalhe {
   font-size: 12px;
   color: var(--verde);
+  border-top: 1px solid var(--linha);
+  padding-top: 13px;
   margin-bottom: 18px;
+  width: 100%;
 }
 
 .pacote .botao {
@@ -281,8 +292,7 @@ form {
   gap: 16px;
   background: var(--fundo-escuro);
   border: 1px solid var(--linha);
-  padding: 28px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, .10);
+  padding: 25px;
 }
 
 .campo {
@@ -301,7 +311,7 @@ textarea {
   width: 100%;
   padding: 13px;
   color: var(--texto);
-  background: #223329;
+  background: #22342A;
   border: 1px solid var(--linha);
   border-radius: 2px;
   font: inherit;
@@ -336,17 +346,13 @@ form .botao {
 /* CONTATO */
 
 #contato {
-  border-top: 1px solid var(--linha);
-}
-
-.bloco-contato {
   background: var(--fundo-escuro);
-  border: 1px solid var(--linha);
-  padding: 34px;
+  border-top: 1px solid var(--linha);
+  border-bottom: 1px solid var(--linha);
 }
 
-.bloco-contato .descricao-secao {
-  margin-bottom: 22px;
+#contato .descricao-secao {
+  max-width: 560px;
 }
 
 .contato {
@@ -357,25 +363,27 @@ form .botao {
 }
 
 .link-contato {
+  display: inline-block;
+  background: #22342A;
   border: 1px solid var(--linha);
   padding: 12px 18px;
   font-size: 13px;
-  transition: border-color .2s, background .2s;
+  transition: .2s;
 }
 
 .link-contato:hover {
   border-color: var(--verde);
-  background: #223329;
+  background: var(--card);
 }
 
-/* TEXTURA DE CÂMERAS NO RODAPÉ */
+/* RODAPÉ COM TEXTURA DE CÂMERAS */
 
 footer {
   position: relative;
   overflow: hidden;
-  background: var(--fundo-escuro);
+  background: var(--fundo);
   border-top: 1px solid var(--linha);
-  padding: 32px 0;
+  padding: 30px 0;
 }
 
 footer::before {
@@ -383,7 +391,7 @@ footer::before {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: .85;
+  opacity: .95;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='30' viewBox='0 0 38 30'%3E%3Cg fill='none' stroke='%2340564A' stroke-width='1'%3E%3Crect x='7' y='10' width='19' height='12' rx='2'/%3E%3Cpath d='M11 10 L13 7 H19 L21 10'/%3E%3Ccircle cx='16.5' cy='16' r='3.5'/%3E%3Cpath d='M27 13 L31 11 V21 L27 19 Z'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 38px 30px;
@@ -397,7 +405,6 @@ footer::before {
   align-items: center;
   flex-wrap: wrap;
   gap: 12px;
-  background: rgba(25, 40, 32, .72);
 }
 
 .rodape strong {
@@ -410,7 +417,7 @@ footer::before {
   font-size: 11px;
 }
 
-/* CELULAR */
+/* RESPONSIVO */
 
 @media (max-width: 700px) {
   .cabecalho {
@@ -436,11 +443,7 @@ footer::before {
   }
 
   form {
-    padding: 22px;
-  }
-
-  .bloco-contato {
-    padding: 24px;
+    padding: 20px;
   }
 }
 
@@ -466,9 +469,11 @@ footer::before {
 </head>
 
 <body>
+
 <header>
   <div class="container cabecalho">
     <a class="logo" href="#inicio">MATHS PHOTO</a>
+
     <nav>
       <a href="#inicio">Início</a>
       <a href="#portfolio">Portfólio</a>
@@ -579,6 +584,7 @@ footer::before {
 
 <section id="agendamento">
   <div class="container agendamento">
+
     <div class="texto-agendamento">
       <div class="etiqueta">Vamos planejar?</div>
       <h2 class="titulo-secao">Agende seu ensaio</h2>
@@ -629,11 +635,12 @@ footer::before {
       <button class="botao" type="submit">Enviar pedido pelo WhatsApp</button>
       <p class="aviso">O pedido será enviado pelo WhatsApp. A disponibilidade será confirmada por mensagem.</p>
     </form>
+
   </div>
 </section>
 
 <section id="contato">
-  <div class="container bloco-contato">
+  <div class="container">
     <div class="etiqueta">Vamos conversar</div>
     <h2 class="titulo-secao">Contato</h2>
     <p class="descricao-secao">Tem uma ideia em mente ou quer tirar alguma dúvida? Entre em contato.</p>
@@ -689,5 +696,4 @@ formulario.addEventListener("submit", function(evento) {
 </script>
 
 </body>
-        </html>
-  
+</html>
