@@ -17,18 +17,40 @@
   --linha: #40564A;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--fundo);
   color: var(--texto);
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.65;
 }
-a { color: inherit; text-decoration: none; }
-.container { width: min(1100px, 90%); margin: auto; }
 
-header { border-bottom: 1px solid var(--linha); padding: 22px 0; }
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(1100px, 90%);
+  margin: auto;
+}
+
+/* CABEÇALHO */
+
+header {
+  border-bottom: 1px solid var(--linha);
+  padding: 22px 0;
+}
+
 .cabecalho {
   display: flex;
   align-items: center;
@@ -36,11 +58,31 @@ header { border-bottom: 1px solid var(--linha); padding: 22px 0; }
   flex-wrap: wrap;
   gap: 20px;
 }
-.logo { font-size: 21px; font-weight: bold; letter-spacing: 2px; }
-nav { display: flex; flex-wrap: wrap; gap: 20px; font-size: 13px; }
-nav a:hover, .link-contato:hover { color: var(--verde); }
 
-.hero { padding: 95px 0 85px; }
+.logo {
+  font-size: 21px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 13px;
+}
+
+nav a:hover,
+.link-contato:hover {
+  color: var(--verde);
+}
+
+/* ABERTURA */
+
+.hero {
+  padding: 95px 0 85px;
+}
+
 .etiqueta {
   color: var(--verde);
   font-size: 12px;
@@ -48,6 +90,7 @@ nav a:hover, .link-contato:hover { color: var(--verde); }
   text-transform: uppercase;
   margin-bottom: 16px;
 }
+
 h1 {
   font-family: Georgia, serif;
   font-size: clamp(42px, 7vw, 76px);
@@ -55,7 +98,11 @@ h1 {
   line-height: 1.08;
   margin-bottom: 22px;
 }
-.hero p { max-width: 600px; margin-bottom: 28px; }
+
+.hero p {
+  max-width: 600px;
+  margin-bottom: 28px;
+}
 
 .botao {
   display: inline-block;
@@ -68,17 +115,26 @@ h1 {
   font-size: 13px;
   font-weight: bold;
   cursor: pointer;
-  transition: .2s;
+  transition: background .2s, color .2s, border-color .2s;
 }
-.botao:hover { background: transparent; color: var(--texto); }
 
-section { padding: 65px 0; border-top: 1px solid var(--linha); }
+.botao:hover {
+  background: transparent;
+  color: var(--texto);
+}
+
+section {
+  padding: 65px 0;
+  border-top: 1px solid var(--linha);
+}
+
 .titulo-secao {
   font-family: Georgia, serif;
   font-size: clamp(30px, 4vw, 40px);
   font-weight: normal;
   margin-bottom: 14px;
 }
+
 .titulo-secao::after {
   content: "";
   display: block;
@@ -87,7 +143,11 @@ section { padding: 65px 0; border-top: 1px solid var(--linha); }
   background: var(--verde);
   margin-top: 13px;
 }
-.descricao-secao { max-width: 680px; margin-bottom: 30px; }
+
+.descricao-secao {
+  max-width: 680px;
+  margin-bottom: 30px;
+}
 
 /* PORTFÓLIO */
 
@@ -96,12 +156,14 @@ section { padding: 65px 0; border-top: 1px solid var(--linha); }
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
 }
+
 .foto {
   min-width: 0;
   overflow: hidden;
   background: var(--card);
   border: 1px solid var(--linha);
 }
+
 .foto img {
   display: block;
   width: 100%;
@@ -109,9 +171,20 @@ section { padding: 65px 0; border-top: 1px solid var(--linha); }
   object-fit: cover;
   transition: transform .35s;
 }
-.foto:hover img { transform: scale(1.02); }
-.foto-vertical { aspect-ratio: 3 / 4; }
-.foto-horizontal { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+
+.foto:hover img {
+  transform: scale(1.02);
+}
+
+.foto-vertical {
+  aspect-ratio: 3 / 4;
+}
+
+.foto-horizontal {
+  grid-column: 1 / -1;
+  aspect-ratio: 16 / 9;
+}
+
 .sem-foto {
   display: flex;
   align-items: center;
@@ -120,10 +193,15 @@ section { padding: 65px 0; border-top: 1px solid var(--linha); }
   padding: 20px;
   font-size: 13px;
   text-align: center;
+  color: var(--texto);
 }
-.sem-foto img { display: none; }
+
+.sem-foto img {
+  display: none;
+}
+
 .sem-foto::after {
-  content: "Foto não encontrada. Confira o nome do arquivo no GitHub.";
+  content: "Foto não encontrada. Confira se o nome e a extensão do arquivo estão corretos no GitHub.";
 }
 
 /* PACOTES */
@@ -131,33 +209,164 @@ section { padding: 65px 0; border-top: 1px solid var(--linha); }
 .pacotes {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+  gap: 18px;
+  align-items: stretch;
 }
+
 .pacote {
+  position: relative;
+  min-width: 0;
   background: var(--card);
   border: 1px solid var(--linha);
-  padding: 25px;
+  padding: 28px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  transition: border-color .2s;
+  align-items: stretch;
+  transition: border-color .2s, background .2s;
 }
-.pacote:hover { border-color: var(--verde); }
+
+.pacote:hover {
+  border-color: var(--verde);
+  background: #293F34;
+}
+
+.pacote-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 17px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--linha);
+}
+
+.pacote-numero {
+  color: var(--verde);
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.pacote-tipo {
+  color: var(--texto);
+  opacity: .65;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  text-align: right;
+}
+
 .pacote h3 {
   font-family: Georgia, serif;
-  font-size: 22px;
+  font-size: clamp(23px, 3vw, 29px);
+  line-height: 1.2;
   font-weight: normal;
-  margin-bottom: 12px;
+  margin-bottom: 17px;
 }
-.pacote p { font-size: 14px; margin-bottom: 20px; }
+
+.preco-bloco {
+  margin-bottom: 19px;
+}
+
 .preco {
   font-family: Georgia, serif;
-  font-size: 28px;
+  font-size: clamp(34px, 4vw, 43px);
+  line-height: 1.15;
+  letter-spacing: -1px;
+  color: var(--texto);
+}
+
+.preco-legenda {
+  color: var(--verde);
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.pacote-descricao {
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 23px;
+}
+
+.pacote-inclusoes {
+  border-top: 1px solid var(--linha);
+  padding-top: 17px;
   margin-top: auto;
+  margin-bottom: 22px;
+}
+
+.inclusao-titulo {
+  color: var(--verde);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+}
+
+.pacote-inclusoes ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.pacote-inclusoes li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 12px;
+  line-height: 1.6;
+  opacity: .92;
+}
+
+.pacote-inclusoes li::before {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  background: var(--verde);
+  border-radius: 50%;
+}
+
+.pacote-custos {
+  background: var(--fundo-escuro);
+  border-left: 2px solid var(--verde);
+  padding: 13px 15px;
+  margin-bottom: 22px;
+}
+
+.pacote-custos strong {
+  display: block;
+  font-size: 11px;
+  font-weight: normal;
+  color: var(--verde);
+  letter-spacing: .6px;
   margin-bottom: 5px;
 }
-.detalhe { font-size: 12px; color: var(--verde); margin-bottom: 18px; }
-.pacote .botao { width: 100%; margin-top: 6px; }
+
+.pacote-custos p {
+  font-size: 12px;
+  line-height: 1.7;
+  opacity: .85;
+}
+
+.pacote-observacao {
+  font-size: 12px;
+  line-height: 1.75;
+  opacity: .85;
+  margin-top: -8px;
+  margin-bottom: 22px;
+}
+
+.pacote .botao {
+  display: block;
+  width: 100%;
+  margin-top: auto;
+}
+
+.pacote-destaque {
+  border-color: #607B6D;
+}
 
 /* AGENDAMENTO */
 
@@ -167,11 +376,30 @@ section { padding: 65px 0; border-top: 1px solid var(--linha); }
   gap: 40px;
   align-items: start;
 }
-.texto-agendamento p { margin-top: 17px; }
-form { display: flex; flex-direction: column; gap: 16px; }
-.campo { display: flex; flex-direction: column; gap: 7px; }
-label { font-size: 13px; }
-input, select, textarea {
+
+.texto-agendamento p {
+  margin-top: 17px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+label {
+  font-size: 13px;
+}
+
+input,
+select,
+textarea {
   width: 100%;
   padding: 13px;
   color: var(--texto);
@@ -182,19 +410,52 @@ input, select, textarea {
   font-size: 14px;
   outline: none;
 }
-input:focus, select:focus, textarea:focus { border-color: var(--verde); }
-select option { background: var(--fundo-escuro); }
-textarea { min-height: 115px; resize: vertical; }
-form .botao { width: 100%; }
-.aviso { font-size: 12px; opacity: .75; }
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--verde);
+}
+
+select option {
+  background: var(--fundo-escuro);
+}
+
+textarea {
+  min-height: 115px;
+  resize: vertical;
+}
+
+form .botao {
+  width: 100%;
+}
+
+.aviso {
+  font-size: 12px;
+  opacity: .75;
+}
 
 /* CONTATO */
 
-.contato { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
-.link-contato { border: 1px solid var(--linha); padding: 12px 18px; font-size: 13px; }
-.link-contato:hover { border-color: var(--verde); }
+.contato {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
 
-/* TEXTURA DE CÂMERAS NO RODAPÉ */
+.link-contato {
+  border: 1px solid var(--linha);
+  padding: 12px 18px;
+  font-size: 13px;
+  transition: border-color .2s;
+}
+
+.link-contato:hover {
+  border-color: var(--verde);
+}
+
+/* RODAPÉ */
 
 footer {
   position: relative;
@@ -203,6 +464,7 @@ footer {
   border-top: 1px solid var(--linha);
   padding: 28px 0;
 }
+
 footer::before {
   content: "";
   position: absolute;
@@ -213,6 +475,7 @@ footer::before {
   background-repeat: repeat;
   background-size: 38px 30px;
 }
+
 .rodape {
   position: relative;
   z-index: 1;
@@ -222,27 +485,77 @@ footer::before {
   flex-wrap: wrap;
   gap: 12px;
 }
-.rodape strong { font-size: 16px; font-weight: normal; letter-spacing: 1.5px; }
-.rodape span { font-size: 11px; }
+
+.rodape strong {
+  font-size: 16px;
+  font-weight: normal;
+  letter-spacing: 1.5px;
+}
+
+.rodape span {
+  font-size: 11px;
+}
+
+/* CELULAR */
 
 @media (max-width: 700px) {
-  .cabecalho { flex-direction: column; align-items: flex-start; }
-  nav { gap: 13px; }
-  .hero { padding: 70px 0 60px; }
-  section { padding: 50px 0; }
-  .agendamento, .pacotes { grid-template-columns: 1fr; }
+  .cabecalho {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav {
+    gap: 13px;
+  }
+
+  .hero {
+    padding: 70px 0 60px;
+  }
+
+  section {
+    padding: 50px 0;
+  }
+
+  .agendamento,
+  .pacotes {
+    grid-template-columns: 1fr;
+  }
+
+  .pacote {
+    padding: 24px;
+  }
+
+  .pacote h3 {
+    font-size: 27px;
+  }
+
+  .preco {
+    font-size: 39px;
+  }
 }
+
 @media (max-width: 420px) {
-  .logo { font-size: 18px; }
-  nav { font-size: 12px; gap: 10px; }
-  .galeria { grid-template-columns: 1fr; }
-  .foto-horizontal { grid-column: auto; }
+  .logo {
+    font-size: 18px;
+  }
+
+  nav {
+    font-size: 12px;
+    gap: 10px;
+  }
+
+  .galeria {
+    grid-template-columns: 1fr;
+  }
+
+  .foto-horizontal {
+    grid-column: auto;
+  }
 }
 </style>
 </head>
 
 <body>
-
 <header>
   <div class="container cabecalho">
     <a class="logo" href="#inicio">MATHS PHOTO</a>
@@ -257,7 +570,6 @@ footer::before {
 </header>
 
 <main>
-
 <section class="hero" id="inicio" style="border-top:none">
   <div class="container">
     <div class="etiqueta">Fotografia de cosplay e retratos</div>
@@ -275,15 +587,17 @@ footer::before {
 
     <div class="galeria">
       <div class="foto foto-vertical">
-        <img src="./_MG_9877.jpg" alt="Retrato de cosplay"
+        <img src="./foto1.jpg" alt="Retrato de cosplay"
           onerror="this.parentElement.classList.add('sem-foto')">
       </div>
+
       <div class="foto foto-vertical">
-        <img src="./ei_1776719156763-removebg%20(1).jpg" alt="Fotografia de cosplay"
+        <img src="./foto2.jpg" alt="Fotografia de cosplay"
           onerror="this.parentElement.classList.add('sem-foto')">
       </div>
+
       <div class="foto foto-horizontal">
-        <img src="./_MG_6532%20(1).jpg" alt="Ensaio fotográfico horizontal"
+        <img src="./foto3.jpg" alt="Ensaio fotográfico horizontal"
           onerror="this.parentElement.classList.add('sem-foto')">
       </div>
     </div>
@@ -302,43 +616,174 @@ footer::before {
     <div class="pacotes">
 
       <article class="pacote">
+        <div class="pacote-cabecalho">
+          <span class="pacote-numero">01 / EXTERNO</span>
+          <span class="pacote-tipo">Ao ar livre</span>
+        </div>
+
         <h3>Ensaio externo</h3>
-        <p>Uma sessão em São Paulo ou Guarulhos, explorando cenários urbanos, arquitetura, parques e outros ambientes que combinem com o personagem. O ensaio é planejado de acordo com a proposta e o local escolhido.</p>
-        <div class="preco">R$ 150</div>
-        <div class="detalhe">Aproximadamente 3 horas · 15 a 20 fotos editadas</div>
+
+        <div class="preco-bloco">
+          <div class="preco">R$ 150</div>
+          <div class="preco-legenda">Valor do ensaio</div>
+        </div>
+
+        <p class="pacote-descricao">
+          Uma sessão em São Paulo ou Guarulhos, explorando cenários urbanos,
+          arquitetura, parques e outros ambientes que combinem com o personagem.
+          O ensaio é planejado de acordo com a proposta e o local escolhido.
+        </p>
+
+        <div class="pacote-inclusoes">
+          <div class="inclusao-titulo">Detalhes do pacote</div>
+          <ul>
+            <li>Aproximadamente 3 horas de sessão</li>
+            <li>15 a 20 fotos editadas</li>
+            <li>Possibilidade de fotos extras em RAW</li>
+          </ul>
+        </div>
+
         <a class="botao" href="#agendamento" data-pacote="Ensaio externo">Escolher pacote</a>
       </article>
 
       <article class="pacote">
+        <div class="pacote-cabecalho">
+          <span class="pacote-numero">02 / ESTÚDIO</span>
+          <span class="pacote-tipo">Luz controlada</span>
+        </div>
+
         <h3>Ensaio em estúdio</h3>
-        <p>Uma sessão em estúdio no Paraíso, com ambiente controlado para trabalhar iluminação, poses e composição. O valor inclui o trabalho fotográfico e o aluguel do estúdio por 3 horas.</p>
-        <div class="preco">R$ 480</div>
-        <div class="detalhe">R$ 150 fotografia + R$ 330 aluguel por 3 horas · 15 a 20 fotos editadas</div>
+
+        <div class="preco-bloco">
+          <div class="preco">R$ 480</div>
+          <div class="preco-legenda">Fotografia + locação</div>
+        </div>
+
+        <p class="pacote-descricao">
+          Uma sessão em estúdio no Paraíso, com ambiente controlado para
+          trabalhar iluminação, poses e composição. Ideal para explorar
+          diferentes propostas visuais com mais liberdade.
+        </p>
+
+        <div class="pacote-inclusoes">
+          <div class="inclusao-titulo">Detalhes do pacote</div>
+          <ul>
+            <li>Aluguel do estúdio por 3 horas</li>
+            <li>15 a 20 fotos editadas</li>
+          </ul>
+        </div>
+
+        <div class="pacote-custos">
+          <strong>Composição do valor</strong>
+          <p>R$ 150 pelo trabalho fotográfico</p>
+          <p>R$ 330 pelo aluguel do estúdio por 3 horas</p>
+        </div>
+
         <a class="botao" href="#agendamento" data-pacote="Ensaio em estúdio">Escolher pacote</a>
       </article>
 
       <article class="pacote">
+        <div class="pacote-cabecalho">
+          <span class="pacote-numero">03 / DOMICÍLIO</span>
+          <span class="pacote-tipo">No seu espaço</span>
+        </div>
+
         <h3>Ensaio em casa</h3>
-        <p>Um ensaio no seu próprio ambiente, aproveitando o espaço, a luz e os elementos disponíveis para criar imagens que combinem com a sua ideia e o personagem.</p>
-        <div class="preco">R$ 200</div>
-        <div class="detalhe">15 a 20 fotos editadas</div>
+
+        <div class="preco-bloco">
+          <div class="preco">R$ 200</div>
+          <div class="preco-legenda">Valor do ensaio</div>
+        </div>
+
+        <p class="pacote-descricao">
+          Um ensaio no seu próprio ambiente, aproveitando o espaço, a luz
+          e os elementos disponíveis para criar imagens que combinem com
+          sua ideia e com o personagem.
+        </p>
+
+        <div class="pacote-inclusoes">
+          <div class="inclusao-titulo">Detalhes do pacote</div>
+          <ul>
+            <li>15 a 20 fotos editadas</li>
+            <li>Proposta adaptada ao ambiente disponível</li>
+          </ul>
+        </div>
+
         <a class="botao" href="#agendamento" data-pacote="Ensaio em casa">Escolher pacote</a>
       </article>
 
-      <article class="pacote">
+      <article class="pacote pacote-destaque">
+        <div class="pacote-cabecalho">
+          <span class="pacote-numero">04 / PERSONALIZADO</span>
+          <span class="pacote-tipo">Projeto especial</span>
+        </div>
+
         <h3>Ensaio com cenário personalizado</h3>
-        <p>Um projeto feito de acordo com o personagem e a ideia do ensaio, com planejamento e montagem de cenário e props específicos. O orçamento-base considera R$ 400 para materiais e objetos, R$ 150 pelo trabalho fotográfico e R$ 330 pelo aluguel do estúdio por 3 horas.</p>
-        <p>Os props comprados especificamente para o projeto podem ficar com você depois do ensaio, se quiser. Os objetos que já fazem parte do meu acervo continuam sendo meus. Se já houver objetos adequados para a proposta, o valor pode diminuir.</p>
-        <div class="preco">A partir de R$ 880</div>
-        <div class="detalhe">R$ 400 materiais e props + R$ 150 fotografia + R$ 330 estúdio · 15 a 20 fotos editadas</div>
+
+        <div class="preco-bloco">
+          <div class="preco">R$ 880</div>
+          <div class="preco-legenda">Valor-base do projeto</div>
+        </div>
+
+        <p class="pacote-descricao">
+          Um projeto feito de acordo com o personagem e a ideia do ensaio,
+          com planejamento e montagem de cenário e props específicos para
+          construir a atmosfera desejada.
+        </p>
+
+        <div class="pacote-inclusoes">
+          <div class="inclusao-titulo">Detalhes do pacote</div>
+          <ul>
+            <li>15 a 20 fotos editadas</li>
+            <li>Planejamento e montagem do cenário</li>
+            <li>Aluguel do estúdio por 3 horas</li>
+          </ul>
+        </div>
+
+        <div class="pacote-custos">
+          <strong>Composição do valor-base</strong>
+          <p>R$ 400 para materiais e props</p>
+          <p>R$ 150 pelo trabalho fotográfico</p>
+          <p>R$ 330 pelo aluguel do estúdio por 3 horas</p>
+        </div>
+
+        <p class="pacote-observacao">
+          Os props comprados especificamente para o projeto podem ficar
+          com você depois do ensaio, se quiser. Os objetos que já fazem
+          parte do meu acervo continuam sendo meus. Se já houver objetos
+          adequados para a proposta, o valor pode diminuir.
+        </p>
+
         <a class="botao" href="#agendamento" data-pacote="Ensaio com cenário personalizado">Conversar sobre o projeto</a>
       </article>
 
       <article class="pacote">
+        <div class="pacote-cabecalho">
+          <span class="pacote-numero">05 / EVENTO</span>
+          <span class="pacote-tipo">Sessão rápida</span>
+        </div>
+
         <h3>Miniensaio em evento</h3>
-        <p>Uma sessão rápida durante um evento em que eu estiver presente, ideal para registrar seu cosplay sem precisar organizar um ensaio completo.</p>
-        <div class="preco">R$ 80</div>
-        <div class="detalhe">10 fotos editadas</div>
+
+        <div class="preco-bloco">
+          <div class="preco">R$ 80</div>
+          <div class="preco-legenda">Valor do miniensaio</div>
+        </div>
+
+        <p class="pacote-descricao">
+          Uma sessão rápida durante um evento em que eu estiver presente,
+          ideal para registrar seu cosplay sem precisar organizar um
+          ensaio completo.
+        </p>
+
+        <div class="pacote-inclusoes">
+          <div class="inclusao-titulo">Detalhes do pacote</div>
+          <ul>
+            <li>10 fotos editadas</li>
+            <li>Realizado durante eventos em que eu estiver presente</li>
+          </ul>
+        </div>
+
         <a class="botao" href="#agendamento" data-pacote="Miniensaio em evento">Escolher pacote</a>
       </article>
 
@@ -406,6 +851,7 @@ footer::before {
     <div class="etiqueta">Vamos conversar</div>
     <h2 class="titulo-secao">Contato</h2>
     <p class="descricao-secao">Tem uma ideia em mente ou quer tirar alguma dúvida? Entre em contato.</p>
+
     <div class="contato">
       <a class="link-contato" href="https://www.instagram.com/maths.photo/" target="_blank" rel="noopener noreferrer">Instagram</a>
       <a class="link-contato" href="https://www.behance.net/matheusalmeida84" target="_blank" rel="noopener noreferrer">Behance</a>
@@ -413,7 +859,6 @@ footer::before {
     </div>
   </div>
 </section>
-
 </main>
 
 <footer>
@@ -437,24 +882,4 @@ formulario.addEventListener("submit", function(evento) {
   evento.preventDefault();
 
   const nome = document.getElementById("nome").value.trim();
-  const pacote = campoPacote.value;
-  const data = document.getElementById("data").value;
-  const horario = document.getElementById("horario").value;
-  const detalhes = document.getElementById("detalhes").value.trim();
-  const dataFormatada = data.split("-").reverse().join("/");
-
-  const mensagem =
-    "Olá! Gostaria de consultar a disponibilidade para um ensaio fotográfico.\n\n" +
-    "Nome: " + nome + "\n" +
-    "Pacote: " + pacote + "\n" +
-    "Data desejada: " + dataFormatada + "\n" +
-    "Período: " + horario + "\n" +
-    "Detalhes: " + (detalhes || "Não informado");
-
-  window.location.href =
-    "https://wa.me/5511946017570?text=" + encodeURIComponent(mensagem);
-});
-</script>
-
-</body>
-</html>
+  const pacote = 
