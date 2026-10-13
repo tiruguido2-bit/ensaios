@@ -185,7 +185,8 @@
       white-space: nowrap;
     }
 
-    .marca span {
+    .marca span,
+    .rodape-marca span {
       color: var(--verde);
     }
 
@@ -214,7 +215,7 @@
       border-bottom: 1px solid var(--verde);
     }
 
-    /* HERO */
+    /* DESTAQUE PRINCIPAL */
 
     .hero {
       position: relative;
@@ -246,14 +247,13 @@
       inset: 0;
       z-index: -1;
       pointer-events: none;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(19,36,28,.88) 0%,
-          rgba(25,43,33,.68) 38%,
-          rgba(25,43,33,.26) 72%,
-          rgba(25,43,33,.30) 100%
-        );
+      background: linear-gradient(
+        90deg,
+        rgba(19,36,28,.88) 0%,
+        rgba(25,43,33,.68) 38%,
+        rgba(25,43,33,.26) 72%,
+        rgba(25,43,33,.30) 100%
+      );
       box-shadow: inset 0 0 0 18px rgba(228,226,216,.10);
     }
 
@@ -658,7 +658,7 @@
       line-height: 1.9;
     }
 
-    /* FORMULÁRIO */
+    /* CONTATO E FORMULÁRIO */
 
     .contato {
       position: relative;
@@ -860,10 +860,6 @@
       letter-spacing: .16em;
     }
 
-    .rodape-marca span {
-      color: var(--verde);
-    }
-
     .rodape-texto {
       color: var(--muted);
       font-size: 10px;
@@ -895,13 +891,7 @@
       letter-spacing: .04em;
     }
 
-    /* RESPONSIVO */
-
-    @media (min-width: 1450px) {
-      .hero {
-        min-height: 640px;
-      }
-    }
+    /* TABLETS */
 
     @media (max-width: 1000px) {
       .lista-pacotes {
@@ -924,6 +914,8 @@
         gap: 45px;
       }
     }
+
+    /* CELULARES */
 
     @media (max-width: 700px) {
       .container {
@@ -976,4 +968,708 @@
 
       .hero-conteudo {
         width: calc(100% - 48px);
-        padding
+        padding: 72px 0 80px;
+      }
+
+      .hero h1 {
+        font-size: clamp(49px, 12vw, 70px);
+      }
+
+      .hero-descricao {
+        max-width: 330px;
+      }
+
+      .hero-indice {
+        right: 24px;
+        bottom: 23px;
+      }
+
+      .portfolio {
+        padding: 78px 0 82px;
+      }
+
+      .portfolio-cabecalho,
+      .pacotes-cabecalho {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-bottom: 32px;
+      }
+
+      .portfolio-cabecalho .descricao-secao,
+      .pacotes-cabecalho .descricao-secao {
+        margin: 0;
+      }
+
+      .galeria {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .foto:nth-child(1) {
+        grid-column: 1 / span 3;
+        aspect-ratio: 3 / 4;
+        margin-top: 20px;
+      }
+
+      .foto:nth-child(2) {
+        grid-column: 4 / span 3;
+        aspect-ratio: 3 / 4;
+        margin-top: 0;
+      }
+
+      .foto:nth-child(3) {
+        grid-column: 1 / span 4;
+        aspect-ratio: 4 / 5;
+        margin-top: 6px;
+      }
+
+      .foto:nth-child(4) {
+        grid-column: 5 / span 2;
+        aspect-ratio: 3 / 4;
+        margin-top: 35px;
+      }
+
+      .galeria-nota {
+        font-size: 9px;
+      }
+
+      .pacotes {
+        padding: 80px 0;
+      }
+
+      .lista-pacotes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .pacote:nth-child(1),
+      .pacote:nth-child(2),
+      .pacote:nth-child(3),
+      .pacote:nth-child(4),
+      .pacote:nth-child(5) {
+        grid-column: span 1;
+      }
+
+      .pacote {
+        padding: 20px 15px 17px;
+      }
+
+      .pacote:nth-child(5) {
+        grid-column: 1 / -1;
+      }
+
+      .pacote-indice {
+        margin-bottom: 17px;
+      }
+
+      .pacote h3 {
+        min-height: 48px;
+        font-size: 24px;
+      }
+
+      .pacote-preco {
+        font-size: 33px;
+      }
+
+      .pacote-dados {
+        font-size: 9px;
+      }
+
+      .pacote .botao {
+        font-size: 8px;
+        letter-spacing: .04em;
+      }
+
+      .nota-cenario {
+        padding: 15px;
+      }
+
+      .processo {
+        padding: 78px 0;
+      }
+
+      .processo-grade {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        margin-top: 35px;
+      }
+
+      .processo-item p {
+        max-width: 100%;
+      }
+
+      .contato {
+        padding: 80px 0;
+      }
+
+      .contato-grade {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .formulario {
+        padding: 23px 18px;
+      }
+
+      .formulario-titulo {
+        font-size: 28px;
+      }
+
+      .campo-duplo {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .rodape-detalhe {
+        gap: 5px;
+        margin-bottom: 20px;
+      }
+
+      .camera {
+        width: 20px;
+        height: 15px;
+      }
+
+      .camera::after {
+        left: 6px;
+        top: 3px;
+      }
+
+      .rodape-principal {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .rodape-texto {
+        max-width: 260px;
+      }
+
+      .rodape-copy {
+        margin-top: 18px;
+      }
+    }
+
+    @media (max-width: 370px) {
+      .marca {
+        font-size: 22px;
+        letter-spacing: .13em;
+      }
+
+      .lista-pacotes {
+        grid-template-columns: 1fr;
+      }
+
+      .pacote:nth-child(1),
+      .pacote:nth-child(2),
+      .pacote:nth-child(3),
+      .pacote:nth-child(4),
+      .pacote:nth-child(5) {
+        grid-column: 1;
+      }
+
+      .pacote h3 {
+        min-height: auto;
+      }
+
+      .hero h1 {
+        font-size: 47px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container cabecalho">
+      <a class="marca" href="#inicio" aria-label="MATHS PHOTO, início">
+        MATHS <span>PHOTO</span>
+      </a>
+
+      <nav class="navegacao" aria-label="Navegação principal">
+        <a href="#portfolio">Portfólio</a>
+        <a href="#pacotes">Pacotes</a>
+        <a href="#contato" class="nav-destaque">Agendar ensaio ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-conteudo">
+        <p class="etiqueta">Retratos e fotografia cosplay</p>
+
+        <h1>
+          Seu personagem.
+          <span>Seu momento.</span>
+        </h1>
+
+        <p class="hero-descricao">
+          Fotografias pensadas para valorizar sua interpretação,
+          seu personagem e a ideia que você quer transformar em imagem.
+        </p>
+
+        <div class="hero-acoes">
+          <a class="botao" href="#pacotes">
+            Conheça os pacotes <span class="seta">↗</span>
+          </a>
+
+          <a class="link-discreto" href="#portfolio">
+            Ver portfólio <span>↓</span>
+          </a>
+        </div>
+      </div>
+
+      <span class="hero-indice">MATHS PHOTO · SP</span>
+    </section>
+
+    <section class="portfolio" id="portfolio">
+      <div class="container">
+        <div class="portfolio-cabecalho">
+          <div>
+            <p class="etiqueta">Portfólio</p>
+            <h2 class="titulo-secao">Personagens<br>em foco.</h2>
+          </div>
+
+          <p class="descricao-secao">
+            Uma seleção de retratos e cosplays que tive a oportunidade
+            de fotografar. Cada ensaio é pensado junto com a pessoa
+            fotografada, respeitando sua ideia e seu jeito de interpretar
+            o personagem.
+          </p>
+        </div>
+
+        <div class="galeria">
+          <figure class="foto">
+            <img
+              src="./ei_1776719156763-removebg%20(1).jpg"
+              alt="Retrato cosplay"
+              loading="lazy"
+              onerror="this.style.display='none';this.parentElement.classList.add('sem-foto')">
+          </figure>
+
+          <figure class="foto">
+            <img
+              src="./Upfoto_CcA3iWz8dbqAYwoUkv2eC0tAAhEll72d5Xu2pcYwgSWoH.jpg"
+              alt="Ensaio cosplay"
+              loading="lazy"
+              onerror="this.style.display='none';this.parentElement.classList.add('sem-foto')">
+          </figure>
+
+          <figure class="foto">
+            <img
+              src="./IMG_9975.jpg"
+              alt="Retrato de personagem"
+              loading="lazy"
+              onerror="this.style.display='none';this.parentElement.classList.add('sem-foto')">
+          </figure>
+
+          <figure class="foto">
+            <img
+              src="./IMG_7655_1.jpg"
+              alt="Fotografia cosplay"
+              loading="lazy"
+              onerror="this.style.display='none';this.parentElement.classList.add('sem-foto')">
+          </figure>
+        </div>
+
+        <p class="galeria-nota">
+          Retratos feitos em eventos e ensaios.
+        </p>
+      </div>
+    </section>
+
+    <section class="pacotes" id="pacotes">
+      <div class="container">
+        <div class="pacotes-cabecalho">
+          <div>
+            <p class="etiqueta">Valores e opções</p>
+            <h2 class="titulo-secao">Escolha seu<br>ensaio.</h2>
+          </div>
+
+          <p class="descricao-secao">
+            Cada opção tem uma proposta diferente. Se você já tem uma
+            ideia em mente, podemos conversar sobre como realizar.
+          </p>
+        </div>
+
+        <div class="lista-pacotes">
+
+          <article class="pacote">
+            <p class="pacote-indice">01 / EVENTO</p>
+            <h3>Miniensaio<br>em evento</h3>
+
+            <p class="pacote-preco">
+              R$ 80
+              <small>por sessão</small>
+            </p>
+
+            <div class="pacote-dados">
+              <span>10 fotos editadas</span>
+              <span>Realizado durante o evento</span>
+            </div>
+
+            <p class="pacote-descricao">
+              Uma opção para registrar seu cosplay durante o evento,
+              sem precisar organizar um ensaio completo.
+            </p>
+
+            <button class="botao" type="button" data-pacote="Miniensaio em evento">
+              Escolher <span class="seta">↗</span>
+            </button>
+          </article>
+
+          <article class="pacote">
+            <p class="pacote-indice">02 / EXTERNO</p>
+            <h3>Ensaio<br>externo</h3>
+
+            <p class="pacote-preco">
+              R$ 150
+              <small>por ensaio</small>
+            </p>
+
+            <div class="pacote-dados">
+              <span>Aproximadamente 3 horas</span>
+              <span>15 a 20 fotos editadas</span>
+            </div>
+
+            <p class="pacote-descricao">
+              Para quem quer fotografar em um ambiente externo e
+              aproveitar o cenário para compor as imagens.
+            </p>
+
+            <button class="botao botao-secundario" type="button" data-pacote="Ensaio externo">
+              Escolher <span class="seta">↗</span>
+            </button>
+          </article>
+
+          <article class="pacote">
+            <p class="pacote-indice">03 / PARTICULAR</p>
+            <h3>Ensaio<br>em casa</h3>
+
+            <p class="pacote-preco">
+              R$ 200
+              <small>por ensaio</small>
+            </p>
+
+            <div class="pacote-dados">
+              <span>15 a 20 fotos editadas</span>
+              <span>Realizado na sua casa</span>
+            </div>
+
+            <p class="pacote-descricao">
+              Uma alternativa para criar retratos em um espaço
+              familiar, aproveitando as possibilidades do ambiente.
+            </p>
+
+            <button class="botao botao-secundario" type="button" data-pacote="Ensaio em casa">
+              Escolher <span class="seta">↗</span>
+            </button>
+          </article>
+
+          <article class="pacote">
+            <p class="pacote-indice">04 / ESTÚDIO</p>
+            <h3>Ensaio<br>em estúdio</h3>
+
+            <p class="pacote-preco">
+              R$ 480
+              <small>fotografia + locação</small>
+            </p>
+
+            <div class="pacote-dados">
+              <span>3 horas de estúdio no Paraíso</span>
+              <span>15 a 20 fotos editadas</span>
+              <span>Fotografia: R$ 150</span>
+              <span>Locação: R$ 330</span>
+            </div>
+
+            <p class="pacote-descricao">
+              Para produzir retratos com iluminação controlada e
+              explorar diferentes poses e composições.
+            </p>
+
+            <button class="botao botao-secundario" type="button" data-pacote="Ensaio em estúdio">
+              Escolher <span class="seta">↗</span>
+            </button>
+          </article>
+
+          <article class="pacote">
+            <p class="pacote-indice">05 / PROJETO ESPECIAL</p>
+            <h3>Cenário<br>personalizado</h3>
+
+            <p class="pacote-preco">
+              A partir de R$ 880
+              <small>valor conforme o projeto</small>
+            </p>
+
+            <div class="pacote-dados">
+              <span>3 horas de estúdio no Paraíso</span>
+              <span>15 a 20 fotos editadas</span>
+              <span>Fotografia: R$ 150</span>
+              <span>Locação: R$ 330</span>
+              <span>Materiais e cenário: a partir de R$ 400</span>
+            </div>
+
+            <p class="pacote-descricao">
+              Para ideias que precisam de elementos específicos,
+              objetos e uma composição pensada para o personagem.
+            </p>
+
+            <button class="botao botao-secundario" type="button" data-pacote="Ensaio com cenário personalizado">
+              Planejar projeto <span class="seta">↗</span>
+            </button>
+          </article>
+
+        </div>
+
+        <div class="nota-cenario">
+          <strong>Sobre os cenários personalizados:</strong>
+          os objetos comprados especificamente para o seu projeto
+          podem ficar com você, se desejar. Itens da minha coleção
+          continuam comigo. Se já tivermos materiais adequados
+          disponíveis, o valor poderá ser menor.
+        </div>
+      </div>
+    </section>
+
+    <section class="processo" id="como-funciona">
+      <div class="container">
+        <p class="etiqueta">Como funciona</p>
+        <h2 class="titulo-secao">Do planejamento<br>às fotografias.</h2>
+
+        <p class="descricao-secao">
+          A ideia é alinhar o que você imaginou antes de marcar o ensaio.
+        </p>
+
+        <div class="processo-grade">
+          <article class="processo-item">
+            <span class="processo-numero">01</span>
+            <h3>Vamos conversar</h3>
+            <p>
+              Você me conta qual personagem quer fotografar, sua ideia
+              e qual tipo de ensaio tem em mente.
+            </p>
+          </article>
+
+          <article class="processo-item">
+            <span class="processo-numero">02</span>
+            <h3>Planejamos juntos</h3>
+            <p>
+              Combinamos o local, a data e os detalhes necessários
+              para realizar as fotografias.
+            </p>
+          </article>
+
+          <article class="processo-item">
+            <span class="processo-numero">03</span>
+            <h3>Hora de fotografar</h3>
+            <p>
+              Depois do ensaio, seleciono e edito as imagens
+              previstas no pacote escolhido.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contato" id="contato">
+      <div class="container contato-grade">
+
+        <div class="contato-intro">
+          <p class="etiqueta">Contato</p>
+          <h2 class="titulo-secao">Vamos<br>conversar?</h2>
+
+          <p class="descricao-secao">
+            Se quiser tirar uma dúvida ou pensar em um ensaio,
+            pode me chamar por aqui.
+          </p>
+
+          <div class="contato-links">
+            <a
+              class="link-contato"
+              href="https://www.instagram.com/maths.photo/"
+              target="_blank"
+              rel="noopener noreferrer">
+              Instagram <span>↗</span>
+            </a>
+
+            <a
+              class="link-contato"
+              href="https://www.behance.net/matheusalmeida84"
+              target="_blank"
+              rel="noopener noreferrer">
+              Behance <span>↗</span>
+            </a>
+
+            <a
+              class="link-contato"
+              href="https://wa.me/5511946017570"
+              target="_blank"
+              rel="noopener noreferrer">
+              WhatsApp <span>↗</span>
+            </a>
+          </div>
+        </div>
+
+        <form class="formulario" id="formulario">
+          <h3 class="formulario-titulo">Sobre seu ensaio</h3>
+
+          <div class="campo">
+            <label for="nome">SEU NOME</label>
+            <input
+              id="nome"
+              name="nome"
+              type="text"
+              placeholder="Como posso te chamar?"
+              required>
+          </div>
+
+          <div class="campo">
+            <label for="pacote">TIPO DE ENSAIO</label>
+            <select id="pacote" name="pacote" required>
+              <option value="">Escolha uma opção</option>
+              <option value="Miniensaio em evento">Miniensaio em evento — R$ 80</option>
+              <option value="Ensaio externo">Ensaio externo — R$ 150</option>
+              <option value="Ensaio em casa">Ensaio em casa — R$ 200</option>
+              <option value="Ensaio em estúdio">Ensaio em estúdio — R$ 480</option>
+              <option value="Ensaio com cenário personalizado">Cenário personalizado — a partir de R$ 880</option>
+              <option value="Ainda não decidi">Ainda não decidi</option>
+            </select>
+          </div>
+
+          <div class="campo-duplo">
+            <div class="campo">
+              <label for="data">DATA DE PREFERÊNCIA</label>
+              <input id="data" name="data" type="date">
+            </div>
+
+            <div class="campo">
+              <label for="periodo">PERÍODO</label>
+              <select id="periodo" name="periodo">
+                <option value="">A combinar</option>
+                <option value="Manhã">Manhã</option>
+                <option value="Tarde">Tarde</option>
+                <option value="Noite">Noite</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="detalhes">CONTE UM POUCO DA SUA IDEIA</label>
+            <textarea
+              id="detalhes"
+              name="detalhes"
+              placeholder="Personagem, local ou qualquer detalhe que já tenha pensado."></textarea>
+          </div>
+
+          <button class="botao" type="submit">
+            Enviar pelo WhatsApp <span class="seta">↗</span>
+          </button>
+
+          <p class="aviso-formulario">
+            O formulário prepara uma mensagem no WhatsApp.
+            A data será confirmada após conversarmos.
+          </p>
+        </form>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+
+      <div class="rodape-detalhe" aria-hidden="true">
+        <span class="camera"></span>
+        <span class="camera"></span>
+        <span class="camera"></span>
+        <span class="camera"></span>
+        <span class="camera"></span>
+      </div>
+
+      <div class="rodape-principal">
+        <a class="rodape-marca" href="#inicio">
+          MATHS <span>PHOTO</span>
+        </a>
+
+        <p class="rodape-texto">
+          Retratos, personagens e histórias.
+        </p>
+
+        <div class="rodape-redes">
+          <a href="https://www.instagram.com/maths.photo/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+          <a href="https://www.behance.net/matheusalmeida84" target="_blank" rel="noopener noreferrer">Behance ↗</a>
+        </div>
+      </div>
+
+      <p class="rodape-copy">
+        © <span id="ano"></span> MATHS PHOTO · Todos os direitos reservados.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const telefone = "5511946017570";
+
+    document.getElementById("ano").textContent = new Date().getFullYear();
+
+    const campoData = document.getElementById("data");
+    const hoje = new Date();
+    const ano = hoje.getFullYear();
+    const mes = String(hoje.getMonth() + 1).padStart(2, "0");
+    const dia = String(hoje.getDate()).padStart(2, "0");
+
+    campoData.min = `${ano}-${mes}-${dia}`;
+
+    document.querySelectorAll("[data-pacote]").forEach((botao) => {
+      botao.addEventListener("click", () => {
+        document.getElementById("pacote").value = botao.dataset.pacote;
+        document.getElementById("contato").scrollIntoView({
+          behavior: "smooth"
+        });
+      });
+    });
+
+    document.getElementById("formulario").addEventListener("submit", (evento) => {
+      evento.preventDefault();
+
+      const nome = document.getElementById("nome").value.trim();
+      const pacote = document.getElementById("pacote").value;
+      const data = document.getElementById("data").value;
+      const periodo = document.getElementById("periodo").value;
+      const detalhes = document.getElementById("detalhes").value.trim();
+
+      const dataFormatada = data
+        ? data.split("-").reverse().join("/")
+        : "A combinar";
+
+      const mensagem = [
+        "Olá! Vim pelo site MATHS PHOTO e gostaria de conversar sobre um ensaio.",
+        "",
+        `Nome: ${nome}`,
+        `Ensaio: ${pacote}`,
+        `Data de preferência: ${dataFormatada}`,
+        `Período: ${periodo || "A combinar"}`,
+        `Ideia e detalhes: ${detalhes || "Ainda vou definir."}`
+      ].join("\n");
+
+      const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+
+      window.open(url, "_blank", "noopener,noreferrer");
+    });
+  </script>
+
+</body>
+</html>
