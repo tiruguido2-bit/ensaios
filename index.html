@@ -1,236 +1,979 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Maths Photo | Ensaios Fotográficos</title>
-<meta name="description" content="Ensaios fotográficos de cosplay e retratos em São Paulo e Guarulhos.">
-<style>
-:root {
-  --fundo: #1E2F27;
-  --fundo-escuro: #17231D;
-  --card: #263B31;
-  --texto: #E2E1D7;
-  --offwhite: #E4E2D8;
-  --verde: #83A99D;
-  --linha: #40564A;
-  --muted: #BFC5BA;
-}
-* { box-sizing:border-box; margin:0; padding:0; }
-html { scroll-behavior:smooth; scroll-padding-top:20px; }
-body {
-  background:var(--fundo); color:var(--texto);
-  font-family:Arial, Helvetica, sans-serif; line-height:1.7;
-}
-body::before {
-  content:""; position:fixed; inset:0; pointer-events:none; z-index:5; opacity:.12;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
-}
-a { color:inherit; text-decoration:none; }
-.container { width:min(1120px, 90%); margin:auto; }
-header { background:var(--fundo-escuro); border-bottom:1px solid var(--linha); }
-.cabecalho { min-height:82px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
-.logo { font-family:Georgia,serif; font-size:25px; letter-spacing:3px; color:var(--offwhite); }
-nav { display:flex; flex-wrap:wrap; gap:22px; font-size:12px; letter-spacing:.5px; color:var(--muted); }
-nav a:hover,.link-contato:hover { background:var(--offwhite); color:var(--fundo-escuro); border-color:var(--offwhite); }
-.hero {
-  position:relative; isolation:isolate; min-height:590px; display:flex; align-items:center;
-  background:var(--fundo-escuro); overflow:hidden; border-bottom:1px solid var(--linha);
-}
-.hero::before {
-  content:""; position:absolute; inset:0; z-index:-2;
-  background-image:url("./banner.jpg");
-  background-position:center 42%; background-size:cover; background-repeat:no-repeat;
-  filter:saturate(.62) contrast(.96);
-  transform:scale(1.01);
-}
-.hero::after {
-  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
-  background:linear-gradient(90deg,rgba(19,36,28,.88) 0%,rgba(25,43,33,.68) 38%,rgba(25,43,33,.26) 72%,rgba(25,43,33,.30) 100%);
-  box-shadow:inset 0 0 0 18px rgba(228,226,216,.10);
-}
-.hero-inner { padding:100px 0 105px; max-width:670px; }
-.etiqueta { color:var(--verde); font-size:10px; letter-spacing:3px; text-transform:uppercase; margin-bottom:18px; }
-h1 { font-family:Georgia,'Times New Roman',serif; font-size:clamp(48px,7vw,88px); font-weight:normal; line-height:1.02; letter-spacing:-1.5px; color:var(--offwhite); margin-bottom:24px; }
-.hero p { max-width:460px; color:#E0E0D6; font-size:15px; margin-bottom:32px; }
-.botao { display:inline-block; padding:13px 22px; background:var(--offwhite); color:var(--fundo-escuro); border:1px solid var(--offwhite); font-size:11px; letter-spacing:1px; text-transform:uppercase; text-align:center; transition:.2s; cursor:pointer; font-weight:bold; }
-.botao:hover { background:transparent; color:var(--offwhite); }
-.hero-note { margin-top:38px; display:flex; align-items:center; gap:12px; color:#D6D8CE; font-size:10px; letter-spacing:1.5px; text-transform:uppercase; }
-.hero-note::before { content:""; width:34px; height:1px; background:var(--verde); }
-section { padding:84px 0; border-top:1px solid rgba(82,103,90,.72); }
-.section-head { display:grid; grid-template-columns:.8fr 1.2fr; gap:40px; align-items:end; margin-bottom:34px; }
-.titulo-secao { font-family:Georgia,serif; font-size:clamp(34px,4vw,48px); font-weight:normal; line-height:1.1; color:var(--offwhite); }
-.titulo-secao::after { content:""; display:block; width:42px; height:1px; background:var(--verde); margin-top:18px; }
-.descricao-secao { max-width:600px; color:var(--muted); font-size:14px; }
-.galeria { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:15px; }
-.foto { position:relative; min-width:0; overflow:hidden; background:var(--card); border:1px solid rgba(233,228,215,.12); }
-.foto img { display:block; width:100%; height:100%; object-fit:cover; transition:transform .5s; }
-.foto:hover img { transform:scale(1.035); }
-.foto:nth-child(1),.foto:nth-child(4) { grid-column:span 5; aspect-ratio:4/5; }
-.foto:nth-child(2),.foto:nth-child(3) { grid-column:span 7; aspect-ratio:7/5; }
-.foto:nth-child(3) { grid-column:span 7; }
-.foto:nth-child(4) { grid-column:span 5; }
-.foto-horizontal { grid-column:1/-1; aspect-ratio:16/7; }
-.sem-foto { display:flex; min-height:200px; align-items:center; justify-content:center; padding:20px; text-align:center; font-size:12px; color:var(--muted); }
-.sem-foto img { display:none; }
-.sem-foto::after { content:"Foto não encontrada. Confira o nome do arquivo no GitHub."; }
-#pacotes { background:var(--fundo-escuro); }
-.pacotes { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:15px; }
-.pacote { position:relative; background:linear-gradient(145deg,rgba(233,228,215,.045),transparent 58%),var(--card); border:1px solid rgba(233,228,215,.15); padding:30px; display:flex; flex-direction:column; align-items:flex-start; transition:border-color .2s,transform .2s; }
-.pacote:hover { border-color:var(--verde); transform:translateY(-2px); }
-.pacote h3 { font-family:Georgia,serif; font-size:25px; font-weight:normal; line-height:1.25; color:var(--offwhite); margin-bottom:14px; }
-.pacote p { font-size:13px; color:#D2D5CA; margin-bottom:19px; }
-.pacote p:first-of-type::before { content:""; display:block; width:25px; height:1px; background:var(--verde); margin-bottom:14px; }
-.preco { font-family:Georgia,serif; font-size:32px; color:var(--offwhite); margin-top:auto; margin-bottom:3px; }
-.detalhe { font-size:11px; color:var(--verde); margin-bottom:19px; }
-.pacote .botao { width:100%; margin-top:4px; }
-#agendamento { background:var(--fundo); }
-.agendamento { display:grid; grid-template-columns:.85fr 1.15fr; gap:55px; align-items:start; }
-.texto-agendamento p { margin-top:18px; color:var(--muted); font-size:14px; }
-form { display:flex; flex-direction:column; gap:16px; background:var(--offwhite); color:#27362D; border:1px solid #F7F3E9; padding:30px; box-shadow:0 18px 50px rgba(0,0,0,.14); }
-.campo { display:flex; flex-direction:column; gap:7px; }
-label { font-size:12px; color:#34473B; }
-input,select,textarea { width:100%; padding:12px; color:#26372D; background:#F8F6EF; border:1px solid #C9CDBF; border-radius:0; font:inherit; font-size:13px; outline:none; }
-input:focus,select:focus,textarea:focus { border-color:#5E7C6A; }
-select option { background:var(--offwhite); }
-textarea { min-height:110px; resize:vertical; }
-form .botao { width:100%; background:#263B31; border-color:#263B31; color:var(--offwhite); }
-form .botao:hover { background:transparent; color:#263B31; }
-.aviso { font-size:11px; color:#536356; }
-#contato { background:#202F27; color:var(--texto); border-top:1px solid var(--linha); }
-.bloco-contato { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:35px; }
-#contato .etiqueta { color:var(--verde); }
-#contato .titulo-secao { color:var(--offwhite); }
-#contato .descricao-secao { color:var(--muted); margin-top:16px; }
-#contato .titulo-secao::after { background:var(--verde); }
-.contato { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:10px; }
-.link-contato { border:1px solid var(--linha); padding:13px 18px; color:var(--offwhite); font-size:12px; transition:.2s; }
-.link-contato:hover { background:#263B31; color:var(--offwhite); border-color:#263B31; }
-footer { position:relative; overflow:hidden; background:var(--fundo-escuro); border-top:1px solid var(--linha); padding:25px 0; }
-footer::before { content:""; position:absolute; inset:0; pointer-events:none; opacity:.45; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='48' viewBox='0 0 64 48'%3E%3Cg fill='none' stroke='%2352675A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' transform='scale(.65)'%3E%3Cpath d='M15 17 H20 L23 13 H33 L36 17 H43 Q46 17 46 20 V32 Q46 35 43 35 H15 Q12 35 12 32 V20 Q12 17 15 17 Z'/%3E%3Ccircle cx='29' cy='26' r='7'/%3E%3Ccircle cx='29' cy='26' r='4.5'/%3E%3Cpath d='M17 21 H21 M39 21 H41 M18 14 L18 11 H22'/%3E%3C/g%3E%3C/svg%3E"); background-repeat:repeat; background-size:24px 20px; }
-.rodape { position:relative; z-index:1; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; background:rgba(23,35,29,.83); }
-.rodape strong { font-family:Georgia,serif; font-size:16px; font-weight:normal; letter-spacing:2px; color:var(--offwhite); }
-.rodape span { font-size:11px; color:var(--muted); }
-@media(max-width:700px) {
-  .cabecalho { min-height:0; padding:20px 0; flex-direction:column; gap:15px; }
-  nav { justify-content:center; gap:13px; font-size:11px; }
-  .hero { min-height:540px; }
-  .hero::before { background-position:60% center; }
-  .hero::after { background:linear-gradient(90deg,rgba(19,36,28,.82),rgba(25,43,33,.42)); box-shadow:inset 0 0 0 10px rgba(228,226,216,.08); }
-  .hero-inner { padding:80px 0; }
-  .hero::after { inset:10px; }
-  section { padding:60px 0; }
-  .section-head,.agendamento,.bloco-contato { grid-template-columns:1fr; gap:20px; }
-  .pacotes { grid-template-columns:1fr; }
-  .contato { justify-content:flex-start; }
-  .foto:nth-child(n) { grid-column:span 6; aspect-ratio:3/4; }
-  .foto:nth-child(2),.foto:nth-child(3) { aspect-ratio:4/5; }
-  .foto-horizontal { grid-column:1/-1 !important; aspect-ratio:16/9 !important; }
-  form { padding:22px; }
-}
-@media(max-width:420px) {
-  .logo { font-size:22px; }
-  nav { gap:10px; font-size:10px; }
-  .hero { min-height:500px; }
-  h1 { font-size:48px; }
-  .galeria { gap:9px; }
-  .pacote { padding:23px; }
-}
-</style>
-</head>
-<body>
-<header>
-  <div class="container cabecalho">
-    <a class="logo" href="#inicio">MATHS PHOTO</a>
-    <nav>
-      <a href="#inicio">Início</a><a href="#portfolio">Portfólio</a><a href="#pacotes">Pacotes</a><a href="#agendamento">Agendamento</a><a href="#contato">Contato</a>
-    </nav>
-  </div>
-</header>
-<main>
-<section class="hero" id="inicio" style="border-top:none">
-  <div class="container hero-inner">
-    <div class="etiqueta">Fotografia de cosplay e retratos</div>
-    <h1>Seu personagem.<br>Seu momento.</h1>
-    <p>Retratos e ensaios de cosplay pensados para destacar cada detalhe da sua interpretação, em São Paulo e Guarulhos.</p>
-    <a class="botao" href="#portfolio">Explorar portfólio</a>
-    <div class="hero-note">Retratos · Cosplay · Projetos autorais</div>
-  </div>
-</section>
-<section id="portfolio">
-  <div class="container">
-    <div class="section-head">
-      <div><div class="etiqueta">Trabalhos selecionados</div><h2 class="titulo-secao">Um pouco do meu olhar.</h2></div>
-      <p class="descricao-secao">Cada personagem tem uma presença própria. Meu trabalho é transformar essa ideia em imagens, explorando luz, ambiente e composição para criar retratos com personalidade.</p>
-    </div>
-    <div class="galeria">
-      <div class="foto"><img src="./ei_1776719156763-removebg%20(1).jpg" alt="Fotografia de cosplay" onerror="this.parentElement.classList.add('sem-foto')"></div>
-      <div class="foto"><img src="./Upfoto_CcA3iWz8dbqAYwoUkv2eC0tAAhEll72d5Xu2pcYwgSWoH.jpg" alt="Retrato de cosplay" onerror="this.parentElement.classList.add('sem-foto')"></div>
-      <div class="foto"><img src="./IMG_9975.jpg" alt="Retrato fotográfico" onerror="this.parentElement.classList.add('sem-foto')"></div>
-      <div class="foto"><img src="./IMG_7655_1.jpg" alt="Fotografia de cosplay" onerror="this.parentElement.classList.add('sem-foto')"></div>
-      <div class="foto foto-horizontal"><img src="./_MG_6532%20(1).jpg" alt="Fotografia horizontal de cosplay" onerror="this.parentElement.classList.add('sem-foto')"></div>
-    </div>
-  </div>
-</section>
-<section id="pacotes">
-  <div class="container">
-    <div class="section-head">
-      <div><div class="etiqueta">Escolha seu ensaio</div><h2 class="titulo-secao">Pacotes</h2></div>
-      <p class="descricao-secao">Cada ensaio é planejado de acordo com a ideia, o personagem e o resultado que você procura. Os detalhes são combinados de acordo com a proposta.</p>
-    </div>
-    <div class="pacotes">
-      <article class="pacote"><h3>Miniensaio em evento</h3><p>Uma sessão rápida durante um evento em que eu estiver presente, ideal para registrar seu cosplay sem precisar organizar um ensaio completo.</p><div class="preco">R$ 80</div><div class="detalhe">10 fotos editadas</div><a class="botao" href="#agendamento" data-pacote="Miniensaio em evento">Escolher pacote</a></article>
-      <article class="pacote"><h3>Ensaio externo</h3><p>Uma sessão em São Paulo ou Guarulhos, explorando cenários urbanos, arquitetura, parques e outros ambientes que combinem com o personagem.</p><div class="preco">R$ 150</div><div class="detalhe">Aproximadamente 3 horas · 15 a 20 fotos editadas</div><a class="botao" href="#agendamento" data-pacote="Ensaio externo">Escolher pacote</a></article>
-      <article class="pacote"><h3>Ensaio em casa</h3><p>Um ensaio no seu próprio ambiente, aproveitando o espaço, a luz e os elementos disponíveis para criar imagens que combinem com a sua ideia e o personagem.</p><div class="preco">R$ 200</div><div class="detalhe">15 a 20 fotos editadas</div><a class="botao" href="#agendamento" data-pacote="Ensaio em casa">Escolher pacote</a></article>
-      <article class="pacote"><h3>Ensaio em estúdio</h3><p>Uma sessão em estúdio no Paraíso, com ambiente controlado para trabalhar iluminação, poses e composição. O valor inclui o trabalho fotográfico e o aluguel do estúdio por 3 horas.</p><div class="preco">R$ 480</div><div class="detalhe">R$ 150 fotografia + R$ 330 aluguel por 3 horas · 15 a 20 fotos editadas</div><a class="botao" href="#agendamento" data-pacote="Ensaio em estúdio">Escolher pacote</a></article>
-      <article class="pacote"><h3>Ensaio com cenário personalizado</h3><p>Um projeto feito de acordo com o personagem e a ideia do ensaio, com planejamento e montagem de cenário e props específicos. O orçamento-base considera R$ 400 para materiais e objetos, R$ 150 pelo trabalho fotográfico e R$ 330 pelo aluguel do estúdio por 3 horas.</p><p>Os props comprados especificamente para o projeto podem ficar com você depois do ensaio, se quiser. Os objetos que já fazem parte do meu acervo continuam sendo meus. Se já houver objetos adequados para a proposta, o valor pode diminuir.</p><div class="preco">A partir de R$ 880</div><div class="detalhe">Materiais e props + fotografia + estúdio · 15 a 20 fotos editadas</div><a class="botao" href="#agendamento" data-pacote="Ensaio com cenário personalizado">Conversar sobre o projeto</a></article>
-    </div>
-  </div>
-</section>
-<section id="agendamento">
-  <div class="container agendamento">
-    <div class="texto-agendamento"><div class="etiqueta">Vamos planejar?</div><h2 class="titulo-secao">Agende seu ensaio</h2><p>Conte um pouco sobre a sua ideia para que possamos conversar sobre a proposta, o local e os detalhes.</p><p>O envio do pedido não confirma a reserva. A data e o horário serão confirmados por mensagem.</p></div>
-    <form id="formulario">
-      <div class="campo"><label for="nome">Seu nome</label><input id="nome" name="nome" type="text" placeholder="Como você se chama?" required></div>
-      <div class="campo"><label for="pacote">Pacote desejado</label><select id="pacote" name="pacote" required><option value="">Selecione um pacote</option><option value="Miniensaio em evento">Miniensaio em evento</option><option value="Ensaio externo">Ensaio externo</option><option value="Ensaio em casa">Ensaio em casa</option><option value="Ensaio em estúdio">Ensaio em estúdio</option><option value="Ensaio com cenário personalizado">Ensaio com cenário personalizado</option><option value="Ainda não decidi">Ainda não decidi</option></select></div>
-      <div class="campo"><label for="data">Data desejada</label><input id="data" name="data" type="date" required></div>
-      <div class="campo"><label for="horario">Horário ou período de preferência</label><select id="horario" name="horario" required><option value="">Selecione uma opção</option><option value="Manhã">Manhã</option><option value="Tarde">Tarde</option><option value="Noite">Noite</option><option value="Tenho flexibilidade">Tenho flexibilidade</option></select></div>
-      <div class="campo"><label for="detalhes">Conte um pouco sobre o ensaio</label><textarea id="detalhes" name="detalhes" placeholder="Personagem, local, ideia para as fotos, cenário ou props..."></textarea></div>
-      <button class="botao" type="submit">Enviar pedido pelo WhatsApp</button><p class="aviso">O pedido será enviado pelo WhatsApp. A disponibilidade será confirmada por mensagem.</p>
-    </form>
-  </div>
-</section>
-<section id="contato">
-  <div class="container bloco-contato">
-    <div><div class="etiqueta">Vamos conversar</div><h2 class="titulo-secao">Toda boa ideia começa com uma conversa.</h2><p class="descricao-secao">Tem uma ideia em mente ou quer tirar alguma dúvida? Entre em contato.</p></div>
-    <div class="contato"><a class="link-contato" href="https://www.instagram.com/maths.photo/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a class="link-contato" href="https://www.behance.net/matheusalmeida84" target="_blank" rel="noopener noreferrer">Behance ↗</a><a class="link-contato" href="https://wa.me/5511946017570" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a></div>
-  </div>
-</section>
-</main>
-<footer><div class="container rodape"><strong>MATHS PHOTO</strong><span>Fotografia por Matheus Almeida</span></div></footer>
-<script>
-(function () {
-  const formulario = document.getElementById("formulario");
-  const campoPacote = document.getElementById("pacote");
-  document.querySelectorAll("[data-pacote]").forEach(function (botao) {
-    botao.addEventListener("click", function () { campoPacote.value = botao.getAttribute("data-pacote"); });
-  });
-  formulario.addEventListener("submit", function (evento) {
-    evento.preventDefault();
-    const nome = document.getElementById("nome").value.trim();
-    const pacote = campoPacote.value;
-    const data = document.getElementById("data").value;
-    const horario = document.getElementById("horario").value;
-    const detalhes = document.getElementById("detalhes").value.trim();
-    if (!nome || !pacote || !data || !horario) { alert("Preencha seu nome, pacote, data e período desejado."); return; }
-    const dataFormatada = data.split("-").reverse().join("/");
-    const mensagem = "Olá! Gostaria de consultar a disponibilidade para um ensaio fotográfico.\n\n" +
-      "Nome: " + nome + "\n" + "Pacote: " + pacote + "\n" +
-      "Data desejada: " + dataFormatada + "\n" + "Período: " + horario + "\n" +
-      "Detalhes: " + (detalhes || "Não informado");
-    window.location.href = "https://wa.me/5511946017570?text=" + encodeURIComponent(mensagem);
-  });
-})();
-</script>
-</body>
-</html>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1E2F27">
+  <meta name="description" content="Retratos e ensaios cosplay em São Paulo e Guarulhos. Escolha seu pacote e vamos planejar seu ensaio.">
+  <title>MATHS PHOTO | Retratos e Cosplay</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --fundo: #1E2F27;
+      --fundo-escuro: #17231D;
+      --card: #263B31;
+      --card-claro: #2B4035;
+      --offwhite: #E2E1D7;
+      --texto: #D5D9D0;
+      --muted: #A9B4AA;
+      --verde: #83A99D;
+      --linha: #40564A;
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+      --largura: 1160px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      background: var(--fundo);
+      color: var(--texto);
+      font-family: var(--sans);
+      font-size: 14px;
+      line-height: 1.7;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      pointer-events: none;
+      opacity: .10;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, select, textarea {
+      font: inherit;
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(var(--largura), calc(100% - 64px));
+      margin: 0 auto;
+    }
+
+    .serif {
+      font-family: var(--serif);
+      font-weight: 400;
+    }
+
+    .etiqueta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--verde);
+      font-size: 10px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .etiqueta::before {
+      content: "";
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .titulo-secao {
+      color: var(--offwhite);
+      font-family: var(--serif);
+      font-size: clamp(38px, 5vw, 58px);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -.025em;
+    }
+
+    .descricao-secao {
+      max-width: 540px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .botao {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 13px 22px;
+      border: 1px solid var(--verde);
+      background: var(--verde);
+      color: var(--fundo-escuro);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: background .25s, color .25s, border-color .25s;
+      cursor: pointer;
+    }
+
+    .botao:hover {
+      background: transparent;
+      color: var(--offwhite);
+      border-color: var(--offwhite);
+    }
+
+    .botao .seta {
+      font-size: 17px;
+      line-height: 1;
+      transition: transform .25s;
+    }
+
+    .botao:hover .seta {
+      transform: translateX(4px);
+    }
+
+    /* CABEÇALHO */
+
+    header {
+      position: relative;
+      z-index: 20;
+      background: var(--fundo-escuro);
+      border-bottom: 1px solid rgba(131,169,157,.18);
+    }
+
+    .cabecalho {
+      min-height: 78px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .marca {
+      grid-column: 2;
+      color: var(--offwhite);
+      font-family: var(--serif);
+      font-size: 29px;
+      letter-spacing: .19em;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .marca span {
+      color: var(--verde);
+    }
+
+    .navegacao {
+      grid-column: 3;
+      justify-self: end;
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .navegacao a {
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .08em;
+      transition: color .2s;
+    }
+
+    .navegacao a:hover {
+      color: var(--offwhite);
+    }
+
+    .navegacao .nav-destaque {
+      color: var(--offwhite);
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--verde);
+    }
+
+    /* HERO */
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      min-height: 590px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--fundo-escuro);
+      border-bottom: 1px solid var(--linha);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background-image: url("./banner.jpg");
+      background-position: center 42%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      filter: saturate(.62) contrast(.96);
+      transform: scale(1.01);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(19,36,28,.88) 0%,
+          rgba(25,43,33,.68) 38%,
+          rgba(25,43,33,.26) 72%,
+          rgba(25,43,33,.30) 100%
+        );
+      box-shadow: inset 0 0 0 18px rgba(228,226,216,.10);
+    }
+
+    .hero-conteudo {
+      width: min(var(--largura), calc(100% - 64px));
+      margin: 0 auto;
+      padding: 80px 0 86px;
+    }
+
+    .hero .etiqueta {
+      margin-bottom: 23px;
+    }
+
+    .hero h1 {
+      max-width: 690px;
+      color: #F0EFE7;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(54px, 7.2vw, 91px);
+      line-height: .98;
+      letter-spacing: -.035em;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: #B7C9BE;
+      font-style: italic;
+    }
+
+    .hero-descricao {
+      max-width: 405px;
+      margin-top: 25px;
+      color: rgba(242,241,232,.84);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .hero-acoes {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 34px;
+    }
+
+    .link-discreto {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--offwhite);
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .link-discreto span {
+      color: var(--verde);
+      font-size: 17px;
+    }
+
+    .hero-indice {
+      position: absolute;
+      right: 32px;
+      bottom: 31px;
+      color: rgba(242,241,232,.7);
+      font-size: 9px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    /* PORTFÓLIO */
+
+    .portfolio {
+      padding: 112px 0 118px;
+      background: var(--fundo);
+    }
+
+    .portfolio-cabecalho {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .portfolio-cabecalho .descricao-secao {
+      max-width: 455px;
+      margin: 0 0 5px auto;
+    }
+
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+
+    .foto {
+      position: relative;
+      overflow: hidden;
+      background: #192820;
+      border: 1px solid rgba(226,225,215,.09);
+    }
+
+    .foto img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .65s cubic-bezier(.2,.7,.2,1), filter .5s;
+      filter: saturate(.88);
+    }
+
+    .foto:hover img {
+      transform: scale(1.035);
+      filter: saturate(1);
+    }
+
+    .foto:nth-child(1) {
+      grid-column: 1 / span 5;
+      aspect-ratio: 4 / 5;
+      margin-top: 34px;
+    }
+
+    .foto:nth-child(2) {
+      grid-column: 7 / span 6;
+      aspect-ratio: 5 / 4;
+    }
+
+    .foto:nth-child(3) {
+      grid-column: 2 / span 6;
+      aspect-ratio: 5 / 4;
+      margin-top: 8px;
+    }
+
+    .foto:nth-child(4) {
+      grid-column: 9 / span 4;
+      aspect-ratio: 4 / 5;
+      margin-top: 54px;
+    }
+
+    .sem-foto {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+      color: var(--muted);
+      font-size: 11px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .sem-foto::after {
+      content: "Imagem não encontrada. Confira o nome do arquivo no GitHub.";
+    }
+
+    .galeria-nota {
+      margin-top: 32px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .04em;
+      text-align: right;
+    }
+
+    /* PACOTES */
+
+    .pacotes {
+      position: relative;
+      padding: 108px 0 116px;
+      background: var(--fundo-escuro);
+      border-top: 1px solid rgba(131,169,157,.16);
+      border-bottom: 1px solid rgba(131,169,157,.16);
+    }
+
+    .pacotes::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 1px;
+      height: 70px;
+      background: linear-gradient(var(--verde), transparent);
+      opacity: .4;
+    }
+
+    .pacotes-cabecalho {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .pacotes-cabecalho .descricao-secao {
+      margin: 0 0 5px auto;
+      max-width: 420px;
+    }
+
+    .lista-pacotes {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 15px;
+      align-items: stretch;
+    }
+
+    .pacote {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: 26px 22px 23px;
+      background: var(--card);
+      border: 1px solid rgba(226,225,215,.09);
+      transition: border-color .25s, background .25s, transform .25s;
+    }
+
+    .pacote:hover {
+      border-color: rgba(131,169,157,.55);
+      background: var(--card-claro);
+      transform: translateY(-3px);
+    }
+
+    .pacote:nth-child(1),
+    .pacote:nth-child(2),
+    .pacote:nth-child(3) {
+      grid-column: span 2;
+    }
+
+    .pacote:nth-child(4),
+    .pacote:nth-child(5) {
+      grid-column: span 3;
+    }
+
+    .pacote-indice {
+      color: var(--verde);
+      font-size: 9px;
+      letter-spacing: .18em;
+      margin-bottom: 24px;
+    }
+
+    .pacote h3 {
+      min-height: 52px;
+      color: var(--offwhite);
+      font-family: var(--serif);
+      font-size: 27px;
+      font-weight: 500;
+      line-height: 1.02;
+    }
+
+    .pacote-preco {
+      margin-top: 19px;
+      color: var(--offwhite);
+      font-family: var(--serif);
+      font-size: 39px;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -.025em;
+    }
+
+    .pacote-preco small {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-family: var(--sans);
+      font-size: 9px;
+      letter-spacing: .04em;
+      line-height: 1.5;
+    }
+
+    .pacote-dados {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 23px;
+      padding: 17px 0;
+      border-top: 1px solid var(--linha);
+      border-bottom: 1px solid var(--linha);
+      color: var(--texto);
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+    .pacote-dados span {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+    }
+
+    .pacote-dados span::before {
+      content: "";
+      flex: 0 0 4px;
+      width: 4px;
+      height: 4px;
+      margin-top: 7px;
+      border-radius: 50%;
+      background: var(--verde);
+    }
+
+    .pacote-descricao {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.85;
+      flex: 1;
+    }
+
+    .pacote:first-child .pacote-descricao::before {
+      content: "";
+      display: block;
+      width: 25px;
+      height: 2px;
+      margin-bottom: 15px;
+      background: var(--verde);
+    }
+
+    .pacote .botao {
+      width: 100%;
+      min-height: 43px;
+      margin-top: 25px;
+      padding: 11px 12px;
+      font-size: 9px;
+      letter-spacing: .08em;
+    }
+
+    .pacote .botao-secundario {
+      color: var(--offwhite);
+      background: transparent;
+      border-color: var(--linha);
+    }
+
+    .pacote .botao-secundario:hover {
+      background: var(--verde);
+      color: var(--fundo-escuro);
+      border-color: var(--verde);
+    }
+
+    .nota-cenario {
+      margin-top: 22px;
+      padding: 18px 20px;
+      border-left: 1px solid var(--verde);
+      background: rgba(131,169,157,.055);
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.9;
+    }
+
+    .nota-cenario strong {
+      color: var(--offwhite);
+      font-weight: 500;
+    }
+
+    /* COMO FUNCIONA */
+
+    .processo {
+      padding: 100px 0;
+      background: #E2E1D7;
+      color: #26372E;
+    }
+
+    .processo .etiqueta {
+      color: #52786B;
+    }
+
+    .processo .titulo-secao {
+      color: #25372D;
+    }
+
+    .processo .descricao-secao {
+      color: #68766C;
+    }
+
+    .processo-grade {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 30px;
+      margin-top: 48px;
+    }
+
+    .processo-item {
+      padding-top: 20px;
+      border-top: 1px solid rgba(38,55,46,.25);
+    }
+
+    .processo-numero {
+      color: #64877A;
+      font-family: var(--serif);
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .processo-item h3 {
+      margin-top: 16px;
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 500;
+    }
+
+    .processo-item p {
+      max-width: 310px;
+      margin-top: 9px;
+      color: #68766C;
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    /* FORMULÁRIO */
+
+    .contato {
+      position: relative;
+      padding: 110px 0 105px;
+      background: #202F27;
+      color: var(--texto);
+      border-top: 1px solid var(--linha);
+    }
+
+    .contato-grade {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 90px;
+      align-items: start;
+    }
+
+    .contato .titulo-secao {
+      margin-top: 13px;
+    }
+
+    .contato .descricao-secao {
+      max-width: 390px;
+    }
+
+    .contato-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 34px;
+    }
+
+    .link-contato {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 16px;
+      border: 1px solid var(--linha);
+      color: var(--offwhite);
+      font-size: 11px;
+      transition: background .2s, color .2s, border-color .2s;
+    }
+
+    .link-contato span {
+      color: var(--verde);
+      font-size: 16px;
+    }
+
+    .link-contato:hover {
+      background: var(--offwhite);
+      color: var(--fundo-escuro);
+      border-color: var(--offwhite);
+    }
+
+    .link-contato:hover span {
+      color: var(--fundo-escuro);
+    }
+
+    .formulario {
+      padding: 32px;
+      background: rgba(17,35,27,.38);
+      border: 1px solid rgba(131,169,157,.25);
+    }
+
+    .formulario-titulo {
+      color: var(--offwhite);
+      font-family: var(--serif);
+      font-size: 31px;
+      font-weight: 400;
+      margin-bottom: 25px;
+    }
+
+    .campo {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .campo label {
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .08em;
+    }
+
+    .campo input,
+    .campo select,
+    .campo textarea {
+      width: 100%;
+      min-height: 46px;
+      padding: 12px 13px;
+      border: 1px solid #40564A;
+      border-radius: 0;
+      outline: none;
+      background: #1A2921;
+      color: var(--offwhite);
+      font-size: 12px;
+      font-weight: 300;
+      transition: border-color .2s;
+    }
+
+    .campo input:focus,
+    .campo select:focus,
+    .campo textarea:focus {
+      border-color: var(--verde);
+    }
+
+    .campo input::placeholder,
+    .campo textarea::placeholder {
+      color: #829086;
+    }
+
+    .campo select {
+      color-scheme: dark;
+    }
+
+    .campo textarea {
+      min-height: 105px;
+      resize: vertical;
+    }
+
+    .campo-duplo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .formulario .botao {
+      width: 100%;
+      margin-top: 5px;
+    }
+
+    .aviso-formulario {
+      margin-top: 13px;
+      color: #91A095;
+      font-size: 10px;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    /* RODAPÉ */
+
+    footer {
+      position: relative;
+      overflow: hidden;
+      padding: 28px 0 24px;
+      background: #17231D;
+      border-top: 1px solid rgba(131,169,157,.2);
+    }
+
+    .rodape-detalhe {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      margin-bottom: 22px;
+      opacity: .45;
+    }
+
+    .camera {
+      position: relative;
+      width: 24px;
+      height: 17px;
+      border: 1px solid var(--verde);
+    }
+
+    .camera::before {
+      content: "";
+      position: absolute;
+      top: -4px;
+      left: 4px;
+      width: 7px;
+      height: 3px;
+      border: 1px solid var(--verde);
+      border-bottom: 0;
+    }
+
+    .camera::after {
+      content: "";
+      position: absolute;
+      top: 4px;
+      left: 8px;
+      width: 6px;
+      height: 6px;
+      border: 1px solid var(--verde);
+      border-radius: 50%;
+    }
+
+    .rodape-principal {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .rodape-marca {
+      color: var(--offwhite);
+      font-family: var(--serif);
+      font-size: 22px;
+      letter-spacing: .16em;
+    }
+
+    .rodape-marca span {
+      color: var(--verde);
+    }
+
+    .rodape-texto {
+      color: var(--muted);
+      font-size: 10px;
+      text-align: center;
+    }
+
+    .rodape-redes {
+      display: flex;
+      gap: 18px;
+    }
+
+    .rodape-redes a {
+      color: var(--muted);
+      font-size: 10px;
+      transition: color .2s;
+    }
+
+    .rodape-redes a:hover {
+      color: var(--offwhite);
+    }
+
+    .rodape-copy {
+      margin-top: 22px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(131,169,157,.12);
+      color: #819087;
+      font-size: 9px;
+      text-align: center;
+      letter-spacing: .04em;
+    }
+
+    /* RESPONSIVO */
+
+    @media (min-width: 1450px) {
+      .hero {
+        min-height: 640px;
+      }
+    }
+
+    @media (max-width: 1000px) {
+      .lista-pacotes {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+      }
+
+      .pacote {
+        padding: 23px 18px 20px;
+      }
+
+      .pacote h3 {
+        font-size: 25px;
+      }
+
+      .pacote-preco {
+        font-size: 35px;
+      }
+
+      .contato-grade {
+        gap: 45px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        width: calc(100% - 40px);
+      }
+
+      .cabecalho {
+        min-height: 70px;
+        grid-template-columns: 1fr auto;
+      }
+
+      .marca {
+        grid-column: 1;
+        justify-self: start;
+        font-size: 26px;
+      }
+
+      .navegacao {
+        grid-column: 2;
+        gap: 0;
+      }
+
+      .navegacao a:not(.nav-destaque) {
+        display: none;
+      }
+
+      .navegacao .nav-destaque {
+        padding: 9px 12px;
+        border: 1px solid var(--linha);
+        font-size: 9px;
+      }
+
+      .hero {
+        min-height: 540px;
+      }
+
+      .hero::before {
+        background-position: 60% center;
+      }
+
+      .hero::after {
+        background: linear-gradient(
+          90deg,
+          rgba(19,36,28,.87) 0%,
+          rgba(25,43,33,.66) 55%,
+          rgba(25,43,33,.42) 100%
+        );
+        box-shadow: inset 0 0 0 10px rgba(228,226,216,.09);
+      }
+
+      .hero-conteudo {
+        width: calc(100% - 48px);
+        padding
