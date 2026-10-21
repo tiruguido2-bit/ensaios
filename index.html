@@ -31,7 +31,8 @@
     .container { width: min(1120px, 90%); margin-inline: auto; }
     header { position: relative; z-index: 10; background: rgba(23,35,29,.96); border-bottom: 1px solid var(--linha); }
     .cabecalho { min-height: 84px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .logo { font-family: var(--serif); font-size: 29px; font-weight: 500; letter-spacing: 3px; white-space: nowrap; }
+    .logo { font-family: var(--serif); font-size: 29px; font-weight: 500; letter-spacing: 3px; white-space: nowrap; color: var(--offwhite); }
+    .logo .logo-verde { color: var(--verde); }
     .navegacao { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 23px; font-size: 12px; letter-spacing: .4px; color: var(--muted); }
     .navegacao a { transition: color .2s, background .2s, border-color .2s; }
     .navegacao a:hover { color: var(--offwhite); }
@@ -106,11 +107,13 @@
     .contato-links { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 27px; }
     .link-contato { border: 1px solid var(--linha); padding: 11px 15px; font-size: 12px; transition: border-color .2s, color .2s; }
     .link-contato:hover { border-color: var(--verde); color: var(--verde); }
-    footer { position: relative; overflow: hidden; border-top: 1px solid var(--linha); background: var(--fundo-escuro); padding: 23px 0; }
-    footer::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .8; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='48' viewBox='0 0 64 48'%3E%3Cg fill='none' stroke='%23364b3d' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' transform='scale(.65)'%3E%3Cpath d='M15 17 H20 L23 13 H33 L36 17 H43 Q46 17 46 20 V32 Q46 35 43 35 H15 Q12 35 12 32 V20 Q12 17 15 17 Z'/%3E%3Ccircle cx='29' cy='26' r='7'/%3E%3Ccircle cx='29' cy='26' r='4.5'/%3E%3Cpath d='M17 21 H21 M39 21 H41 M18 14 L18 11 H22'/%3E%3C/g%3E%3C/svg%3E"); background-repeat: repeat; background-size: 24px 20px; opacity: .65; }
-    .rodape { position: relative; z-index: 1; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 14px 22px; color: var(--muted); background: transparent; text-align: center; }
-    .rodape strong { font: 500 20px var(--serif); letter-spacing: 2px; color: var(--offwhite); }
-    .rodape span { font-size: 11px; }
+    footer { position: relative; overflow: hidden; border-top: 1px solid var(--linha); background: var(--fundo-escuro); padding: 27px 0 23px; }
+    .rodape { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 12px; color: var(--muted); text-align: center; }
+    .rodape-cameras { width: min(100%, 430px); display: flex; justify-content: space-evenly; align-items: center; gap: 18px; color: var(--verde); }
+    .rodape-camera { width: 38px; height: 30px; flex: 0 1 38px; display: block; }
+    .rodape strong { font: 500 22px var(--serif); letter-spacing: 3px; color: var(--offwhite); }
+    .rodape strong span { color: var(--verde); }
+    .rodape > span { font-size: 11px; }
     @media (max-width: 850px) {
       .cabecalho { padding: 16px 0; flex-direction: column; gap: 12px; }
       .navegacao { justify-content: center; gap: 15px; }
@@ -141,7 +144,7 @@
 <body>
   <header>
     <div class="container cabecalho">
-      <a class="logo" href="#inicio" aria-label="Maths Photo — início">MATHS PHOTO</a>
+      <a class="logo" href="#inicio" aria-label="Maths Photo — início">MATHS <span class="logo-verde">PHOTO</span></a>
       <nav class="navegacao" aria-label="Navegação principal">
         <a href="#portfolio">Portfólio</a>
         <a href="#pacotes">Pacotes</a>
@@ -260,7 +263,7 @@
       <div class="container">
         <div class="etiqueta">Do primeiro contato à entrega</div>
         <h2 class="titulo-secao">Como funciona</h2>
-        <p class="descricao-secao">Tudo é combinado com antecedência para que você saiba o que esperar de cada etapa.</p>
+  <p class="descricao-secao">Tudo é combinado com antecedência para que você saiba o que esperar de cada etapa.</p>
         <div class="processo-grade">
           <article class="processo-item"><span class="processo-numero">01</span><h3>Vamos conversar</h3><p>Você me conta qual personagem quer fotografar, sua ideia e qual tipo de ensaio tem em mente.</p></article>
           <article class="processo-item"><span class="processo-numero">02</span><h3>Planejamos juntos</h3><p>Combinamos o local, a data, as referências e os detalhes necessários para realizar as fotografias.</p></article>
@@ -296,7 +299,19 @@
     </section>
   </main>
 
-  <footer><div class="container rodape"><strong>MATHS PHOTO</strong><span>Fotografia por Matheus Almeida</span></div></footer>
+  <footer>
+    <div class="container rodape">
+      <div class="rodape-cameras" aria-hidden="true">
+        <svg class="rodape-camera" viewBox="0 0 48 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12h7l3-4h11l3 4h8a3 3 0 0 1 3 3v13a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V15a3 3 0 0 1 3-3Z"/><circle cx="24" cy="21" r="7"/><circle cx="24" cy="21" r="3.5"/><path d="M10 16h4m22 0h2"/></svg>
+        <svg class="rodape-camera" viewBox="0 0 48 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12h7l3-4h11l3 4h8a3 3 0 0 1 3 3v13a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V15a3 3 0 0 1 3-3Z"/><circle cx="24" cy="21" r="7"/><circle cx="24" cy="21" r="3.5"/><path d="M10 16h4m22 0h2"/></svg>
+        <svg class="rodape-camera" viewBox="0 0 48 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12h7l3-4h11l3 4h8a3 3 0 0 1 3 3v13a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V15a3 3 0 0 1 3-3Z"/><circle cx="24" cy="21" r="7"/><circle cx="24" cy="21" r="3.5"/><path d="M10 16h4m22 0h2"/></svg>
+        <svg class="rodape-camera" viewBox="0 0 48 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12h7l3-4h11l3 4h8a3 3 0 0 1 3 3v13a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V15a3 3 0 0 1 3-3Z"/><circle cx="24" cy="21" r="7"/><circle cx="24" cy="21" r="3.5"/><path d="M10 16h4m22 0h2"/></svg>
+        <svg class="rodape-camera" viewBox="0 0 48 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12h7l3-4h11l3 4h8a3 3 0 0 1 3 3v13a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V15a3 3 0 0 1 3-3Z"/><circle cx="24" cy="21" r="7"/><circle cx="24" cy="21" r="3.5"/><path d="M10 16h4m22 0h2"/></svg>
+      </div>
+      <strong>MATHS <span>PHOTO</span></strong>
+      <span>Fotografia por Matheus Almeida</span>
+    </div>
+  </footer>
 
   <script>
     (function () {
