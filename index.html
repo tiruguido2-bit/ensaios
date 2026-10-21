@@ -78,12 +78,17 @@
     .nota-cenario { margin-top: 20px; padding: 17px 19px; border-left: 2px solid var(--verde); background: rgba(23,35,29,.55); color: var(--muted); font-size: 12px; }
     .nota-cenario strong { color: var(--offwhite); font-weight: 600; }
     /* Processo */
-    #processo { background: rgba(23,35,29,.3); }
+    /* Processo: faixa off-white com tipografia verde, como no layout original */
+    #processo { background: var(--offwhite); color: var(--fundo); border-top-color: var(--offwhite); }
+    #processo .etiqueta, #processo .processo-numero { color: #547767; }
+    #processo .titulo-secao, #processo .processo-item h3 { color: var(--fundo); }
+    #processo .titulo-secao::after { background: #547767; }
+    #processo .descricao-secao, #processo .processo-item p { color: #4b5e52; }
     .processo-grade { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; margin-top: 32px; }
-    .processo-item { border-top: 1px solid var(--linha); padding-top: 17px; }
-    .processo-numero { color: var(--verde); font-size: 11px; letter-spacing: 1.5px; }
+    #processo .processo-item { border-top: 1px solid #b7c1b5; padding-top: 17px; }
+    .processo-numero { font-size: 11px; letter-spacing: 1.5px; }
     .processo-item h3 { font-size: 25px; line-height: 1.15; margin: 10px 0; }
-    .processo-item p { color: var(--muted); font-size: 12px; }
+    .processo-item p { font-size: 12px; }
     /* Formulário */
     #contato { background: rgba(30,47,39,.55); }
     .agendamento { display: grid; grid-template-columns: .8fr 1.2fr; gap: 48px; align-items: start; }
@@ -257,70 +262,4 @@
         <div class="processo-grade">
           <article class="processo-item"><span class="processo-numero">01</span><h3>Vamos conversar</h3><p>Você me conta qual personagem quer fotografar, sua ideia e qual tipo de ensaio tem em mente.</p></article>
           <article class="processo-item"><span class="processo-numero">02</span><h3>Planejamos juntos</h3><p>Combinamos o local, a data, as referências e os detalhes necessários para realizar as fotografias.</p></article>
-          <article class="processo-item"><span class="processo-numero">03</span><h3>Hora de fotografar</h3><p>Realizamos o ensaio conforme o planejamento, explorando poses, iluminação e composições para o personagem.</p></article>
-          <article class="processo-item"><span class="processo-numero">04</span><h3>Edição e entrega</h3><p>Depois do ensaio, seleciono e edito as fotografias previstas no pacote. As imagens são entregues em até 15 dias úteis, conforme combinado.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="contato">
-      <div class="container agendamento">
-        <div class="texto-agendamento">
-          <div class="etiqueta">Vamos conversar</div>
-          <h2 class="titulo-secao">Faça seu orçamento</h2>
-          <p>Conte um pouco sobre a sua ideia para que possamos conversar sobre a proposta, o local e os detalhes.</p>
-          <p>O envio do pedido não confirma a reserva. A disponibilidade e os próximos passos serão combinados por mensagem.</p>
-          <div class="contato-links">
-            <a class="link-contato" href="https://www.instagram.com/maths.photo/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
-            <a class="link-contato" href="https://www.behance.net/matheusalmeida84" target="_blank" rel="noopener noreferrer">Behance ↗</a>
-            <a class="link-contato" href="https://wa.me/5511946017570" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
-          </div>
-        </div>
-        <form id="formulario">
-          <div class="campo"><label for="nome">Seu nome</label><input id="nome" name="nome" type="text" placeholder="Como você se chama?" autocomplete="name" required></div>
-          <div class="campo"><label for="pacote">Pacote desejado</label><select id="pacote" name="pacote" required><option value="Miniensaio em evento" selected>Miniensaio em evento — R$ 80</option><option value="Ensaio externo">Ensaio externo — R$ 150</option><option value="Ensaio a domicílio">Ensaio a domicílio — R$ 200</option><option value="Ensaio em estúdio">Ensaio em estúdio — a partir de R$ 480</option><option value="Cenário personalizado">Cenário personalizado — a partir de R$ 480</option><option value="Ainda não decidi">Ainda não decidi</option></select></div>
-          <div class="campo"><label for="data">Data desejada</label><input id="data" name="data" type="date" required></div>
-          <div class="campo"><label for="horario">Horário ou período de preferência</label><select id="horario" name="horario" required><option value="">Selecione uma opção</option><option value="Manhã">Manhã</option><option value="Tarde">Tarde</option><option value="Noite">Noite</option><option value="Tenho flexibilidade">Tenho flexibilidade</option></select></div>
-          <div class="campo"><label for="detalhes">Conte um pouco sobre o ensaio</label><textarea id="detalhes" name="detalhes" placeholder="Personagem, local, ideia para as fotos, cenário ou props..."></textarea></div>
-          <button class="botao" type="submit">Enviar pedido pelo WhatsApp <span class="seta">↗</span></button>
-          <p class="aviso">O pedido será enviado pelo WhatsApp. A disponibilidade será confirmada por mensagem.</p>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer><div class="container rodape"><strong>MATHS PHOTO</strong><span>Fotografia por Matheus Almeida</span></div></footer>
-
-  <script>
-    (function () {
-      const formulario = document.getElementById("formulario");
-      const campoPacote = document.getElementById("pacote");
-      document.querySelectorAll("[data-pacote]").forEach(function (botao) {
-        botao.addEventListener("click", function () {
-          campoPacote.value = botao.getAttribute("data-pacote");
-        });
-      });
-      formulario.addEventListener("submit", function (evento) {
-        evento.preventDefault();
-        const nome = document.getElementById("nome").value.trim();
-        const pacote = campoPacote.value;
-        const data = document.getElementById("data").value;
-        const horario = document.getElementById("horario").value;
-        const detalhes = document.getElementById("detalhes").value.trim();
-        if (!nome || !pacote || !data || !horario) {
-          alert("Preencha seu nome, pacote, data e período desejado.");
-          return;
-        }
-        const dataFormatada = data.split("-").reverse().join("/");
-        const mensagem = "Olá! Gostaria de consultar a disponibilidade para um ensaio fotográfico.\n\n" +
-          "Nome: " + nome + "\n" +
-          "Pacote: " + pacote + "\n" +
-          "Data desejada: " + dataFormatada + "\n" +
-          "Período: " + horario + "\n" +
-          "Detalhes: " + (detalhes || "Não informado");
-        window.location.href = "https://wa.me/5511946017570?text=" + encodeURIComponent(mensagem);
-      });
-    })();
-  </script>
-</body>
-</html>
+          <article class="processo-it
