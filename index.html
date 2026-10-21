@@ -1,1732 +1,875 @@
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#1E2F27">
-  <meta name="description" content="Retratos e ensaios cosplay em São Paulo e Guarulhos. Escolha seu pacote e vamos planejar seu ensaio.">
-  <title>MATHS PHOTO | Retratos e Cosplay</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --fundo: #1E2F27;
-      --fundo-escuro: #17231D;
-      --card: #263B31;
-      --card-claro: #2B4035;
-      --offwhite: #E2E1D7;
-      --texto: #D5D9D0;
-      --muted: #A9B4AA;
-      --verde: #83A99D;
-      --linha: #40564A;
-      --serif: "Cormorant Garamond", Georgia, serif;
-      --sans: "DM Sans", Arial, sans-serif;
-      --largura: 1160px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 80px;
-    }
-
-    body {
-      background: var(--fundo);
-      color: var(--texto);
-      font-family: var(--sans);
-      font-size: 14px;
-      line-height: 1.7;
-      font-weight: 300;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: 10;
-      pointer-events: none;
-      opacity: .10;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
-      background-size: 180px 180px;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button, input, select, textarea {
-      font: inherit;
-    }
-
-    button, a {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    .container {
-      width: min(var(--largura), calc(100% - 64px));
-      margin: 0 auto;
-    }
-
-    .serif {
-      font-family: var(--serif);
-      font-weight: 400;
-    }
-
-    .etiqueta {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--verde);
-      font-size: 10px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      font-weight: 500;
-    }
-
-    .etiqueta::before {
-      content: "";
-      display: block;
-      width: 24px;
-      height: 1px;
-      background: currentColor;
-    }
-
-    .titulo-secao {
-      color: var(--offwhite);
-      font-family: var(--serif);
-      font-size: clamp(38px, 5vw, 58px);
-      font-weight: 400;
-      line-height: 1.05;
-      letter-spacing: -.025em;
-    }
-
-    .descricao-secao {
-      max-width: 540px;
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.9;
-    }
-
-    .botao {
-      min-height: 48px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      padding: 13px 22px;
-      border: 1px solid var(--verde);
-      background: var(--verde);
-      color: var(--fundo-escuro);
-      font-size: 10px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      font-weight: 600;
-      transition: background .25s, color .25s, border-color .25s;
-      cursor: pointer;
-    }
-
-    .botao:hover {
-      background: transparent;
-      color: var(--offwhite);
-      border-color: var(--offwhite);
-    }
-
-    .botao .seta {
-      font-size: 17px;
-      line-height: 1;
-      transition: transform .25s;
-    }
-
-    .botao:hover .seta {
-      transform: translateX(4px);
-    }
-
-    /* CABEÇALHO */
-
-    header {
-      position: relative;
-      z-index: 20;
-      background: var(--fundo-escuro);
-      border-bottom: 1px solid rgba(131,169,157,.18);
-    }
-
-    .cabecalho {
-      min-height: 78px;
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .marca {
-      grid-column: 2;
-      color: var(--offwhite);
-      font-family: var(--serif);
-      font-size: 29px;
-      letter-spacing: .19em;
-      font-weight: 500;
-      white-space: nowrap;
-    }
-
-    .marca span,
-    .rodape-marca span {
-      color: var(--verde);
-    }
-
-    .navegacao {
-      grid-column: 3;
-      justify-self: end;
-      display: flex;
-      align-items: center;
-      gap: 25px;
-    }
-
-    .navegacao a {
-      color: var(--muted);
-      font-size: 10px;
-      letter-spacing: .08em;
-      transition: color .2s;
-    }
-
-    .navegacao a:hover {
-      color: var(--offwhite);
-    }
-
-    .navegacao .nav-destaque {
-      color: var(--offwhite);
-      padding-bottom: 4px;
-      border-bottom: 1px solid var(--verde);
-    }
-
-    /* DESTAQUE PRINCIPAL */
-
-    .hero {
-      position: relative;
-      isolation: isolate;
-      min-height: 590px;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      background: var(--fundo-escuro);
-      border-bottom: 1px solid var(--linha);
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-      background-image: url("./banner.jpg");
-      background-position: center 42%;
-      background-size: cover;
-      background-repeat: no-repeat;
-      filter: saturate(.62) contrast(.96);
-      transform: scale(1.01);
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      background: linear-gradient(
-        90deg,
-        rgba(19,36,28,.88) 0%,
-        rgba(25,43,33,.68) 38%,
-        rgba(25,43,33,.26) 72%,
-        rgba(25,43,33,.30) 100%
-      );
-      box-shadow: inset 0 0 0 18px rgba(228,226,216,.10);
-    }
-
-    .hero-conteudo {
-      width: min(var(--largura), calc(100% - 64px));
-      margin: 0 auto;
-      padding: 80px 0 86px;
-    }
-
-    .hero .etiqueta {
-      margin-bottom: 23px;
-    }
-
-    .hero h1 {
-      max-width: 690px;
-      color: #F0EFE7;
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(54px, 7.2vw, 91px);
-      line-height: .98;
-      letter-spacing: -.035em;
-    }
-
-    .hero h1 span {
-      display: block;
-      color: #B7C9BE;
-      font-style: italic;
-    }
-
-    .hero-descricao {
-      max-width: 405px;
-      margin-top: 25px;
-      color: rgba(242,241,232,.84);
-      font-size: 13px;
-      line-height: 1.9;
-    }
-
-    .hero-acoes {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 24px;
-      margin-top: 34px;
-    }
-
-    .link-discreto {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--offwhite);
-      font-size: 10px;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-
-    .link-discreto span {
-      color: var(--verde);
-      font-size: 17px;
-    }
-
-    .hero-indice {
-      position: absolute;
-      right: 32px;
-      bottom: 31px;
-      color: rgba(242,241,232,.7);
-      font-size: 9px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-    }
-
-    
-/* PORTFÓLIO */
-
-.portfolio {
-  padding: 112px 0 118px;
-  background: var(--fundo);
-}
-
-.portfolio-cabecalho {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: end;
-  gap: 48px;
-  margin-bottom: 48px;
-}
-
-.portfolio-cabecalho .descricao-secao {
-  max-width: 455px;
-  margin: 0 0 5px auto;
-  color: var(--muted);
-}
-
-.categoria-galeria {
-  margin-top: 48px;
-}
-
-.categoria-galeria h3 {
-  color: var(--offwhite);
-  font-family: var(--serif);
-  font-size: 32px;
-  font-weight: 400;
-  margin-bottom: 20px;
-}
-
-.galeria {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
-  align-items: stretch;
-}
-
-.foto {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 4 / 5;
-  background: #192820;
-  border: 1px solid rgba(226,225,215,.09);
-}
-
-.foto img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform .65s cubic-bezier(.2,.7,.2,1), filter .5s;
-  filter: saturate(.88);
-}
-
-.foto:hover img {
-  transform: scale(1.035);
-  filter: saturate(1);
-}
-
-.foto-vazia {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px dashed rgba(131,169,157,.45);
-  background: rgba(23,35,29,.55);
-}
-
-.slot-vazio {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  padding: 15px;
-  color: var(--muted);
-  text-align: center;
-  font-size: 11px;
-}
-
-.slot-vazio span {
-  color: var(--verde);
-  font-size: 26px;
-  font-weight: 300;
-}
-
-.galeria-nota {
-  margin-top: 32px;
-  color: var(--muted);
-  font-size: 10px;
-  letter-spacing: .04em;
-  text-align: right;
-}
-
-@media (max-width: 700px) {
-  .portfolio {
-    padding: 78px 0 82px;
-  }
-
-  .portfolio-cabecalho {
-    grid-template-columns: 1fr;
-    gap: 18px;
-    margin-bottom: 32px;
-  }
-
-  .portfolio-cabecalho .descricao-secao {
-    margin: 0;
-  }
-
-  .categoria-galeria {
-    margin-top: 36px;
-  }
-
-  .categoria-galeria h3 {
-    font-size: 27px;
-  }
-
-  .galeria {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  .galeria-nota {
-    font-size: 9px;
-  }
-}
-    
-
-    /* PACOTES */
-
-    .pacotes {
-      position: relative;
-      padding: 108px 0 116px;
-      background: var(--fundo-escuro);
-      border-top: 1px solid rgba(131,169,157,.16);
-      border-bottom: 1px solid rgba(131,169,157,.16);
-    }
-
-    .pacotes::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 50%;
-      width: 1px;
-      height: 70px;
-      background: linear-gradient(var(--verde), transparent);
-      opacity: .4;
-    }
-
-    .pacotes-cabecalho {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: end;
-      gap: 40px;
-      margin-bottom: 50px;
-    }
-
-    .pacotes-cabecalho .descricao-secao {
-      margin: 0 0 5px auto;
-      max-width: 420px;
-    }
-
-    .lista-pacotes {
-      display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: 15px;
-      align-items: stretch;
-    }
-
-    .pacote {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-      padding: 26px 22px 23px;
-      background: var(--card);
-      border: 1px solid rgba(226,225,215,.09);
-      transition: border-color .25s, background .25s, transform .25s;
-    }
-
-    .pacote:hover {
-      border-color: rgba(131,169,157,.55);
-      background: var(--card-claro);
-      transform: translateY(-3px);
-    }
-
-    .pacote:nth-child(1),
-    .pacote:nth-child(2),
-    .pacote:nth-child(3) {
-      grid-column: span 2;
-    }
-
-    .pacote:nth-child(4),
-    .pacote:nth-child(5) {
-      grid-column: span 3;
-    }
-
-    .pacote-indice {
-      color: var(--verde);
-      font-size: 9px;
-      letter-spacing: .18em;
-      margin-bottom: 24px;
-    }
-
-    .pacote h3 {
-      min-height: 52px;
-      color: var(--offwhite);
-      font-family: var(--serif);
-      font-size: 27px;
-      font-weight: 500;
-      line-height: 1.02;
-    }
-
-    .pacote-preco {
-      margin-top: 19px;
-      color: var(--offwhite);
-      font-family: var(--serif);
-      font-size: 39px;
-      font-weight: 400;
-      line-height: 1;
-      letter-spacing: -.025em;
-    }
-
-    .pacote-preco small {
-      display: block;
-      margin-top: 7px;
-      color: var(--muted);
-      font-family: var(--sans);
-      font-size: 9px;
-      letter-spacing: .04em;
-      line-height: 1.5;
-    }
-
-    .pacote-dados {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: 23px;
-      padding: 17px 0;
-      border-top: 1px solid var(--linha);
-      border-bottom: 1px solid var(--linha);
-      color: var(--texto);
-      font-size: 10px;
-      line-height: 1.6;
-    }
-
-    .pacote-dados span {
-      display: flex;
-      align-items: flex-start;
-      gap: 9px;
-    }
-
-    .pacote-dados span::before {
-      content: "";
-      flex: 0 0 4px;
-      width: 4px;
-      height: 4px;
-      margin-top: 7px;
-      border-radius: 50%;
-      background: var(--verde);
-    }
-
-    .pacote-descricao {
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 11px;
-      line-height: 1.85;
-      flex: 1;
-    }
-
-    .pacote:first-child .pacote-descricao::before {
-      content: "";
-      display: block;
-      width: 25px;
-      height: 2px;
-      margin-bottom: 15px;
-      background: var(--verde);
-    }
-
-    .pacote .botao {
-      width: 100%;
-      min-height: 43px;
-      margin-top: 25px;
-      padding: 11px 12px;
-      font-size: 9px;
-      letter-spacing: .08em;
-    }
-
-    .pacote .botao-secundario {
-      color: var(--offwhite);
-      background: transparent;
-      border-color: var(--linha);
-    }
-
-    .pacote .botao-secundario:hover {
-      background: var(--verde);
-      color: var(--fundo-escuro);
-      border-color: var(--verde);
-    }
-
-    .nota-cenario {
-      margin-top: 22px;
-      padding: 18px 20px;
-      border-left: 1px solid var(--verde);
-      background: rgba(131,169,157,.055);
-      color: var(--muted);
-      font-size: 11px;
-      line-height: 1.9;
-    }
-
-    .nota-cenario strong {
-      color: var(--offwhite);
-      font-weight: 500;
-    }
-
-    /* COMO FUNCIONA */
-
-    .processo {
-      padding: 100px 0;
-      background: #E2E1D7;
-      color: #26372E;
-    }
-
-    .processo .etiqueta {
-      color: #52786B;
-    }
-
-    .processo .titulo-secao {
-      color: #25372D;
-    }
-
-    .processo .descricao-secao {
-      color: #68766C;
-    }
-
-    .processo-grade {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 30px;
-      margin-top: 48px;
-    }
-
-    .processo-item {
-      padding-top: 20px;
-      border-top: 1px solid rgba(38,55,46,.25);
-    }
-
-    .processo-numero {
-      color: #64877A;
-      font-family: var(--serif);
-      font-size: 30px;
-      line-height: 1;
-    }
-
-    .processo-item h3 {
-      margin-top: 16px;
-      font-family: var(--serif);
-      font-size: 26px;
-      font-weight: 500;
-    }
-
-    .processo-item p {
-      max-width: 310px;
-      margin-top: 9px;
-      color: #68766C;
-      font-size: 12px;
-      line-height: 1.9;
-    }
-
-    /* CONTATO E FORMULÁRIO */
-
-    .contato {
-      position: relative;
-      padding: 110px 0 105px;
-      background: #202F27;
-      color: var(--texto);
-      border-top: 1px solid var(--linha);
-    }
-
-    .contato-grade {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 90px;
-      align-items: start;
-    }
-
-    .contato .titulo-secao {
-      margin-top: 13px;
-    }
-
-    .contato .descricao-secao {
-      max-width: 390px;
-    }
-
-    .contato-links {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 34px;
-    }
-
-    .link-contato {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 14px 16px;
-      border: 1px solid var(--linha);
-      color: var(--offwhite);
-      font-size: 11px;
-      transition: background .2s, color .2s, border-color .2s;
-    }
-
-    .link-contato span {
-      color: var(--verde);
-      font-size: 16px;
-    }
-
-    .link-contato:hover {
-      background: var(--offwhite);
-      color: var(--fundo-escuro);
-      border-color: var(--offwhite);
-    }
-
-    .link-contato:hover span {
-      color: var(--fundo-escuro);
-    }
-
-    .formulario {
-      padding: 32px;
-      background: rgba(17,35,27,.38);
-      border: 1px solid rgba(131,169,157,.25);
-    }
-
-    .formulario-titulo {
-      color: var(--offwhite);
-      font-family: var(--serif);
-      font-size: 31px;
-      font-weight: 400;
-      margin-bottom: 25px;
-    }
-
-    .campo {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-
-    .campo label {
-      color: var(--muted);
-      font-size: 10px;
-      letter-spacing: .08em;
-    }
-
-    .campo input,
-    .campo select,
-    .campo textarea {
-      width: 100%;
-      min-height: 46px;
-      padding: 12px 13px;
-      border: 1px solid #40564A;
-      border-radius: 0;
-      outline: none;
-      background: #1A2921;
-      color: var(--offwhite);
-      font-size: 12px;
-      font-weight: 300;
-      transition: border-color .2s;
-    }
-
-    .campo input:focus,
-    .campo select:focus,
-    .campo textarea:focus {
-      border-color: var(--verde);
-    }
-
-    .campo input::placeholder,
-    .campo textarea::placeholder {
-      color: #829086;
-    }
-
-    .campo select {
-      color-scheme: dark;
-    }
-
-    .campo textarea {
-      min-height: 105px;
-      resize: vertical;
-    }
-
-    .campo-duplo {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
-
-    .formulario .botao {
-      width: 100%;
-      margin-top: 5px;
-    }
-
-    .aviso-formulario {
-      margin-top: 13px;
-      color: #91A095;
-      font-size: 10px;
-      line-height: 1.7;
-      text-align: center;
-    }
-
-    /* RODAPÉ */
-
-    footer {
-      position: relative;
-      overflow: hidden;
-      padding: 28px 0 24px;
-      background: #17231D;
-      border-top: 1px solid rgba(131,169,157,.2);
-    }
-
-    .rodape-detalhe {
-      display: flex;
-      justify-content: center;
-      gap: 7px;
-      margin-bottom: 22px;
-      opacity: .45;
-    }
-
-    .camera {
-      position: relative;
-      width: 24px;
-      height: 17px;
-      border: 1px solid var(--verde);
-    }
-
-    .camera::before {
-      content: "";
-      position: absolute;
-      top: -4px;
-      left: 4px;
-      width: 7px;
-      height: 3px;
-      border: 1px solid var(--verde);
-      border-bottom: 0;
-    }
-
-    .camera::after {
-      content: "";
-      position: absolute;
-      top: 4px;
-      left: 8px;
-      width: 6px;
-      height: 6px;
-      border: 1px solid var(--verde);
-      border-radius: 50%;
-    }
-
-    .rodape-principal {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .rodape-marca {
-      color: var(--offwhite);
-      font-family: var(--serif);
-      font-size: 22px;
-      letter-spacing: .16em;
-    }
-
-    .rodape-texto {
-      color: var(--muted);
-      font-size: 10px;
-      text-align: center;
-    }
-
-    .rodape-redes {
-      display: flex;
-      gap: 18px;
-    }
-
-    .rodape-redes a {
-      color: var(--muted);
-      font-size: 10px;
-      transition: color .2s;
-    }
-
-    .rodape-redes a:hover {
-      color: var(--offwhite);
-    }
-
-    .rodape-copy {
-      margin-top: 22px;
-      padding-top: 15px;
-      border-top: 1px solid rgba(131,169,157,.12);
-      color: #819087;
-      font-size: 9px;
-      text-align: center;
-      letter-spacing: .04em;
-    }
-
-    /* TABLETS */
-
-    @media (max-width: 1000px) {
-      .lista-pacotes {
-        grid-template-columns: repeat(6, minmax(0, 1fr));
-      }
-
-      .pacote {
-        padding: 23px 18px 20px;
-      }
-
-      .pacote h3 {
-        font-size: 25px;
-      }
-
-      .pacote-preco {
-        font-size: 35px;
-      }
-
-      .contato-grade {
-        gap: 45px;
-      }
-    }
-
-    /* CELULARES */
-
-    @media (max-width: 700px) {
-      .container {
-        width: calc(100% - 40px);
-      }
-
-      .cabecalho {
-        min-height: 70px;
-        grid-template-columns: 1fr auto;
-      }
-
-      .marca {
-        grid-column: 1;
-        justify-self: start;
-        font-size: 26px;
-      }
-
-      .navegacao {
-        grid-column: 2;
-        gap: 0;
-      }
-
-      .navegacao a:not(.nav-destaque) {
-        display: none;
-      }
-
-      .navegacao .nav-destaque {
-        padding: 9px 12px;
-        border: 1px solid var(--linha);
-        font-size: 9px;
-      }
-
-      .hero {
-        min-height: 540px;
-      }
-
-      .hero::before {
-        background-position: 60% center;
-      }
-
-      .hero::after {
-        background: linear-gradient(
-          90deg,
-          rgba(19,36,28,.87) 0%,
-          rgba(25,43,33,.66) 55%,
-          rgba(25,43,33,.42) 100%
-        );
-        box-shadow: inset 0 0 0 10px rgba(228,226,216,.09);
-      }
-
-      .hero-conteudo {
-        width: calc(100% - 48px);
-        padding: 72px 0 80px;
-      }
-
-      .hero h1 {
-        font-size: clamp(49px, 12vw, 70px);
-      }
-
-      .hero-descricao {
-        max-width: 330px;
-      }
-
-      .hero-indice {
-        right: 24px;
-        bottom: 23px;
-      }
-
-      .portfolio {
-        padding: 78px 0 82px;
-      }
-
-      .portfolio-cabecalho,
-      .pacotes-cabecalho {
-        grid-template-columns: 1fr;
-        gap: 18px;
-        margin-bottom: 32px;
-      }
-
-      .portfolio-cabecalho .descricao-secao,
-      .pacotes-cabecalho .descricao-secao {
-        margin: 0;
-      }
-
-      .galeria {
-        grid-template-columns: repeat(6, minmax(0, 1fr));
-        gap: 12px;
-      }
-
-      .foto:nth-child(1) {
-        grid-column: 1 / span 3;
-        aspect-ratio: 3 / 4;
-        margin-top: 20px;
-      }
-
-      .foto:nth-child(2) {
-        grid-column: 4 / span 3;
-        aspect-ratio: 3 / 4;
-        margin-top: 0;
-      }
-
-      .foto:nth-child(3) {
-        grid-column: 1 / span 4;
-        aspect-ratio: 4 / 5;
-        margin-top: 6px;
-      }
-
-      .foto:nth-child(4) {
-        grid-column: 5 / span 2;
-        aspect-ratio: 3 / 4;
-        margin-top: 35px;
-      }
-
-      .galeria-nota {
-        font-size: 9px;
-      }
-
-      .pacotes {
-        padding: 80px 0;
-      }
-
-      .lista-pacotes {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-      }
-
-      .pacote:nth-child(1),
-      .pacote:nth-child(2),
-      .pacote:nth-child(3),
-      .pacote:nth-child(4),
-      .pacote:nth-child(5) {
-        grid-column: span 1;
-      }
-
-      .pacote {
-        padding: 20px 15px 17px;
-      }
-
-      .pacote:nth-child(5) {
-        grid-column: 1 / -1;
-      }
-
-      .pacote-indice {
-        margin-bottom: 17px;
-      }
-
-      .pacote h3 {
-        min-height: 48px;
-        font-size: 24px;
-      }
-
-      .pacote-preco {
-        font-size: 33px;
-      }
-
-      .pacote-dados {
-        font-size: 9px;
-      }
-
-      .pacote .botao {
-        font-size: 8px;
-        letter-spacing: .04em;
-      }
-
-      .nota-cenario {
-        padding: 15px;
-      }
-
-      .processo {
-        padding: 78px 0;
-      }
-
-      .processo-grade {
-        grid-template-columns: 1fr;
-        gap: 28px;
-        margin-top: 35px;
-      }
-
-      .processo-item p {
-        max-width: 100%;
-      }
-
-      .contato {
-        padding: 80px 0;
-      }
-
-      .contato-grade {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .formulario {
-        padding: 23px 18px;
-      }
-
-      .formulario-titulo {
-        font-size: 28px;
-      }
-
-      .campo-duplo {
-        grid-template-columns: 1fr;
-        gap: 0;
-      }
-
-      .rodape-detalhe {
-        gap: 5px;
-        margin-bottom: 20px;
-      }
-
-      .camera {
-        width: 20px;
-        height: 15px;
-      }
-
-      .camera::after {
-        left: 6px;
-        top: 3px;
-      }
-
-      .rodape-principal {
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      .rodape-texto {
-        max-width: 260px;
-      }
-
-      .rodape-copy {
-        margin-top: 18px;
-      }
-    }
-
-    @media (max-width: 370px) {
-      .marca {
-        font-size: 22px;
-        letter-spacing: .13em;
-      }
-
-      .lista-pacotes {
-        grid-template-columns: 1fr;
-      }
-
-      .pacote:nth-child(1),
-      .pacote:nth-child(2),
-      .pacote:nth-child(3),
-      .pacote:nth-child(4),
-      .pacote:nth-child(5) {
-        grid-column: 1;
-      }
-
-      .pacote h3 {
-        min-height: auto;
-      }
-
-      .hero h1 {
-        font-size: 47px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        transition-duration: .01ms !important;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <header>
-    <div class="container cabecalho">
-      <a class="marca" href="#inicio" aria-label="MATHS PHOTO, início">
-        MATHS <span>PHOTO</span>
-      </a>
-
-      <nav class="navegacao" aria-label="Navegação principal">
-        <a href="#portfolio">Portfólio</a>
-        <a href="#pacotes">Pacotes</a>
-        <a href="#contato" class="nav-destaque">Agendar ensaio ↗</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero" id="inicio">
-      <div class="hero-conteudo">
-        <p class="etiqueta">Retratos e fotografia cosplay</p>
-
-        <h1>
-          Seu personagem.
-          <span>Seu momento.</span>
-        </h1>
-
-        <p class="hero-descricao">
-          Fotografias para valorizar sua interpretação,
-          seu personagem e a ideia que você quer transformar em imagem.
-        </p>
-
-        <div class="hero-acoes">
-          <a class="botao" href="#pacotes">
-            Conheça os pacotes <span class="seta">↗</span>
-          </a>
-
-          <a class="link-discreto" href="#portfolio">
-            Ver portfólio <span>↓</span>
-          </a>
-        </div>
-      </div>
-
-      <span class="hero-indice">MATHS PHOTO · SP</span>
-    </section>
-
-    
-<section class="portfolio" id="portfolio">
-  <div class="container">
-    <div class="portfolio-cabecalho">
-      <div>
-        <p class="etiqueta">Portfólio</p>
-        <h2 class="titulo-secao">Retratos em<br>eventos e ensaios</h2>
-      </div>
-
-      <p class="descricao-secao">
-        Conheça diferentes formas de fotografar seu personagem,
-        dos retratos em eventos aos ensaios planejados.
-      </p>
-    </div>
-
-    <div class="categoria-galeria">
-      <h3>Eventos</h3>
-      <div class="galeria">
-        <figure class="foto">
-          <img src="./ei_1776719156763-removebg%20(1).jpg"
-               alt="Retrato cosplay em evento" loading="lazy"
-               onerror="this.style.display='none';this.parentElement.classList.add('sem-foto')">
-        </figure>
-
-        <figure class="foto">
-          <img src="./Upfoto_CcA3iWz8dbqAYwoUkv2eC0tAAhEll72d5Xu2pcYwgSWoH.jpg"
-               alt="Ensaio cosplay em evento" loading="lazy"
-               onerror="this.style.display='none';this.parentElement.classList.add('sem-foto')">
-        </figure>
-
-        <figure class="foto">
-          <img src="./IMG_9975.jpg"
-               alt="Retrato de personagem em evento" loading="lazy"
-               onerror="this.style.display='none';this.parentElement.classList.add('sem-foto')">
-        </figure>
-
-        <figure class="foto">
-          <img src="./IMG_7655_1.jpg"
-               alt="Fotografia cosplay em evento" loading="lazy"
-               onerror="this.style.display='none';this.parentElement.classList.add('sem-foto')">
-        </figure>
-      </div>
-    </div>
-
-    <div class="categoria-galeria">
-      <h3>Foto a domicílio</h3>
-      <div class="galeria">
-        <figure class="foto foto-vazia"><div class="slot-vazio"><span>＋</span>Foto a domicílio 01</div></figure>
-        <figure class="foto foto-vazia"><div class="slot-vazio"><span>＋</span>Foto a domicílio 02</div></figure>
-      </div>
-    </div>
-
-    <div class="categoria-galeria">
-      <h3>Cenário produzido</h3>
-      <div class="galeria">
-        <figure class="foto foto-vazia"><div class="slot-vazio"><span>＋</span>Cenário produzido 01</div></figure>
-        <figure class="foto foto-vazia"><div class="slot-vazio"><span>＋</span>Cenário produzido 02</div></figure>
-      </div>
-    </div>
-
-    <div class="categoria-galeria">
-      <h3>Estúdio</h3>
-      <div class="galeria">
-        <figure class="foto foto-vazia"><div class="slot-vazio"><span>＋</span>Estúdio 01</div></figure>
-        <figure class="foto foto-vazia"><div class="slot-vazio"><span>＋</span>Estúdio 02</div></figure>
-        <figure class="foto foto-vazia"><div class="slot-vazio"><span>＋</span>Estúdio 03</div></figure>
-        <figure class="foto foto-vazia"><div class="slot-vazio"><span>＋</span>Estúdio 04</div></figure>
-      </div>
-    </div>
-
-    <p class="galeria-nota">
-      Cada ensaio tem sua proposta e seu processo criativo.
-    </p>
-  </div>
-</section>
-    
-
-    <section class="pacotes" id="pacotes">
-      <div class="container">
-        <div class="pacotes-cabecalho">
-          <div>
-            <p class="etiqueta">Valores e opções</p>
-            <h2 class="titulo-secao">Escolha seu<br>ensaio.</h2>
-          </div>
-
-          <p class="descricao-secao">
-            Cada opção tem uma proposta diferente. Se você já tem uma
-            ideia em mente, podemos conversar sobre como realizar.
-          </p>
-        </div>
-
-        <div class="lista-pacotes">
-
-          <article class="pacote">
-            <p class="pacote-indice">01 / EVENTO</p>
-            <h3>Miniensaio<br>em evento</h3>
-
-            <p class="pacote-preco">
-              R$ 80
-              <small>por sessão</small>
-            </p>
-
-            <div class="pacote-dados">
-              <span>10 fotos editadas</span>
-              <span>Realizado durante o evento</span>
-            </div>
-
-            <p class="pacote-descricao">
-              Uma opção para registrar seu cosplay durante o evento,
-              sem precisar organizar um ensaio completo.
-            </p>
-
-            <button class="botao" type="button" data-pacote="Miniensaio em evento">
-              Escolher <span class="seta">↗</span>
-            </button>
-          </article>
-
-          <article class="pacote">
-            <p class="pacote-indice">02 / EXTERNO</p>
-            <h3>Ensaio<br>externo</h3>
-
-            <p class="pacote-preco">
-              R$ 150
-              <small>por ensaio</small>
-            </p>
-
-            <div class="pacote-dados">
-              <span>Aproximadamente 3 horas</span>
-              <span>15 a 20 fotos editadas</span>
-            </div>
-
-            <p class="pacote-descricao">
-              Para quem quer fotografar em um ambiente externo e
-              aproveitar o cenário para compor as imagens.
-            </p>
-
-            <button class="botao botao-secundario" type="button" data-pacote="Ensaio externo">
-              Escolher <span class="seta">↗</span>
-            </button>
-          </article>
-
-          <article class="pacote">
-            <p class="pacote-indice">03 / PARTICULAR</p>
-            <h3>Ensaio<br>a domicilio</h3>
-
-            <p class="pacote-preco">
-              R$ 200
-              <small>por ensaio</small>
-            </p>
-
-            <div class="pacote-dados">
-              <span>15 a 20 fotos editadas</span>
-              <span>Realizado na sua casa</span>
-            </div>
-
-            <p class="pacote-descricao">
-              Uma alternativa para criar retratos em um espaço
-              familiar, aproveitando as possibilidades do ambiente.
-            </p>
-
-            <button class="botao botao-secundario" type="button" data-pacote="Ensaio em casa">
-              Escolher <span class="seta">↗</span>
-            </button>
-          </article>
-
-          <article class="pacote">
-            <p class="pacote-indice">04 / ESTÚDIO</p>
-            <h3>Ensaio<br>em estúdio</h3>
-
-            <p class="pacote-preco">
-              a partir de R$ 480
-              <small>fotografia + locação</small>
-            </p>
-
-            <div class="pacote-dados">
-              <span>3 horas de estúdio</span>
-              <span>15 a 20 fotos editadas</span>
-              <span>Fotografia: R$ 150</span>
-              <span>Locação: R$ 330 por 3h de reserva ou até 530 a diaria</span>
-            </div>
-
-            <p class="pacote-descricao">
-              Para produzir retratos com iluminação controlada e
-              explorar diferentes poses e composições.
-            </p>
-
-            <button class="botao botao-secundario" type="button" data-pacote="Ensaio em estúdio">
-              Escolher <span class="seta">↗</span>
-            </button>
-          </article>
-
-          <article class="pacote">
-            <p class="pacote-indice">05 / PROJETO ESPECIAL</p>
-            <h3>Cenário<br>personalizado</h3>
-
-            <p class="pacote-preco">
-              A partir de R$ 880
-              <small>valor conforme o projeto</small>
-            </p>
-
-            <div class="pacote-dados">
-              <span>3 horas de estúdio</span>
-              <span>15 a 20 fotos editadas</span>
-              <span>Fotografia: R$ 150</span>
-              <span>Locação: R$ 330</span>
-              <span>Materiais e cenário: a partir de R$ 400</span>
-            </div>
-
-            <p class="pacote-descricao">
-              Para ideias que precisam de elementos específicos,
-              objetos e uma composição pensada para o personagem.
-            </p>
-
-            <button class="botao botao-secundario" type="button" data-pacote="Ensaio com cenário personalizado">
-              Planejar projeto <span class="seta">↗</span>
-            </button>
-          </article>
-
-        </div>
-
-        <div class="nota-cenario">
-          <strong>Sobre os cenários personalizados:</strong>
-          os objetos comprados especificamente para o seu projeto
-          podem ficar com você, se desejar. Itens da minha coleção
-          continuam comigo. Se já tivermos materiais adequados
-          disponíveis, o valor poderá ser menor.
-        </div>
-      </div>
-    </section>
-
-    <section class="processo" id="como-funciona">
-      <div class="container">
-        <p class="etiqueta">Como funciona</p>
-        <h2 class="titulo-secao">Do planejamento<br>às fotografias.</h2>
-
-        <p class="descricao-secao">
-          A ideia é alinhar o que você imaginou antes de marcar o ensaio.
-        </p>
-
-        <div class="processo-grade">
-          <article class="processo-item">
-            <span class="processo-numero">01</span>
-            <h3>Vamos conversar</h3>
-            <p>
-              Você me conta qual personagem quer fotografar, sua ideia
-              e qual tipo de ensaio tem em mente.
-            </p>
-          </article>
-
-          <article class="processo-item">
-            <span class="processo-numero">02</span>
-            <h3>Planejamos juntos</h3>
-            <p>
-              Combinamos o local, a data e os detalhes necessários
-              para realizar as fotografias.
-            </p>
-          </article>
-
-          <article class="processo-item">
-            <span class="processo-numero">03</span>
-            <h3>Hora de fotografar</h3>
-            <p>
-              Depois do ensaio, seleciono e edito as imagens
-              previstas no pacote escolhido.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="contato" id="contato">
-      <div class="container contato-grade">
-
-        <div class="contato-intro">
-          <p class="etiqueta">Contato</p>
-          <h2 class="titulo-secao">Vamos<br>conversar?</h2>
-
-          <p class="descricao-secao">
-            Se quiser tirar uma dúvida ou pensar em um ensaio,
-            pode me chamar por aqui.
-          </p>
-
-          <div class="contato-links">
-            <a
-              class="link-contato"
-              href="https://www.instagram.com/maths.photo/"
-              target="_blank"
-              rel="noopener noreferrer">
-              Instagram <span>↗</span>
-            </a>
-
-            <a
-              class="link-contato"
-              href="https://www.behance.net/matheusalmeida84"
-              target="_blank"
-              rel="noopener noreferrer">
-              Behance <span>↗</span>
-            </a>
-
-            <a
-              class="link-contato"
-              href="https://wa.me/5511946017570"
-              target="_blank"
-              rel="noopener noreferrer">
-              WhatsApp <span>↗</span>
-            </a>
-          </div>
-        </div>
-
-        <form class="formulario" id="formulario">
-          <h3 class="formulario-titulo">Sobre seu ensaio</h3>
-
-          <div class="campo">
-            <label for="nome">SEU NOME E SEU PERSONAGEM</label>
-            <input
-              id="nome"
-              name="nome"
-              type="text"
-              placeholder="Como posso te chamar?"
-              required>
-          </div>
-
-          <div class="campo">
-            <label for="pacote">TIPO DE ENSAIO</label>
-            <select id="pacote" name="pacote" required>
-              <option value="">Escolha uma opção</option>
-              <option value="Miniensaio em evento">Miniensaio em evento — R$ 80</option>
-              <option value="Ensaio externo">Ensaio externo — R$ 150</option>
-              <option value="Ensaio em casa">Ensaio em casa — R$ 200</option>
-              <option value="Ensaio em estúdio">Ensaio em estúdio — a partir R$ 480</option>
-              <option value="Ensaio com cenário personalizado">Cenário personalizado — a partir de R$ 880</option>
-              <option value="Ainda não decidi">Ainda não decidi</option>
-            </select>
-          </div>
-
-          <div class="campo-duplo">
-            <div class="campo">
-              <label for="data">DATA DE PREFERÊNCIA</label>
-              <input id="data" name="data" type="date">
-            </div>
-
-            <div class="campo">
-              <label for="periodo">PERÍODO</label>
-              <select id="periodo" name="periodo">
-                <option value="">A combinar</option>
-                <option value="Manhã">Manhã</option>
-                <option value="Tarde">Tarde</option>
-                <option value="Noite">Noite</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="campo">
-            <label for="detalhes">CONTE UM POUCO DA SUA IDEIA</label>
-            <textarea
-              id="detalhes"
-              name="detalhes"
-              placeholder="Personagem, local ou qualquer detalhe que já tenha pensado."></textarea>
-          </div>
-
-          <button class="botao" type="submit">
-            Enviar pelo WhatsApp <span class="seta">↗</span>
-          </button>
-
-          <p class="aviso-formulario">
-            O formulário prepara uma mensagem no WhatsApp.
-            A data será confirmada após conversarmos.
-          </p>
-        </form>
-
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-
-      <div class="rodape-detalhe" aria-hidden="true">
-        <span class="camera"></span>
-        <span class="camera"></span>
-        <span class="camera"></span>
-        <span class="camera"></span>
-        <span class="camera"></span>
-      </div>
-
-      <div class="rodape-principal">
-        <a class="rodape-marca" href="#inicio">
-          MATHS <span>PHOTO</span>
-        </a>
-
-        <p class="rodape-texto">
-          Retratos, personagens e histórias.
-        </p>
-
-        <div class="rodape-redes">
-          <a href="https://www.instagram.com/maths.photo/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
-          <a href="https://www.behance.net/matheusalmeida84" target="_blank" rel="noopener noreferrer">Behance ↗</a>
-        </div>
-      </div>
-
-      <p class="rodape-copy">
-        © <span id="ano"></span> MATHS PHOTO · Todos os direitos reservados.
-      </p>
-    </div>
-  </footer>
-
-  <script>
-    const telefone = "5511946017570";
-
-    document.getElementById("ano").textContent = new Date().getFullYear();
-
-    const campoData = document.getElementById("data");
-    const hoje = new Date();
-    const ano = hoje.getFullYear();
-    const mes = String(hoje.getMonth() + 1).padStart(2, "0");
-    const dia = String(hoje.getDate()).padStart(2, "0");
-
-    campoData.min = `${ano}-${mes}-${dia}`;
-
-    document.querySelectorAll("[data-pacote]").forEach((botao) => {
-      botao.addEventListener("click", () => {
-        document.getElementById("pacote").value = botao.dataset.pacote;
-        document.getElementById("contato").scrollIntoView({
-          behavior: "smooth"
-        });
-      });
-    });
-
-    document.getElementById("formulario").addEventListener("submit", (evento) => {
-      evento.preventDefault();
-
-      const nome = document.getElementById("nome").value.trim();
-      const pacote = document.getElementById("pacote").value;
-      const data = document.getElementById("data").value;
-      const periodo = document.getElementById("periodo").value;
-      const detalhes = document.getElementById("detalhes").value.trim();
-
-      const dataFormatada = data
-        ? data.split("-").reverse().join("/")
-        : "A combinar";
-
-      const mensagem = [
-        "Olá! Vim pelo site MATHS PHOTO e gostaria de conversar sobre um ensaio.",
-        "",
-        `Nome: ${nome}`,
-        `Ensaio: ${pacote}`,
-        `Data de preferência: ${dataFormatada}`,
-        `Período: ${periodo || "A combinar"}`,
-        `Ideia e detalhes: ${detalhes || "Ainda vou definir."}`
-      ].join("\n");
-
-      const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
-
-      window.open(url, "_blank", "noopener,noreferrer");
-    });
-  </script>
-
-</body>
-</html>
+<!DOCTYPE html>  <html lang="pt-BR">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <meta name="theme-color" content="#1E2F27">  
+  <meta name="description" content="Retratos e ensaios cosplay em São Paulo e Guarulhos. Escolha seu pacote e vamos planejar seu ensaio.">  
+  <title>MATHS PHOTO | Retratos e Cosplay</title>    <link rel="preconnect" href="https://fonts.googleapis.com">  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">    <style>  
+    :root {  
+      --fundo: #1E2F27;  
+      --fundo-escuro: #17231D;  
+      --card: #263B31;  
+      --card-claro: #2B4035;  
+      --offwhite: #E2E1D7;  
+      --texto: #D5D9D0;  
+      --muted: #A9B4AA;  
+      --verde: #83A99D;  
+      --linha: #40564A;  
+      --serif: "Cormorant Garamond", Georgia, serif;  
+      --sans: "DM Sans", Arial, sans-serif;  
+      --largura: 1160px;  
+    }  
+  
+    * {  
+      box-sizing: border-box;  
+      margin: 0;  
+      padding: 0;  
+    }  
+  
+    html {  
+      scroll-behavior: smooth;  
+      scroll-padding-top: 80px;  
+    }  
+  
+    body {  
+      background: var(--fundo);  
+      color: var(--texto);  
+      font-family: var(--sans);  
+      font-size: 14px;  
+      line-height: 1.7;  
+      font-weight: 300;  
+      overflow-x: hidden;  
+    }  
+  
+    body::before {  
+      content: "";  
+      position: fixed;  
+      inset: 0;  
+      z-index: 10;  
+      pointer-events: none;  
+      opacity: .10;  
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");  
+      background-size: 180px 180px;  
+    }  
+  
+    a {  
+      color: inherit;  
+      text-decoration: none;  
+    }  
+  
+    button, input, select, textarea {  
+      font: inherit;  
+    }  
+  
+    button, a {  
+      -webkit-tap-highlight-color: transparent;  
+    }  
+  
+    img {  
+      display: block;  
+      max-width: 100%;  
+    }  
+  
+    .container {  
+      width: min(var(--largura), calc(100% - 64px));  
+      margin: 0 auto;  
+    }  
+  
+    .serif {  
+      font-family: var(--serif);  
+      font-weight: 400;  
+    }  
+  
+    .etiqueta {  
+      display: inline-flex;  
+      align-items: center;  
+      gap: 12px;  
+      color: var(--verde);  
+      font-size: 10px;  
+      letter-spacing: .22em;  
+      text-transform: uppercase;  
+      font-weight: 500;  
+    }  
+  
+    .etiqueta::before {  
+      content: "";  
+      display: block;  
+      width: 24px;  
+      height: 1px;  
+      background: currentColor;  
+    }  
+  
+    .titulo-secao {  
+      color: var(--offwhite);  
+      font-family: var(--serif);  
+      font-size: clamp(38px, 5vw, 58px);  
+      font-weight: 400;  
+      line-height: 1.05;  
+      letter-spacing: -.025em;  
+    }  
+  
+    .descricao-secao {  
+      max-width: 540px;  
+      margin-top: 18px;  
+      color: var(--muted);  
+      font-size: 13px;  
+      line-height: 1.9;  
+    }  
+  
+    .botao {  
+      min-height: 48px;  
+      display: inline-flex;  
+      align-items: center;  
+      justify-content: center;  
+      gap: 16px;  
+      padding: 13px 22px;  
+      border: 1px solid var(--verde);  
+      background: var(--verde);  
+      color: var(--fundo-escuro);  
+      font-size: 10px;  
+      letter-spacing: .12em;  
+      text-transform: uppercase;  
+      font-weight: 600;  
+      transition: background .25s, color .25s, border-color .25s;  
+      cursor: pointer;  
+    }  
+  
+    .botao:hover {  
+      background: transparent;  
+      color: var(--offwhite);  
+      border-color: var(--offwhite);  
+    }  
+  
+    .botao .seta {  
+      font-size: 17px;  
+      line-height: 1;  
+      transition: transform .25s;  
+    }  
+  
+    .botao:hover .seta {  
+      transform: translateX(4px);  
+    }  
+  
+    /* CABEÇALHO */  
+  
+    header {  
+      position: relative;  
+      z-index: 20;  
+      background: var(--fundo-escuro);  
+      border-bottom: 1px solid rgba(131,169,157,.18);  
+    }  
+  
+    .cabecalho {  
+      min-height: 78px;  
+      display: grid;  
+      grid-template-columns: 1fr auto 1fr;  
+      align-items: center;  
+      gap: 20px;  
+    }  
+  
+    .marca {  
+      grid-column: 2;  
+      color: var(--offwhite);  
+      font-family: var(--serif);  
+      font-size: 29px;  
+      letter-spacing: .19em;  
+      font-weight: 500;  
+      white-space: nowrap;  
+    }  
+  
+    .marca span,  
+    .rodape-marca span {  
+      color: var(--verde);  
+    }  
+  
+    .navegacao {  
+      grid-column: 3;  
+      justify-self: end;  
+      display: flex;  
+      align-items: center;  
+      gap: 25px;  
+    }  
+  
+    .navegacao a {  
+      color: var(--muted);  
+      font-size: 10px;  
+      letter-spacing: .08em;  
+      transition: color .2s;  
+    }  
+  
+    .navegacao a:hover {  
+      color: var(--offwhite);  
+    }  
+  
+    .navegacao .nav-destaque {  
+      color: var(--offwhite);  
+      padding-bottom: 4px;  
+      border-bottom: 1px solid var(--verde);  
+    }  
+  
+    /* DESTAQUE PRINCIPAL */  
+  
+    .hero {  
+      position: relative;  
+      isolation: isolate;  
+      min-height: 590px;  
+      display: flex;  
+      align-items: center;  
+      overflow: hidden;  
+      background: var(--fundo-escuro);  
+      border-bottom: 1px solid var(--linha);  
+    }  
+  
+    .hero::before {  
+      content: "";  
+      position: absolute;  
+      inset: 0;  
+      z-index: -2;  
+      background-image: url("./banner.jpg");  
+      background-position: center 42%;  
+      background-size: cover;  
+      background-repeat: no-repeat;  
+      filter: saturate(.62) contrast(.96);  
+      transform: scale(1.01);  
+    }  
+  
+    .hero::after {  
+      content: "";  
+      position: absolute;  
+      inset: 0;  
+      z-index: -1;  
+      pointer-events: none;  
+      background: linear-gradient(  
+        90deg,  
+        rgba(19,36,28,.88) 0%,  
+        rgba(25,43,33,.68) 38%,  
+        rgba(25,43,33,.26) 72%,  
+        rgba(25,43,33,.30) 100%  
+      );  
+      box-shadow: inset 0 0 0 18px rgba(228,226,216,.10);  
+    }  
+  
+    .hero-conteudo {  
+      width: min(var(--largura), calc(100% - 64px));  
+      margin: 0 auto;  
+      padding: 80px 0 86px;  
+    }  
+  
+    .hero .etiqueta {  
+      margin-bottom: 23px;  
+    }  
+  
+    .hero h1 {  
+      max-width: 690px;  
+      color: #F0EFE7;  
+      font-family: var(--serif);  
+      font-weight: 400;  
+      font-size: clamp(54px, 7.2vw, 91px);  
+      line-height: .98;  
+      letter-spacing: -.035em;  
+    }  
+  
+    .hero h1 span {  
+      display: block;  
+      color: #B7C9BE;  
+      font-style: italic;  
+    }  
+  
+    .hero-descricao {  
+      max-width: 405px;  
+      margin-top: 25px;  
+      color: rgba(242,241,232,.84);  
+      font-size: 13px;  
+      line-height: 1.9;  
+    }  
+  
+    .hero-acoes {  
+      display: flex;  
+      align-items: center;  
+      flex-wrap: wrap;  
+      gap: 24px;  
+      margin-top: 34px;  
+    }  
+  
+    .link-discreto {  
+      display: inline-flex;  
+      align-items: center;  
+      gap: 12px;  
+      color: var(--offwhite);  
+      font-size: 10px;  
+      letter-spacing: .1em;  
+      text-transform: uppercase;  
+    }  
+  
+    .link-discreto span {  
+      color: var(--verde);  
+      font-size: 17px;  
+    }  
+  
+    .hero-indice {  
+      position: absolute;  
+      right: 32px;  
+      bottom: 31px;  
+      color: rgba(242,241,232,.7);  
+      font-size: 9px;  
+      letter-spacing: .18em;  
+      text-transform: uppercase;  
+    }  
+  
+    /* PORTFÓLIO */  
+  
+    .portfolio {  
+      padding: 112px 0 118px;  
+      background: var(--fundo);  
+    }  
+  
+    .portfolio-cabecalho {  
+      display: grid;  
+      grid-template-columns: 1fr 1fr;  
+      align-items: end;  
+      gap: 48px;  
+      margin-bottom: 48px;  
+    }  
+  
+    .portfolio-cabecalho .descricao-secao {  
+      max-width: 455px;  
+      margin: 0 0 5px auto;  
+    }  
+  
+    .galeria {  
+      display: grid;  
+      grid-template-columns: repeat(12, minmax(0, 1fr));  
+      gap: 18px;  
+      align-items: start;  
+    }  
+  
+    .foto {  
+      position: relative;  
+      overflow: hidden;  
+      background: #192820;  
+      border: 1px solid rgba(226,225,215,.09);  
+    }  
+  
+    .foto img {  
+      width: 100%;  
+      height: 100%;  
+      object-fit: cover;  
+      transition: transform .65s cubic-bezier(.2,.7,.2,1), filter .5s;  
+      filter: saturate(.88);  
+    }  
+  
+    .foto:hover img {  
+      transform: scale(1.035);  
+      filter: saturate(1);  
+    }  
+  
+    .foto:nth-child(1) {  
+      grid-column: 1 / span 5;  
+      aspect-ratio: 4 / 5;  
+      margin-top: 34px;  
+    }  
+  
+    .foto:nth-child(2) {  
+      grid-column: 7 / span 6;  
+      aspect-ratio: 5 / 4;  
+    }  
+  
+    .foto:nth-child(3) {  
+      grid-column: 2 / span 6;  
+      aspect-ratio: 5 / 4;  
+      margin-top: 8px;  
+    }  
+  
+    .foto:nth-child(4) {  
+      grid-column: 9 / span 4;  
+      aspect-ratio: 4 / 5;  
+      margin-top: 54px;  
+    }  
+  
+    .sem-foto {  
+      display: flex;  
+      align-items: center;  
+      justify-content: center;  
+      min-height: 200px;  
+      color: var(--muted);  
+      font-size: 11px;  
+      text-align: center;  
+      padding: 20px;  
+    }  
+  
+    .sem-foto::after {  
+      content: "Imagem não encontrada. Confira o nome do arquivo no GitHub.";  
+    }  
+  
+    .galeria-nota {  
+      margin-top: 32px;  
+      color: var(--muted);  
+      font-size: 10px;  
+      letter-spacing: .04em;  
+      text-align: right;  
+    }  
+  
+    /* PACOTES */  
+  
+    .pacotes {  
+      position: relative;  
+      padding: 108px 0 116px;  
+      background: var(--fundo-escuro);  
+      border-top: 1px solid rgba(131,169,157,.16);  
+      border-bottom: 1px solid rgba(131,169,157,.16);  
+    }  
+  
+    .pacotes::before {  
+      content: "";  
+      position: absolute;  
+      top: 0;  
+      left: 50%;  
+      width: 1px;  
+      height: 70px;  
+      background: linear-gradient(var(--verde), transparent);  
+      opacity: .4;  
+    }  
+  
+    .pacotes-cabecalho {  
+      display: grid;  
+      grid-template-columns: 1fr 1fr;  
+      align-items: end;  
+      gap: 40px;  
+      margin-bottom: 50px;  
+    }  
+  
+    .pacotes-cabecalho .descricao-secao {  
+      margin: 0 0 5px auto;  
+      max-width: 420px;  
+    }  
+  
+    .lista-pacotes {  
+      display: grid;  
+      grid-template-columns: repeat(6, minmax(0, 1fr));  
+      gap: 15px;  
+      align-items: stretch;  
+    }  
+  
+    .pacote {  
+      position: relative;  
+      display: flex;  
+      flex-direction: column;  
+      min-width: 0;  
+      padding: 26px 22px 23px;  
+      background: var(--card);  
+      border: 1px solid rgba(226,225,215,.09);  
+      transition: border-color .25s, background .25s, transform .25s;  
+    }  
+  
+    .pacote:hover {  
+      border-color: rgba(131,169,157,.55);  
+      background: var(--card-claro);  
+      transform: translateY(-3px);  
+    }  
+  
+    .pacote:nth-child(1),  
+    .pacote:nth-child(2),  
+    .pacote:nth-child(3) {  
+      grid-column: span 2;  
+    }  
+  
+    .pacote:nth-child(4),  
+    .pacote:nth-child(5) {  
+      grid-column: span 3;  
+    }  
+  
+    .pacote-indice {  
+      color: var(--verde);  
+      font-size: 9px;  
+      letter-spacing: .18em;  
+      margin-bottom: 24px;  
+    }  
+  
+    .pacote h3 {  
+      min-height: 52px;  
+      color: var(--offwhite);  
+      font-family: var(--serif);  
+      font-size: 27px;  
+      font-weight: 500;  
+      line-height: 1.02;  
+    }  
+  
+    .pacote-preco {  
+      margin-top: 19px;  
+      color: var(--offwhite);  
+      font-family: var(--serif);  
+      font-size: 39px;  
+      font-weight: 400;  
+      line-height: 1;  
+      letter-spacing: -.025em;  
+    }  
+  
+    .pacote-preco small {  
+      display: block;  
+      margin-top: 7px;  
+      color: var(--muted);  
+      font-family: var(--sans);  
+      font-size: 9px;  
+      letter-spacing: .04em;  
+      line-height: 1.5;  
+    }  
+  
+    .pacote-dados {  
+      display: flex;  
+      flex-direction: column;  
+      gap: 8px;  
+      margin-top: 23px;  
+      padding: 17px 0;  
+      border-top: 1px solid var(--linha);  
+      border-bottom: 1px solid var(--linha);  
+      color: var(--texto);  
+      font-size: 10px;  
+      line-height: 1.6;  
+    }  
+  
+    .pacote-dados span {  
+      display: flex;  
+      align-items: flex-start;  
+      gap: 9px;  
+    }  
+  
+    .pacote-dados span::before {  
+      content: "";  
+      flex: 0 0 4px;  
+      width: 4px;  
+      height: 4px;  
+      margin-top: 7px;  
+      border-radius: 50%;  
+      background: var(--verde);  
+    }  
+  
+    .pacote-descricao {  
+      margin-top: 18px;  
+      color: var(--muted);  
+      font-size: 11px;  
+      line-height: 1.85;  
+      flex: 1;  
+    }  
+  
+    .pacote:first-child .pacote-descricao::before {  
+      content: "";  
+      display: block;  
+      width: 25px;  
+      height: 2px;  
+      margin-bottom: 15px;  
+      background: var(--verde);  
+    }  
+  
+    .pacote .botao {  
+      width: 100%;  
+      min-height: 43px;  
+      margin-top: 25px;  
+      padding: 11px 12px;  
+      font-size: 9px;  
+      letter-spacing: .08em;  
+    }  
+  
+    .pacote .botao-secundario {  
+      color: var(--offwhite);  
+      background: transparent;  
+      border-color: var(--linha);  
+    }  
+  
+    .pacote .botao-secundario:hover {  
+      background: var(--verde);  
+      color: var(--fundo-escuro);  
+      border-color: var(--verde);  
+    }  
+  
+    .nota-cenario {  
+      margin-top: 22px;  
+      padding: 18px 20px;  
+      border-left: 1px solid var(--verde);  
+      background: rgba(131,169,157,.055);  
+      color: var(--muted);  
+      font-size: 11px;  
+      line-height: 1.9;  
+    }  
+  
+    .nota-cenario strong {  
+      color: var(--offwhite);  
+      font-weight: 500;  
+    }  
+  
+    /* COMO FUNCIONA */  
+  
+    .processo {  
+      padding: 100px 0;  
+      background: #E2E1D7;  
+      color: #26372E;  
+    }  
+  
+    .processo .etiqueta {  
+      color: #52786B;  
+    }  
+  
+    .processo .titulo-secao {  
+      color: #25372D;  
+    }  
+  
+    .processo .descricao-secao {  
+      color: #68766C;  
+    }  
+  
+    .processo-grade {  
+      display: grid;  
+      grid-template-columns: repeat(3, minmax(0, 1fr));  
+      gap: 30px;  
+      margin-top: 48px;  
+    }  
+  
+    .processo-item {  
+      padding-top: 20px;  
+      border-top: 1px solid rgba(38,55,46,.25);  
+    }  
+  
+    .processo-numero {  
+      color: #64877A;  
+      font-family: var(--serif);  
+      font-size: 30px;  
+      line-height: 1;  
+    }  
+  
+    .processo-item h3 {  
+      margin-top: 16px;  
+      font-family: var(--serif);  
+      font-size: 26px;  
+      font-weight: 500;  
+    }  
+  
+    .processo-item p {  
+      max-width: 310px;  
+      margin-top: 9px;  
+      color: #68766C;  
+      font-size: 12px;  
+      line-height: 1.9;  
+    }  
+  
+    /* CONTATO E FORMULÁRIO */  
+  
+    .contato {  
+      position: relative;  
+      padding: 110px 0 105px;  
+      background: #202F27;  
+      color: var(--texto);  
+      border-top: 1px solid var(--linha);  
+    }  
+  
+    .contato-grade {  
+      display: grid;  
+      grid-template-columns: .9fr 1.1fr;  
+      gap: 90px;  
+      align-items: start;  
+    }  
+  
+    .contato .titulo-secao {  
+      margin-top: 13px;  
+    }  
+  
+    .contato .descricao-secao {  
+      max-width: 390px;  
+    }  
+  
+    .contato-links {  
+      display: flex;  
+      flex-direction: column;  
+      gap: 10px;  
+      margin-top: 34px;  
+    }  
+  
+    .link-contato {  
+      display: flex;  
+      align-items: center;  
+      justify-content: space-between;  
+      gap: 20px;  
+      padding: 14px 16px;  
+      border: 1px solid var(--linha);  
+      color: var(--offwhite);  
+      font-size: 11px;  
+      transition: background .2s, color .2s, border-color .2s;  
+    }  
+  
+    .link-contato span {  
+      color: var(--verde);  
+      font-size: 16px;  
+    }  
+  
+    .link-contato:hover {  
+      background: var(--offwhite);  
+      color: var(--fundo-escuro);  
+      border-color: var(--offwhite);  
+    }  
+  
+    .link-contato:hover span {  
+      color: var(--fundo-escuro);  
+    }  
+  
+    .formulario {  
+      padding: 32px;  
+      background: rgba(17,35,27,.38);  
+      border: 1px solid rgba(131,169,157,.25);  
+    }  
+  
+    .formulario-titulo {  
+      color: var(--offwhite);  
+      font-family: var(--serif);  
+      font-size: 31px;  
+      font-weight: 400;  
+      margin-bottom: 25px;  
+    }  
+  
+    .campo {  
+      display: flex;  
+      flex-direction: column;  
+      gap: 8px;  
+      margin-bottom: 20px;  
+    }  
+  
+    .campo label {  
+      color: var(--muted);  
+      font-size: 10px;  
+      letter-spacing: .08em;  
+    }  
+  
+    .campo input,  
+    .campo select,  
+    .campo textarea {  
+      width: 100%;  
+      min-height: 46px;  
+      padding: 12px 13px;  
+      border: 1px solid #40564A;  
+      border-radius: 0;  
+      outline: none;  
+      background: #1A2921;  
+      color: var(--offwhite);  
+      font-size: 12px;  
+      font-weight: 300;  
+      transition: border-color .2s;  
+    }  
+  
+    .campo input:focus,  
+    .campo select:focus,  
+    .campo textarea:focus {  
+      border-color: var(--verde);  
+    }  
+  
+    .campo input::placeholder,  
+    .campo textarea::placeholder {  
+      color: #829086;  
+    }  
+  
+    .campo select {  
+      color-scheme: dark;  
+    }  
+  
+    .campo textarea {  
+      min-height: 105px;  
+      resize: vertical;  
+    }  
+  
+    .campo-duplo {  
+      display: grid;  
+      grid-template-columns: 1fr 1fr;  
+      gap: 15px;  
+    }  
+  
+    .formulario .botao {  
+      width: 100%;  
+      margin-top: 5px;  
+    }  
+  
+    .aviso-formulario {  
+      margin-top: 13px;  
+      color: #91A095;  
+      font-size: 10px;  
+      line-height: 1.7;  
+      text-align: center;  
+    }  
+  
+    /* RODAPÉ */  
+  
+    footer {  
+      position: relative;  
+      overflow: hidden;  
+      padding: 28px 0 24px;  
+      background: #17231D;  
+      border-top: 1px solid rgba(131,169,157,.2);  
+    }  
+  
+    .rodape-detalhe {  
+      display: flex;  
+      justify-content: center;  
+      gap: 7px;  
+      margin-bottom: 22px;  
+      opacity: .45;  
+    }  
+  
+    .camera {  
+      position: relative;  
+      width: 24px;  
+      height: 17px;  
+      border: 1px solid var(--verde);  
+    }  
+  
+    .camera::before {  
+      content: "";  
+      position: absolute;  
+      top: -4px;  
+      left: 4px;  
+      width: 7px;  
+      height: 3px;  
+      border: 1px solid var(--verde);  
+      border-bottom: 0;  
+    }  
+  
+    .camera::after {  
+      content: "";  
+      position: absolute;  
+      top: 4px;  
+      left: 8px;  
+      width: 6px;  
+      height: 6px;  
+      border: 1px solid var(--verde);  
+      border-radius: 50%;  
+    }  
+  
+    .rodape-principal {  
+      display: flex;  
+      align-items: center;  
+      justify-content: space-between;  
+      gap: 20px;  
+    }  
+  
+    .rodape-marca {  
+      color: var(--offwhite);  
+      font-family: var(--serif);  
+      font-size: 22px;  
+      letter-spacing: .16em;  
+    }  
+  
+    .rodape-texto {  
+      color: var(--muted);  
+      font-size: 10px;  
+      text-align: center;  
+    }  
+  
+    .rodape-redes {  
+      display: flex;  
+      gap: 18px;  
+    }  
+  
+    .rodape-redes a {  
+      color: var(--muted);  
+      font-size: 10px;  
+      transition: color .2s;  
+    }  
+  
+    .rodape-redes a:hover {  
+      color: var(
