@@ -146,12 +146,20 @@
 }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; } }
-/* Ajuste do tamanho das câmeras do rodapé */
-.rodape-camera {
-  width: 30px !important;
-  height: 23px !important;
-  flex-shrink: 0;
-}
+      .rodape-camera {
+      width: 18px !important;
+      height: 14px !important;
+      flex-shrink: 0;
+    }
+
+    .rodape-cameras {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 12px;
+      width: 100%;
+    }
 </style>
 </head>
 <body>
