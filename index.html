@@ -35,6 +35,21 @@
     .cabecalho { min-height: 84px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
     .logo { font-family: var(--serif); font-size: 29px; font-weight: 500; letter-spacing: 3px; white-space: nowrap; color: var(--offwhite); }
     .logo .logo-verde { color: var(--verde); }
+  .logo {
+  position: relative;
+}
+
+.logo::after {
+  content: "";
+  position: absolute;
+  width: 65%;
+  height: 1px;
+  background: var(--verde);
+  opacity: 0.8;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
     .navegacao { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 23px; font-size: 12px; letter-spacing: .4px; color: var(--muted); }
     .navegacao a { transition: color .2s, background .2s, border-color .2s; }
     .navegacao a:hover { color: var(--offwhite); }
